@@ -1,0 +1,13 @@
+tv_channels:
+    name: TV Channels
+    entities:
+      - input_boolean.tv_channel_bbc_world_news
+      - input_boolean.tv_channel_cnn_news
+      - input_boolean.tv_channel_cnn_money_switzerland
+      - input_boolean.tv_channel_srf1
+      - input_boolean.tv_channel_srf2
+      - input_boolean.tv_channel_tele_zueri
+      - input_boolean.tv_channel_3plus
+      - input_boolean.tv_channel_4plus
+      - input_boolean.tv_app_youtube
+      - input_boolean.tv_app_netflix

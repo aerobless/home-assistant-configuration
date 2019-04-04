@@ -1,0 +1,20 @@
+- id: '32412341222'
+  alias: Play Radio Energy Zürich
+  initial_state: true
+  trigger:
+    platform: state
+    entity_id: input_boolean.play_energy_zurich_everywhere
+    to: 'on'
+  action:
+  - service: tts.google_say
+    entity_id: media_player.everywhere
+    data:
+      message: Playing Energy Zürich on everywhere
+  - service: media_player.play_media
+    data:
+      entity_id: media_player.everywhere
+      media_content_id: https://energyzuerich.ice.infomaniak.ch/energyzuerich-high.mp3
+      media_content_type: audio/mp4
+  - service: input_boolean.turn_off
+    data:
+      entity_id: input_boolean.play_energy_zurich_everywhere

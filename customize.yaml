@@ -1,0 +1,50 @@
+group.bedroom_group:
+  icon: mdi:hotel
+switch.fake:
+  hidden: true
+switch.sonoff_100039444c:
+  friendly_name: Kitchen Overhead Light
+lock.nello_149a8cc9:
+  friendly_name: WestLink Main Entrance
+switch.mystromkitchen:
+  friendly_name: Kitchen Utilities
+  icon: mdi:coffee
+switch.mystromclickandgrow3:
+  friendly_name: Click & Grow 3
+  icon: mdi:leaf
+switch.mystromclickandgrow9:
+  friendly_name: Click & Grow 9
+  icon: mdi:leaf
+binary_sensor.samsung_tv:
+  icon: mdi:television
+binary_sensor.living_room_blinds:
+  device_class: window
+binary_sensor.loggia_blinds:
+  device_class: window
+binary_sensor.loggia_door_to_living_room:
+  device_class: door
+binary_sensor.loggia_door_to_bedroom:
+  device_class: door
+light.kitchen_table_light:
+  icon: mdi:ceiling-light
+light.pixar:
+  icon: mdi:floor-lamp
+light.loggia_lightstrip:
+  icon: mdi:led-strip
+light.window_lightstrip:
+  icon: mdi:led-strip
+light.tv_spot_1:
+  icon: mdi:track-light
+light.tv_spot_2:
+  icon: mdi:track-light
+light.tv_spot_3:
+  icon: mdi:track-light
+light.entrance_spot_1:
+  icon: mdi:track-light
+light.entrance_spot_2:
+  icon: mdi:track-light
+switch.mystromserverandutilities:
+  friendly_name: Home Assistant Server Power
+switch.mystromloggiawaterpump:
+  friendly_name: Plant Irrigation
+  icon: mdi:water

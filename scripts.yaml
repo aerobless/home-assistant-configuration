@@ -1,0 +1,41 @@
+open_loggia_blinds:
+  alias: Open Loggia Blinds
+  sequence:
+  - service: ifttt.trigger
+    data: {"event":"open_loggia_blinds"}
+
+close_loggia_blinds:
+  alias: Close Loggia Blinds
+  sequence:
+  - service: ifttt.trigger
+    data: {"event":"close_loggia_blinds"}
+
+open_livingroom_blinds:
+  alias: Open Living Room Blinds
+  sequence:
+  - service: ifttt.trigger
+    data: {"event":"open_livingroom_blinds"}
+
+close_livingroom_blinds:
+  alias: Close Living Room Blinds
+  sequence:
+  - service: ifttt.trigger
+    data: {"event":"close_livingroom_blinds"}
+
+livingroom_tv_app_netflix:
+  sequence:
+  - service: media_player.turn_on
+    entity_id: media_player.samsung_tv_remote
+  - service: rest_command.livingroom_tv_app_netflix
+
+livingroom_tv_app_amazon:
+  sequence:
+  - service: media_player.turn_on
+    entity_id: media_player.samsung_tv_remote
+  - service: rest_command.livingroom_tv_app_amazon
+
+livingroom_tv_app_youtube:
+  sequence:
+  - service: media_player.turn_on
+    entity_id: media_player.samsung_tv_remote
+  - service: rest_command.livingroom_tv_app_youtube

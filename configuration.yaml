@@ -1,0 +1,450 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: SixtyMeters - Home Assistant
+  # Location required to calculate the time the sun rises and sets
+  latitude: !secret latitude
+  longitude: !secret longitude
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: 426
+  # metric for Metric, imperial for Imperial
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: Europe/Zurich
+  # Customization file
+  customize: !include customize.yaml
+
+default_config:
+
+discovery:
+
+http:
+  base_url: !secret base_url
+  ssl_certificate: /ssl/fullchain.pem
+  ssl_key: /ssl/privkey.pem
+  
+updater:
+  # Optional, allows Home Assistant developers to focus on popular components.
+  include_used_components: true
+  
+recorder:
+  db_url: !secret db_connection
+  purge_keep_days: 30
+  purge_interval: 5
+  
+influxdb:
+    database: homeassistant
+    username: !secret influx_username
+    password: !secret influx_password
+    max_retries: 2
+    
+panel_iframe:
+  influxdb:
+    title: InfluxDB
+    icon: mdi:chart-areaspline
+    url: https://sixtymeters.duckdns.org:8888
+  nodered:
+    title: NodeRed
+    icon: mdi:resistor-nodes
+    url: https://sixtymeters.duckdns.org:1880
+  portainer:
+    title: Portainer
+    icon: mdi:docker
+    url: https://sixtymeters.duckdns.org:9000
+  glances:
+    title: Glances
+    icon: mdi:chart-areaspline
+    url: https://sixtymeters.duckdns.org:61208
+  grafana:
+    title: Grafana
+    icon: mdi:chart-timeline
+    url: https://sixtymeters.duckdns.org:3000
+  grafana:
+    title: Visual Studio Code
+    icon: mdi:visual-studio
+    url: https://sixtymeters.duckdns.org:1337
+
+sensor: # All sensors with multiple states
+  - platform: template
+    sensors:
+        washingmachine_power:
+            friendly_name: "Washing Machine Current Power"
+            icon_template: mdi:washing-machine
+            unit_of_measurement: "W"
+            value_template: "{{ states.switch.myStromWashingMachine.attributes.current_power_w | default(0) }}"
+        total_power:
+            friendly_name: "Total Power Usage"
+            icon_template: mdi:power-plug
+            unit_of_measurement: "W"
+            value_template: "{{(states.switch.myStromWashingMachine.attributes.current_power_w | default(0)
+            + states.switch.mystromclickandgrow3.attributes.current_power_w | default(0)
+            + states.switch.mystromclickandgrow9.attributes.current_power_w | default(0)
+            + states.switch.mystromkitchen.attributes.current_power_w | default(0)
+            + states.switch.campfire.attributes.current_power_w | default(0)
+            + states.switch.myStromServerAndUtilities.attributes.current_power_w | default(0)
+            + states.switch.myStromTvUtilities.attributes.current_power_w | default(0)
+            + states.switch.myStromiMac.attributes.current_power_w | default(0)
+            + states.switch.myStromLoggiaWaterPump.attributes.current_power_w | default(0)
+            ) | round(2)          
+            }}"
+
+binary_sensor: # All sensors with just two states (ON/OFF)
+  - platform: ping
+    host: 192.168.178.20 # Samsung TV
+    name: Samsung TV
+    scan_interval: 30 # seconds
+    count: 2
+  - platform: template
+    sensors:
+        washingmachine_state:
+            friendly_name: "Washing Machine State"
+            delay_off: # Only switches states after new state existed for x minutes
+                minutes: 5
+            icon_template: mdi:washing-machine
+            value_template: "{{ states.switch.myStromWashingMachine.attributes.current_power_w | default(0) |float > 10}}"
+        entrance_door:
+            friendly_name: "Apartment Entrance Door"
+            device_class: door
+            value_template: "{{ is_state('input_boolean.homekit_entrance_door_relay', 'on') }}"
+        entrance_logi_motion:
+            friendly_name: "Entrance Motion"
+            device_class: motion
+            value_template: "{{ is_state('input_boolean.homekit_entrance_logi_motion_relay', 'on') }}"
+        livingroom_logi_motion:
+            friendly_name: "Living Room Motion"
+            device_class: motion
+            value_template: "{{ is_state('input_boolean.homekit_livingroom_logi_motion_relay', 'on') }}"
+        apartment_occupancy:
+            friendly_name: "Apartment Occupancy"
+            delay_on:
+              minutes: 5
+            delay_off:
+              minutes: 3
+            device_class: occupancy
+            value_template: "{{ is_state('device_tracker.theosiphone', 'home') }}"
+        intrusion_detection:
+            friendly_name: "Intrusion Detection"
+            device_class: motion
+            value_template: "{{ is_state('input_boolean.intrusion_detection_sensor_switch', 'on') }}"
+        bed_state:
+            friendly_name: Bed
+            device_class: occupancy
+            icon_template: mdi:bed-empty
+            value_template: "{{ is_state('input_boolean.bed_occupied_input', 'on') }}"
+tts:
+  - platform: amazon_polly
+    aws_access_key_id: !secret aws_access_key_id
+    aws_secret_access_key: !secret aws_secret_access_key
+    region_name: eu-central-1
+    text_type: ssml
+    voice: Joanna
+#  - platform: google
+#    language: 'en-us'
+                
+light:
+  - platform: nanoleaf
+    host: 192.168.178.49
+    token: !secret nanoleaf_token
+  - platform: template
+    lights:
+        campfire:
+            friendly_name: "Loggia Campfire"
+            value_template: "{{ is_state('switch.campfire', 'on') }}"
+            turn_on:
+                service: switch.turn_on
+                entity_id: switch.campfire
+            turn_off:
+                service: switch.turn_off
+                entity_id: switch.campfire
+
+climate:
+  - platform: generic_thermostat
+    name: netatmoInside
+    heater: switch.fake
+    initial_operation_mode: "off"
+    target_sensor: sensor.netatmo_sixtymeters_indoor_temperature
+    
+ifttt:
+  key: !secret ifttt_key
+
+cloud:
+    google_actions:
+        filter:
+            include_entities:
+                - climate.netatmoinside
+                - sensor.netatmo_sixtymeters_outdoor_temperature
+                - lock.nello_149a8cc9
+                - input_boolean.tv_channel_bbc_world_news
+                - input_boolean.tv_channel_cnn_news
+                - input_boolean.tv_channel_cnn_money_switzerland
+                - input_boolean.tv_channel_srf1
+                - input_boolean.tv_channel_srf2
+                - input_boolean.tv_channel_tele_zueri
+                - input_boolean.tv_channel_3plus
+                - input_boolean.tv_channel_4plus
+                - input_boolean.tv_app_youtube
+                - input_boolean.tv_app_netflix
+                - switch.samsung_tv
+                - switch.charging_station
+                - cover.livingroom_blinds
+                - cover.loggia_blinds
+            exclude_entities:
+                - light.aurora
+                - light.bedroom
+                - light.entrance
+                - light.living_room
+                - light.loggia
+                - light.rwl021_4
+                - light.rwl021_8
+                - light.rwl021_9
+            include_domains:
+                - light
+                - scene
+
+homekit:
+  filter:
+    include_entities:
+        - sensor.netatmo_sixtymeters_indoor_co2
+        - sensor.netatmo_sixtymeters_outdoor_temperature
+        - sensor.netatmo_sixtymeters_outdoor_humidity
+        - sensor.netatmo_sixtymeters_indoor_temperature
+        - sensor.netatmo_sixtymeters_indoor_pressure
+        - sensor.netatmo_sixtymeters_indoor_noise
+        - sensor.netatmo_sixtymeters_indoor_humidity
+        - sensor.netatmo_sixtymeters_indoor_co2
+        - binary_sensor.intrusion_detection
+        - input_boolean.homekit_entrance_logi_motion_relay
+        - input_boolean.homekit_livingroom_logi_motion_relay
+        - input_boolean.homekit_entrance_door_relay
+        - input_boolean.alarm_clock_enabled
+        - cover.livingroom_blinds
+        - cover.loggia_blinds
+        - lock.nello_149a8cc9
+        - switch.samsung_tv
+    exclude_entities:
+        - light.aurora
+        - light.bedroom
+        - light.entrance
+        - light.living_room
+        - light.loggia
+        - light.rwl021_4
+        - light.rwl021_8
+        - light.rwl021_9
+    include_domains:
+        - light
+        - scene
+
+switch:
+  - platform: mystrom
+    host: 192.168.178.39
+    name: campfire
+  - platform: mystrom
+    host: 192.168.178.58
+    name: Charging Station
+  - platform: mystrom
+    host: 192.168.178.55
+    name: myStromKitchen
+  - platform: mystrom
+    host: 192.168.178.65
+    name: myStromClickAndGrow3
+  - platform: mystrom
+    host: 192.168.178.68
+    name: myStromClickAndGrow9
+  - platform: mystrom
+    host: 192.168.178.60
+    name: myStromWashingMachine
+  - platform: mystrom
+    host: 192.168.178.40
+    name: myStromTvUtilities
+  - platform: mystrom
+    host: 192.168.178.37
+    name: myStromiMac
+  - platform: mystrom
+    host: 192.168.178.52
+    name: myStromLoggiaWaterPump
+  - platform: mystrom
+    host: 192.168.178.78
+    name: myStromServerAndUtilities
+  - platform: command_line
+    switches:
+      fake:
+        command_on: echo "fake switch on"
+        command_off: echo "fake switch on"
+  - platform: template
+    switches:
+      samsung_tv:
+        friendly_name: TV
+        value_template: "{{ is_state('binary_sensor.samsung_tv', 'on') }}"
+        turn_on:
+            event: ACTION_TV_STATE_CHANGE
+            event_data_template:
+                tv_action: "tv_on"
+        turn_off:
+            event: ACTION_TV_STATE_CHANGE
+            event_data_template:
+                tv_action: "tv_off"
+        icon_template: >-
+          {% if is_state('binary_sensor.samsung_tv', 'on') %}
+            mdi:television
+          {% else %}
+            mdi:television-off
+          {% endif %}
+          
+cover:
+  - platform: template
+    covers:
+      livingroom_blinds:
+        friendly_name: "Living Room Blinds"
+        value_template: "{{ is_state('binary_sensor.living_room_blinds', 'on') }}"
+        open_cover:
+          service: script.open_livingroom_blinds
+        close_cover:
+          service: script.close_livingroom_blinds
+      loggia_blinds:
+        friendly_name: "Loggia Blinds"
+        value_template: "{{ is_state('binary_sensor.loggia_blinds', 'on') }}"
+        open_cover:
+          service: script.open_loggia_blinds
+        close_cover:
+          service: script.close_loggia_blinds
+        
+input_boolean:
+  play_energy_zurich_everywhere:
+    name: Energy Zürich (everyhwere)
+    initial: off
+  livingroom_blinds_state_sensor:
+    name: Blinds State Sensor (Living Room)
+    initial: on # on = open
+  loggia_blinds_state_sensor:
+    name: Blinds State Sensor (Loggia)
+    initial: on # on = open
+  homekit_entrance_logi_motion_relay: # Logi Camera Motion Sensor
+    name: Logi Entrance Motion Sensor Relay
+    initial: off
+  homekit_entrance_door_relay: # Eve Door Sensor
+    name: Eve Door Sensor Relay
+    initial: off # off = closed
+  homekit_livingroom_logi_motion_relay: # Logi Camera Motion Sensor
+    name: Logi Living Room Motion Sensor Relay
+    initial: off
+  intrusion_detection_sensor_switch: # Trigger Intrusion Detection Sensor
+    name: Intrusion Detection Sensor Switch
+    initial: off
+  tv_channel_bbc_world_news:
+    name: BBC World News
+    initial: off
+    icon: mdi:earth
+  tv_channel_cnn_news:
+    name: CNN News
+    initial: off
+    icon: mdi:newspaper
+  tv_channel_cnn_money_switzerland:
+    name: CNN Money Switzerland
+    initial: off
+    icon: mdi:coin
+  tv_channel_srf1:
+    name: SRF 1
+    initial: off
+    icon: mdi:numeric-1-box
+  tv_channel_srf2:
+    name: SRF 2
+    initial: off
+    icon: mdi:numeric-2-box
+  tv_channel_tele_zueri:
+    name: Tele Züri
+    initial: off
+    icon: mdi:city-variant
+  tv_channel_3plus:
+    name: 3 Plus
+    initial: off
+    icon: mdi:numeric-3-box
+  tv_channel_4plus:
+    name: 4 Plus
+    initial: off
+    icon: mdi:numeric-4-box
+  tv_app_youtube:
+    name: YouTube App
+    initial: off
+    icon: mdi:youtube-tv
+  tv_app_netflix:
+    name: Netflix App
+    initial: off
+    icon: mdi:netflix
+  tv_stereo_on:
+    name: TV Stereo On
+    initial: off
+    icon: mdi:speaker
+  alarm_clock_enabled:
+    name: Alarm Clock
+    initial: on
+    icon: mdi:alarm
+  bed_occupied_input:
+    name: Bed Occupied Input
+    initial: off
+    icon: mdi:bed-empty
+
+input_datetime:
+  work_week_alarm:
+    name: Work Alarm
+    has_date: false
+    has_time: true
+  weekend_alarm:
+    name: Weekend Alarm
+    has_date: false
+    has_time: true
+
+calendar:
+  - platform: todoist
+    token: !secret todoist_api_token
+    custom_projects:
+        - name: 'Due Today'
+          due_date_days: 1
+        - name: 'Due This Week'
+          due_date_days: 7
+
+vacuum:
+  - platform: roomba
+    host: !secret roomba_ip
+    username: !secret roomba_username
+    password: !secret roomba_password
+    
+telegram_bot:
+  - platform: broadcast
+    api_key: !secret telegram_api_token
+    allowed_chat_ids:
+      - 131084571
+    
+lock:
+  - platform: nello
+    username: !secret nello_username
+    password: !secret nello_password
+
+remote:
+  - platform: harmony
+    name: Harmony Hub
+    host: 192.168.178.76
+
+device_tracker:
+  - platform: fritz
+    interval_seconds: 30
+    consider_home: 180
+    new_device_defaults:
+      track_new_devices: False
+      hide_if_away: False
+
+speedtestdotnet:
+  scan_interval:
+    minutes: 120
+  monitored_conditions:
+    - ping
+    - download
+    - upload
+
+netatmo:
+  api_key: !secret netatmo_api_key
+  secret_key: !secret netatmo_key
+  username: !secret netatmo_user
+  password: !secret netatmo_password
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
