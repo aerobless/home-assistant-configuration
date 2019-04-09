@@ -39,3 +39,7 @@ livingroom_tv_app_youtube:
   - service: media_player.turn_on
     entity_id: media_player.samsung_tv_remote
   - service: rest_command.livingroom_tv_app_youtube
+
+update_plant_status:
+  sequence:
+  - service: rest_command.get_plantgateway_status

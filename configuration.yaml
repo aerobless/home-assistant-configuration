@@ -58,7 +58,7 @@ panel_iframe:
     title: Grafana
     icon: mdi:chart-timeline
     url: https://sixtymeters.duckdns.org:3000
-  grafana:
+  visual_studio:
     title: Visual Studio Code
     icon: mdi:visual-studio
     url: https://sixtymeters.duckdns.org:1337
@@ -67,10 +67,15 @@ sensor: # All sensors with multiple states
   - platform: template
     sensors:
         washingmachine_power:
-            friendly_name: "Washing Machine Current Power"
+            friendly_name: "Washing Machine Power"
             icon_template: mdi:washing-machine
             unit_of_measurement: "W"
             value_template: "{{ states.switch.myStromWashingMachine.attributes.current_power_w | default(0) }}"
+        dishwasher_power:
+            friendly_name: "Dishwasher Power"
+            icon_template: mdi:dishwasher
+            unit_of_measurement: "W"
+            value_template: "{{ states.switch.mystromDishwasher.attributes.current_power_w | default(0) }}"
         total_power:
             friendly_name: "Total Power Usage"
             icon_template: mdi:power-plug
@@ -79,13 +84,208 @@ sensor: # All sensors with multiple states
             + states.switch.mystromclickandgrow3.attributes.current_power_w | default(0)
             + states.switch.mystromclickandgrow9.attributes.current_power_w | default(0)
             + states.switch.mystromkitchen.attributes.current_power_w | default(0)
-            + states.switch.campfire.attributes.current_power_w | default(0)
+            + states.switch.mystromDishwasher.attributes.current_power_w | default(0)
             + states.switch.myStromServerAndUtilities.attributes.current_power_w | default(0)
             + states.switch.myStromTvUtilities.attributes.current_power_w | default(0)
             + states.switch.myStromiMac.attributes.current_power_w | default(0)
             + states.switch.myStromLoggiaWaterPump.attributes.current_power_w | default(0)
             ) | round(2)          
             }}"
+  - platform: mqtt
+    name: citrus_limon_moisture
+    state_topic: homeassistant/sensors/plants/citrus_limon/
+    value_template: '{{ value_json.moisture | int }}'
+    unit_of_measurement: '%'
+  - platform: mqtt
+    name: citrus_limon_battery
+    state_topic: homeassistant/sensors/plants/citrus_limon/
+    value_template: '{{ value_json.battery | int }}'
+    unit_of_measurement: '%'
+  - platform: mqtt
+    name: citrus_limon_temperature
+    state_topic: homeassistant/sensors/plants/citrus_limon/
+    value_template: '{{ value_json.temperature | float }}'
+    unit_of_measurement: '°C'
+  - platform: mqtt
+    name: citrus_limon_conductivity
+    state_topic: homeassistant/sensors/plants/citrus_limon/
+    value_template: '{{ value_json.conductivity | int }}'
+    unit_of_measurement: 'µS/cm'
+  - platform: mqtt
+    name: citrus_limon_brightness
+    state_topic: homeassistant/sensors/plants/citrus_limon/
+    value_template: '{{ value_json.brightness | int }}'
+    unit_of_measurement: 'Lux'
+  - platform: mqtt
+    name: dypsis_lutescens_moisture
+    state_topic: homeassistant/sensors/plants/dypsis_lutescens/
+    value_template: '{{ value_json.moisture | int }}'
+    unit_of_measurement: '%'
+  - platform: mqtt
+    name: dypsis_lutescens_battery
+    state_topic: homeassistant/sensors/plants/dypsis_lutescens/
+    value_template: '{{ value_json.battery | int }}'
+    unit_of_measurement: '%'
+  - platform: mqtt
+    name: dypsis_lutescens_temperature
+    state_topic: homeassistant/sensors/plants/dypsis_lutescens/
+    value_template: '{{ value_json.temperature | float }}'
+    unit_of_measurement: '°C'
+  - platform: mqtt
+    name: dypsis_lutescens_conductivity
+    state_topic: homeassistant/sensors/plants/dypsis_lutescens/
+    value_template: '{{ value_json.conductivity | int }}'
+    unit_of_measurement: 'µS/cm'
+  - platform: mqtt
+    name: dypsis_lutescens_brightness
+    state_topic: homeassistant/sensors/plants/dypsis_lutescens/
+    value_template: '{{ value_json.brightness | int }}'
+    unit_of_measurement: 'Lux'
+  - platform: mqtt
+    name: spathiphyllum_kochii_moisture
+    state_topic: homeassistant/sensors/plants/spathiphyllum_kochii/
+    value_template: '{{ value_json.moisture | int }}'
+    unit_of_measurement: '%'
+  - platform: mqtt
+    name: spathiphyllum_kochii_battery
+    state_topic: homeassistant/sensors/plants/spathiphyllum_kochii/
+    value_template: '{{ value_json.battery | int }}'
+    unit_of_measurement: '%'
+  - platform: mqtt
+    name: spathiphyllum_kochii_temperature
+    state_topic: homeassistant/sensors/plants/spathiphyllum_kochii/
+    value_template: '{{ value_json.temperature | float }}'
+    unit_of_measurement: '°C'
+  - platform: mqtt
+    name: spathiphyllum_kochii_conductivity
+    state_topic: homeassistant/sensors/plants/spathiphyllum_kochii/
+    value_template: '{{ value_json.conductivity | int }}'
+    unit_of_measurement: 'µS/cm'
+  - platform: mqtt
+    name: spathiphyllum_kochii_brightness
+    state_topic: homeassistant/sensors/plants/spathiphyllum_kochii/
+    value_template: '{{ value_json.brightness | int }}'
+    unit_of_measurement: 'Lux'
+  - platform: mqtt
+    name: menthe_ricola_moisture
+    state_topic: homeassistant/sensors/plants/menthe_ricola/
+    value_template: '{{ value_json.moisture | int }}'
+    unit_of_measurement: '%'
+  - platform: mqtt
+    name: menthe_ricola_battery
+    state_topic: homeassistant/sensors/plants/menthe_ricola/
+    value_template: '{{ value_json.battery | int }}'
+    unit_of_measurement: '%'
+  - platform: mqtt
+    name: menthe_ricola_temperature
+    state_topic: homeassistant/sensors/plants/menthe_ricola/
+    value_template: '{{ value_json.temperature | float }}'
+    unit_of_measurement: '°C'
+  - platform: mqtt
+    name: menthe_ricola_conductivity
+    state_topic: homeassistant/sensors/plants/menthe_ricola/
+    value_template: '{{ value_json.conductivity | int }}'
+    unit_of_measurement: 'µS/cm'
+  - platform: mqtt
+    name: menthe_ricola_brightness
+    state_topic: homeassistant/sensors/plants/menthe_ricola/
+    value_template: '{{ value_json.brightness | int }}'
+    unit_of_measurement: 'Lux'
+  - platform: mqtt
+    name: ficus_benjamina_moisture
+    state_topic: homeassistant/sensors/plants/ficus_benjamina/
+    value_template: '{{ value_json.moisture | int }}'
+    unit_of_measurement: '%'
+  - platform: mqtt
+    name: ficus_benjamina_battery
+    state_topic: homeassistant/sensors/plants/ficus_benjamina/
+    value_template: '{{ value_json.battery | int }}'
+    unit_of_measurement: '%'
+  - platform: mqtt
+    name: ficus_benjamina_temperature
+    state_topic: homeassistant/sensors/plants/ficus_benjamina/
+    value_template: '{{ value_json.temperature | float }}'
+    unit_of_measurement: '°C'
+  - platform: mqtt
+    name: ficus_benjamina_conductivity
+    state_topic: homeassistant/sensors/plants/ficus_benjamina/
+    value_template: '{{ value_json.conductivity | int }}'
+    unit_of_measurement: 'µS/cm'
+  - platform: mqtt
+    name: ficus_benjamina_brightness
+    state_topic: homeassistant/sensors/plants/ficus_benjamina/
+    value_template: '{{ value_json.brightness | int }}'
+    unit_of_measurement: 'Lux'
+
+plant:
+  citrus_limon:
+    sensors:
+      moisture: sensor.citrus_limon_moisture
+      battery: sensor.citrus_limon_battery
+      temperature: sensor.citrus_limon_temperature
+      conductivity: sensor.citrus_limon_conductivity
+      brightness: sensor.citrus_limon_brightness
+    min_moisture: 15
+    max_moisture: 60
+    min_battery: 17
+    min_conductivity: 350
+    min_temperature: 15
+  dypsis_lutescens:
+    sensors:
+      moisture: sensor.dypsis_lutescens_moisture
+      battery: sensor.dypsis_lutescens_battery
+      temperature: sensor.dypsis_lutescens_temperature
+      conductivity: sensor.dypsis_lutescens_conductivity
+      brightness: sensor.dypsis_lutescens_brightness
+    min_moisture: 15
+    max_moisture: 60
+    min_battery: 17
+    min_conductivity: 350
+    min_temperature: 15
+  spathiphyllum_kochii:
+    sensors:
+      moisture: sensor.spathiphyllum_kochii_moisture
+      battery: sensor.spathiphyllum_kochii_battery
+      temperature: sensor.spathiphyllum_kochii_temperature
+      conductivity: sensor.spathiphyllum_kochii_conductivity
+      brightness: sensor.spathiphyllum_kochii_brightness
+    min_moisture: 15
+    max_moisture: 65
+    min_battery: 17
+    min_conductivity: 350
+    min_temperature: 15
+  menthe_ricola:
+    sensors:
+      moisture: sensor.menthe_ricola_moisture
+      battery: sensor.menthe_ricola_battery
+      temperature: sensor.menthe_ricola_temperature
+      conductivity: sensor.menthe_ricola_conductivity
+      brightness: sensor.menthe_ricola_brightness
+    min_moisture: 15
+    max_moisture: 60
+    min_battery: 17
+    min_conductivity: 350
+    min_temperature: 15
+  ficus_benjamina:
+    sensors:
+      moisture: sensor.ficus_benjamina_moisture
+      battery: sensor.ficus_benjamina_battery
+      temperature: sensor.ficus_benjamina_temperature
+      conductivity: sensor.ficus_benjamina_conductivity
+      brightness: sensor.ficus_benjamina_brightness
+    min_moisture: 20
+    max_moisture: 60
+    min_battery: 17
+    min_conductivity: 350
+    min_temperature: 15
+
+rest_command:
+  get_plantgateway_status:
+    url: https://192.168.178.63:8000
+    method: GET
+    verify_ssl: false
+    username: !secret plant_gateway_username
+    password: !secret plant_gateway_password
 
 binary_sensor: # All sensors with just two states (ON/OFF)
   - platform: ping
@@ -101,6 +301,12 @@ binary_sensor: # All sensors with just two states (ON/OFF)
                 minutes: 5
             icon_template: mdi:washing-machine
             value_template: "{{ states.switch.myStromWashingMachine.attributes.current_power_w | default(0) |float > 10}}"
+        dishwasher_state:
+            friendly_name: "Dishwasher State"
+            delay_off: # Only switches states after new state existed for x minutes
+                minutes: 5
+            icon_template: mdi:washing-machine
+            value_template: "{{ states.switch.mystromDishwasher.attributes.current_power_w | default(0) |float > 10}}"
         entrance_door:
             friendly_name: "Apartment Entrance Door"
             device_class: door
@@ -144,17 +350,6 @@ light:
   - platform: nanoleaf
     host: 192.168.178.49
     token: !secret nanoleaf_token
-  - platform: template
-    lights:
-        campfire:
-            friendly_name: "Loggia Campfire"
-            value_template: "{{ is_state('switch.campfire', 'on') }}"
-            turn_on:
-                service: switch.turn_on
-                entity_id: switch.campfire
-            turn_off:
-                service: switch.turn_off
-                entity_id: switch.campfire
 
 climate:
   - platform: generic_thermostat
@@ -236,7 +431,7 @@ homekit:
 switch:
   - platform: mystrom
     host: 192.168.178.39
-    name: campfire
+    name: mystromDishwasher
   - platform: mystrom
     host: 192.168.178.58
     name: Charging Station
