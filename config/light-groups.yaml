@@ -1,0 +1,29 @@
+  - platform: group
+    name: Living Room Light Group
+    entities:
+      - light.tv_side_orb
+      - light.tv_lightstrip
+      - light.hue_go
+      - light.living_room_spot_1
+      - light.living_room_spot_2
+      - light.living_room_spot_3
+      - light.loggia_lightstrip
+      - light.nanoleaf
+      - light.eket_cubes
+      - light.kitchen_table_light
+  - platform: group
+    name: Entrance Light Group
+    entities:
+      - light.hall_spot_1
+      - light.hall_spot_2
+  - platform: group
+    name: Bedroom Light Group
+    entities:
+      - light.bedroom_swirl
+      - light.bedside_orb
+  - platform: group
+    name: Loggia Light Group
+    entities:
+      - light.loggia_campfire
+      - light.loggia_pixar
+      - light.loggia_spot_1

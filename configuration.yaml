@@ -112,69 +112,15 @@ binary_sensor: # All sensors with just two states (ON/OFF)
 
 binary_sensor shelly-light-switches: !include config/mqtt/shelly-light-switches.yaml
 
-tts:
-#  - platform: amazon_polly
-#    aws_access_key_id: !secret aws_access_key_id
-#    aws_secret_access_key: !secret aws_secret_access_key
-#    region_name: eu-central-1
-#    engine: neural
-#    text_type: ssml
-#    voice: Joanna
-  - platform: google_cloud
-    key_file: ttsgooglecloudsecret.json
-    voice: en-US-Wavenet-C
+tts: !include config/tts-configuration.yaml
 
 light:
   - platform: nanoleaf
     host: 192.168.178.49
     token: !secret nanoleaf_token
-  - platform: mqtt
-    name: "Bathroom Light"
-    state_topic: "shellies/shellyswitch25-5DB78A/relay/1"
-    command_topic: "shellies/shellyswitch25-5DB78A/relay/1/command"
-    payload_off: "off"
-    payload_on: "on"
-  - platform: mqtt
-    name: "Kitchen Overhead Light"
-    state_topic: "shellies/shellyswitch25-00467D/relay/1"
-    command_topic: "shellies/shellyswitch25-00467D/relay/1/command"
-    payload_off: "off"
-    payload_on: "on"
-  - platform: mqtt
-    name: "Pixar Shelly"
-    state_topic: "shellies/shellyswitch25-686CEF/relay/1"
-    command_topic: "shellies/shellyswitch25-686CEF/relay/1/command"
-    payload_off: "off"
-    payload_on: "on"
-  - platform: group
-    name: Living Room Light Group
-    entities:
-      - light.tv_side_orb
-      - light.tv_lightstrip
-      - light.hue_go
-      - light.living_room_spot_1
-      - light.living_room_spot_2
-      - light.living_room_spot_3
-      - light.loggia_lightstrip
-      - light.nanoleaf
-      - light.eket_cubes
-      - light.kitchen_table_light
-  - platform: group
-    name: Entrance Light Group
-    entities:
-      - light.hall_spot_1
-      - light.hall_spot_2
-  - platform: group
-    name: Bedroom Light Group
-    entities:
-      - light.bedroom_swirl
-      - light.bedside_orb
-  - platform: group
-    name: Loggia Light Group
-    entities:
-      - light.loggia_campfire
-      - light.loggia_pixar
-      - light.loggia_spot_1
+
+light shelly: !include config/mqtt/shelly-lights.yaml
+light groups: !include config/light-groups.yaml
 
 climate:
   - platform: generic_thermostat
