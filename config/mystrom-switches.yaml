@@ -1,0 +1,30 @@
+  - platform: mystrom
+    host: 192.168.178.39
+    name: mystrom_dishwasher
+  - platform: mystrom
+    host: 192.168.178.58
+    name: Charging Station
+  - platform: mystrom
+    host: 192.168.178.55
+    name: eBike Charger
+  - platform: mystrom
+    host: 192.168.178.65
+    name: myStromClickAndGrow3
+  #- platform: mystrom
+  #  host: 192.168.178.68
+  #  name: myStromClickUnused
+  - platform: mystrom
+    host: 192.168.178.60
+    name: mystrom_tumbler
+  - platform: mystrom
+    host: 192.168.178.52
+    name: mystrom_washingmachine
+  - platform: mystrom
+    host: 192.168.178.40
+    name: myStromTvUtilities
+  - platform: mystrom
+    host: 192.168.178.37
+    name: myStromiMac
+  - platform: mystrom
+    host: 192.168.178.78
+    name: myStromAquariumLight

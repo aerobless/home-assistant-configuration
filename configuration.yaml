@@ -121,12 +121,6 @@ light:
 
 light shelly: !include config/mqtt/shelly-lights.yaml
 light groups: !include config/light-groups.yaml
-
-climate:
-  - platform: generic_thermostat
-    name: netatmoInside
-    heater: switch.fake
-    target_sensor: sensor.netatmo_sixtymeters_indoor_temperature
     
 ifttt:
   key: !secret ifttt_key
@@ -140,41 +134,6 @@ switch:
     command_topic: "shellies/shellyswitch25-00467D/relay/0/command"
     payload_off: "off"
     payload_on: "on"
-  - platform: mystrom
-    host: 192.168.178.39
-    name: mystrom_dishwasher
-  - platform: mystrom
-    host: 192.168.178.58
-    name: Charging Station
-  - platform: mystrom
-    host: 192.168.178.55
-    name: eBike Charger
-  - platform: mystrom
-    host: 192.168.178.65
-    name: myStromClickAndGrow3
-  #- platform: mystrom
-  #  host: 192.168.178.68
-  #  name: myStromClickUnused
-  - platform: mystrom
-    host: 192.168.178.60
-    name: mystrom_tumbler
-  - platform: mystrom
-    host: 192.168.178.52
-    name: mystrom_washingmachine
-  - platform: mystrom
-    host: 192.168.178.40
-    name: myStromTvUtilities
-  - platform: mystrom
-    host: 192.168.178.37
-    name: myStromiMac
-  - platform: mystrom
-    host: 192.168.178.78
-    name: myStromAquariumLight
-  - platform: command_line
-    switches:
-      fake:
-        command_on: echo "fake switch on"
-        command_off: echo "fake switch on"
   - platform: template
     switches:
       samsung_tv:
@@ -194,7 +153,9 @@ switch:
           {% else %}
             mdi:television-off
           {% endif %}
-        
+
+switch mystrom: !include config/mystrom-switches.yaml
+
 cover:
   - platform: knx
     name: "Loggia"
