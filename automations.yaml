@@ -18,3 +18,11 @@
   - service: input_boolean.turn_off
     data:
       entity_id: input_boolean.play_energy_zurich_everywhere
+- id: '1556302339379'
+  alias: On startup
+  trigger:
+  - event: start
+    platform: homeassistant
+  condition: []
+  action:
+  - service: rest_command.setup_account_privatkont

@@ -1,24 +1,18 @@
 homeassistant:
-  # Name of the location where Home Assistant is running
-  name: SixtyMeters - Home Assistant
-  # Location required to calculate the time the sun rises and sets
-  latitude: !secret latitude
-  longitude: !secret longitude
-  # Impacts weather/sunrise data (altitude above sea level in meters)
-  elevation: 426
-  # metric for Metric, imperial for Imperial
-  unit_system: metric
-  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
-  time_zone: Europe/Zurich
-  # Customization file
   customize: !include customize.yaml
 
 default_config:
 
 discovery:
 
+scene: !include scenes.yaml
+
+frontend:
+  themes: !include_dir_merge_named themes
+
+ios:
+
 http:
-  base_url: !secret base_url
   ssl_certificate: /ssl/fullchain.pem
   ssl_key: /ssl/privkey.pem
   
@@ -29,68 +23,143 @@ updater:
 recorder:
   db_url: !secret db_connection
   purge_keep_days: 30
-  purge_interval: 5
-  
-influxdb:
-    database: homeassistant
-    username: !secret influx_username
-    password: !secret influx_password
-    max_retries: 2
-    
-panel_iframe:
-  influxdb:
-    title: InfluxDB
-    icon: mdi:chart-areaspline
-    url: https://sixtymeters.duckdns.org:8888
-  nodered:
-    title: NodeRed
-    icon: mdi:resistor-nodes
-    url: https://sixtymeters.duckdns.org:1880
-  portainer:
-    title: Portainer
-    icon: mdi:docker
-    url: https://sixtymeters.duckdns.org:9000
-  glances:
-    title: Glances
-    icon: mdi:chart-areaspline
-    url: https://sixtymeters.duckdns.org:61208
-  grafana:
-    title: Grafana
-    icon: mdi:chart-timeline
-    url: https://sixtymeters.duckdns.org:3000
-  visual_studio:
-    title: Visual Studio Code
-    icon: mdi:visual-studio
-    url: https://sixtymeters.duckdns.org:1337
+
+knx:
+  tunneling:
+    host: '192.168.178.71' #192.168.178.71
+    port: 3671
+  fire_event: true
+  fire_event_filter: ["27/1-2/*", "*/*/*"]
 
 sensor: # All sensors with multiple states
+  - platform: mqtt
+    name: "Bedroom Shelly Switch Temperature"
+    state_topic: "shellies/shelly1pm-005D54/temperature"
+    unit_of_measurement: '°C'
+  - platform: mqtt
+    name: "Bedroom Shelly Switch Energy"
+    state_topic: "shellies/shelly1pm-005D54/relay/0/energy"
+    unit_of_measurement: 'W/min'
+  - platform: mqtt
+    name: "Bedroom Shelly Switch Power"
+    state_topic: "shellies/shelly1pm-005D54/relay/0/power"
+    unit_of_measurement: 'W'
+  - platform: mqtt
+    name: "Bathroom Shelly Switch Temperature"
+    state_topic: "shellies/shellyswitch25-5DB78A/temperature"
+    unit_of_measurement: '°C'
+  - platform: mqtt
+    name: "Bathroom Shelly Switch Energy"
+    state_topic: "shellies/shellyswitch25-5DB78A/relay/1/energy"
+    unit_of_measurement: 'W/min'
+  - platform: mqtt
+    name: "Bathroom Shelly Switch Power"
+    state_topic: "shellies/shellyswitch25-5DB78A/relay/1/power"
+    unit_of_measurement: 'W'
+  - platform: mqtt
+    name: "Entrance Shelly Switch Temperature"
+    state_topic: "shellies/shelly1pm-E67762/temperature"
+    unit_of_measurement: '°C'
+  - platform: mqtt
+    name: "Entrance Shelly Switch Energy"
+    state_topic: "shellies/shelly1pm-E67762/relay/0/energy"
+    unit_of_measurement: 'W/min'
+  - platform: mqtt
+    name: "Entrance Shelly Switch Power"
+    state_topic: "shellies/shelly1pm-E67762/relay/0/power"
+    unit_of_measurement: 'W'
+  - platform: mqtt
+    name: "Living Room Shelly Switch 1 Temperature"
+    state_topic: "shellies/shellyswitch25-6868E9/temperature"
+    unit_of_measurement: '°C'
+  - platform: mqtt
+    name: "Living Room Shelly Switch TV Spot Energy"
+    state_topic: "shellies/shellyswitch25-6868E9/relay/0/energy"
+    unit_of_measurement: 'W/min'
+  - platform: mqtt
+    name: "Living Room Shelly Switch TV Spot Power"
+    state_topic: "shellies/shellyswitch25-6868E9/relay/0/power"
+    unit_of_measurement: 'W'
+  - platform: mqtt
+    name: "Living Room Shelly Switch Kitchen Table Energy"
+    state_topic: "shellies/shellyswitch25-6868E9/relay/1/energy"
+    unit_of_measurement: 'W/min'
+  - platform: mqtt
+    name: "Living Room Shelly Switch Kitchen Table Power"
+    state_topic: "shellies/shellyswitch25-6868E9/relay/1/power"
+    unit_of_measurement: 'W'
+  - platform: mqtt
+    name: "Living Room Shelly Switch 2 Temperature"
+    state_topic: "shellies/shellyswitch25-686CEF/temperature"
+    unit_of_measurement: '°C'
+  - platform: mqtt
+    name: "Living Room Shelly Switch Plug Energy"
+    state_topic: "shellies/shellyswitch25-686CEF/relay/1/energy"
+    unit_of_measurement: 'W/min'
+  - platform: mqtt
+    name: "Living Room Shelly Switch Plug Power"
+    state_topic: "shellies/shellyswitch25-686CEF/relay/1/power"
+    unit_of_measurement: 'W'
+  - platform: mqtt
+    name: "Kitchen Shelly Switch Temperature"
+    state_topic: "shellies/shellyswitch25-00467D/temperature"
+    unit_of_measurement: '°C'
+  - platform: mqtt
+    name: "Kitchen Shelly Switch Plug Energy"
+    state_topic: "shellies/shellyswitch25-00467D/relay/0/energy"
+    unit_of_measurement: 'W/min'
+  - platform: mqtt
+    name: "Kitchen Shelly Switch Plug Power"
+    state_topic: "shellies/shellyswitch25-00467D/relay/0/power"
+    unit_of_measurement: 'W'
+  - platform: mqtt
+    name: "Kitchen Shelly Switch Overhead Light Energy"
+    state_topic: "shellies/shellyswitch25-00467D/relay/1/energy"
+    unit_of_measurement: 'W/min'
+  - platform: mqtt
+    name: "Kitchen Shelly Switch Overhead Light Power"
+    state_topic: "shellies/shellyswitch25-00467D/relay/1/power"
+    unit_of_measurement: 'W'
   - platform: template
     sensors:
         washingmachine_power:
             friendly_name: "Washing Machine Power"
             icon_template: mdi:washing-machine
             unit_of_measurement: "W"
-            value_template: "{{ states.switch.myStromWashingMachine.attributes.current_power_w | default(0) }}"
+            value_template: "{{ states.switch.mystrom_washingmachine.attributes.current_power_w | default(0) }}"
+        tumbler_power:
+            friendly_name: "Tumbler Power"
+            icon_template: mdi:dishwasher
+            unit_of_measurement: "W"
+            value_template: "{{ states.switch.mystrom_tumbler.attributes.current_power_w | default(0) }}"
         dishwasher_power:
             friendly_name: "Dishwasher Power"
             icon_template: mdi:dishwasher
             unit_of_measurement: "W"
-            value_template: "{{ states.switch.mystromDishwasher.attributes.current_power_w | default(0) }}"
+            value_template: "{{ states.switch.mystrom_dishwasher.attributes.current_power_w | default(0) }}"
         total_power:
             friendly_name: "Total Power Usage"
             icon_template: mdi:power-plug
             unit_of_measurement: "W"
-            value_template: "{{(states.switch.myStromWashingMachine.attributes.current_power_w | default(0)
-            + states.switch.mystromclickandgrow3.attributes.current_power_w | default(0)
-            + states.switch.mystromclickandgrow9.attributes.current_power_w | default(0)
-            + states.switch.mystromkitchen.attributes.current_power_w | default(0)
-            + states.switch.mystromDishwasher.attributes.current_power_w | default(0)
-            + states.switch.myStromServerAndUtilities.attributes.current_power_w | default(0)
-            + states.switch.myStromTvUtilities.attributes.current_power_w | default(0)
-            + states.switch.myStromiMac.attributes.current_power_w | default(0)
-            + states.switch.myStromLoggiaWaterPump.attributes.current_power_w | default(0)
-            ) | round(2)          
-            }}"
+            value_template: "{{ ((states('sensor.living_room_shelly_switch_kitchen_table_power') | replace('unknown', '0') | round(2)) 
+            + (state_attr('switch.mystromclickandgrow3','current_power_w') | replace('None', '0') | round(2))
+            + (state_attr('switch.ebike_charger','current_power_w') | replace('None', '0') | round(2))
+            + (state_attr('switch.mystromaquariumlight','current_power_w') | replace('None', '0') | round(2)) 
+            + (state_attr('switch.mystromtvutilities','current_power_w') | replace('None', '0') | round(2))
+            + (state_attr('switch.mystromimac','current_power_w') | replace('None', '0') | round(2))
+            + (state_attr('switch.mystrom_washingmachine','current_power_w') | replace('None', '0') | round(2))
+            + (state_attr('switch.mystrom_tumbler','current_power_w') | replace('None', '0') | round(2))
+            + (state_attr('switch.mystrom_dishwasher','current_power_w') | replace('None', '0') | round(2))
+            + (state_attr('switch.charging_station','current_power_w') | replace('None', '0') | round(2))
+            + (states('sensor.bathroom_shelly_switch_power') | replace('unknown', '0') | round(2)) 
+            + (states('sensor.bedroom_shelly_switch_power') | replace('unknown', '0') | round(2)) 
+            + (states('sensor.entrance_shelly_switch_power') | replace('unknown', '0') | round(2)) 
+            + (states('sensor.kitchen_shelly_switch_overhead_light_power') | replace('unknown', '0') | round(2)) 
+            + (states('sensor.kitchen_shelly_switch_plug_power') | replace('unknown', '0') | round(2)) 
+            + (states('sensor.living_room_shelly_switch_kitchen_table_power') | replace('unknown', '0') | round(2))
+            + (states('sensor.living_room_shelly_switch_plug_power') | replace('unknown', '0') | round(2))
+            + (states('sensor.living_room_shelly_switch_tv_spot_power') | replace('unknown', '0') | round(2))
+            )|round(2)}}"
   - platform: mqtt
     name: citrus_limon_moisture
     state_topic: homeassistant/sensors/plants/citrus_limon/
@@ -167,28 +236,28 @@ sensor: # All sensors with multiple states
     value_template: '{{ value_json.brightness | int }}'
     unit_of_measurement: 'Lux'
   - platform: mqtt
-    name: menthe_ricola_moisture
-    state_topic: homeassistant/sensors/plants/menthe_ricola/
+    name: musa_acuminata_moisture
+    state_topic: homeassistant/sensors/plants/musa_acuminata/
     value_template: '{{ value_json.moisture | int }}'
     unit_of_measurement: '%'
   - platform: mqtt
-    name: menthe_ricola_battery
-    state_topic: homeassistant/sensors/plants/menthe_ricola/
+    name: musa_acuminata_battery
+    state_topic: homeassistant/sensors/plants/musa_acuminata/
     value_template: '{{ value_json.battery | int }}'
     unit_of_measurement: '%'
   - platform: mqtt
-    name: menthe_ricola_temperature
-    state_topic: homeassistant/sensors/plants/menthe_ricola/
+    name: musa_acuminata_temperature
+    state_topic: homeassistant/sensors/plants/musa_acuminata/
     value_template: '{{ value_json.temperature | float }}'
     unit_of_measurement: '°C'
   - platform: mqtt
-    name: menthe_ricola_conductivity
-    state_topic: homeassistant/sensors/plants/menthe_ricola/
+    name: musa_acuminata_conductivity
+    state_topic: homeassistant/sensors/plants/musa_acuminata/
     value_template: '{{ value_json.conductivity | int }}'
     unit_of_measurement: 'µS/cm'
   - platform: mqtt
-    name: menthe_ricola_brightness
-    state_topic: homeassistant/sensors/plants/menthe_ricola/
+    name: musa_acuminata_brightness
+    state_topic: homeassistant/sensors/plants/musa_acuminata/
     value_template: '{{ value_json.brightness | int }}'
     unit_of_measurement: 'Lux'
   - platform: mqtt
@@ -216,68 +285,59 @@ sensor: # All sensors with multiple states
     state_topic: homeassistant/sensors/plants/ficus_benjamina/
     value_template: '{{ value_json.brightness | int }}'
     unit_of_measurement: 'Lux'
-
-plant:
-  citrus_limon:
-    sensors:
-      moisture: sensor.citrus_limon_moisture
-      battery: sensor.citrus_limon_battery
-      temperature: sensor.citrus_limon_temperature
-      conductivity: sensor.citrus_limon_conductivity
-      brightness: sensor.citrus_limon_brightness
-    min_moisture: 15
-    max_moisture: 60
-    min_battery: 17
-    min_conductivity: 350
-    min_temperature: 15
-  dypsis_lutescens:
-    sensors:
-      moisture: sensor.dypsis_lutescens_moisture
-      battery: sensor.dypsis_lutescens_battery
-      temperature: sensor.dypsis_lutescens_temperature
-      conductivity: sensor.dypsis_lutescens_conductivity
-      brightness: sensor.dypsis_lutescens_brightness
-    min_moisture: 15
-    max_moisture: 60
-    min_battery: 17
-    min_conductivity: 350
-    min_temperature: 15
-  spathiphyllum_kochii:
-    sensors:
-      moisture: sensor.spathiphyllum_kochii_moisture
-      battery: sensor.spathiphyllum_kochii_battery
-      temperature: sensor.spathiphyllum_kochii_temperature
-      conductivity: sensor.spathiphyllum_kochii_conductivity
-      brightness: sensor.spathiphyllum_kochii_brightness
-    min_moisture: 15
-    max_moisture: 65
-    min_battery: 17
-    min_conductivity: 350
-    min_temperature: 15
-  menthe_ricola:
-    sensors:
-      moisture: sensor.menthe_ricola_moisture
-      battery: sensor.menthe_ricola_battery
-      temperature: sensor.menthe_ricola_temperature
-      conductivity: sensor.menthe_ricola_conductivity
-      brightness: sensor.menthe_ricola_brightness
-    min_moisture: 15
-    max_moisture: 60
-    min_battery: 17
-    min_conductivity: 350
-    min_temperature: 15
-  ficus_benjamina:
-    sensors:
-      moisture: sensor.ficus_benjamina_moisture
-      battery: sensor.ficus_benjamina_battery
-      temperature: sensor.ficus_benjamina_temperature
-      conductivity: sensor.ficus_benjamina_conductivity
-      brightness: sensor.ficus_benjamina_brightness
-    min_moisture: 20
-    max_moisture: 60
-    min_battery: 17
-    min_conductivity: 350
-    min_temperature: 15
+  - platform: mqtt
+    name: cocos_nucifera_moisture
+    state_topic: homeassistant/sensors/plants/cocos_nucifera/
+    value_template: '{{ value_json.moisture | int }}'
+    unit_of_measurement: '%'
+  - platform: mqtt
+    name: cocos_nucifera_battery
+    state_topic: homeassistant/sensors/plants/cocos_nucifera/
+    value_template: '{{ value_json.battery | int }}'
+    unit_of_measurement: '%'
+  - platform: mqtt
+    name: cocos_nucifera_temperature
+    state_topic: homeassistant/sensors/plants/cocos_nucifera/
+    value_template: '{{ value_json.temperature | float }}'
+    unit_of_measurement: '°C'
+  - platform: mqtt
+    name: cocos_nucifera_conductivity
+    state_topic: homeassistant/sensors/plants/cocos_nucifera/
+    value_template: '{{ value_json.conductivity | int }}'
+    unit_of_measurement: 'µS/cm'
+  - platform: mqtt
+    name: cocos_nucifera_brightness
+    state_topic: homeassistant/sensors/plants/cocos_nucifera/
+    value_template: '{{ value_json.brightness | int }}'
+    unit_of_measurement: 'Lux'
+  - platform: mqtt
+    name: tradescantia_spathacea_moisture
+    state_topic: homeassistant/sensors/plants/tradescantia_spathacea/
+    value_template: '{{ value_json.moisture | int }}'
+    unit_of_measurement: '%'
+  - platform: mqtt
+    name: tradescantia_spathacea_battery
+    state_topic: homeassistant/sensors/plants/tradescantia_spathacea/
+    value_template: '{{ value_json.battery | int }}'
+    unit_of_measurement: '%'
+  - platform: mqtt
+    name: tradescantia_spathacea_temperature
+    state_topic: homeassistant/sensors/plants/tradescantia_spathacea/
+    value_template: '{{ value_json.temperature | float }}'
+    unit_of_measurement: '°C'
+  - platform: mqtt
+    name: tradescantia_spathacea_conductivity
+    state_topic: homeassistant/sensors/plants/tradescantia_spathacea/
+    value_template: '{{ value_json.conductivity | int }}'
+    unit_of_measurement: 'µS/cm'
+  - platform: mqtt
+    name: tradescantia_spathacea_brightness
+    state_topic: homeassistant/sensors/plants/tradescantia_spathacea/
+    value_template: '{{ value_json.brightness | int }}'
+    unit_of_measurement: 'Lux'
+  - platform: openerz
+    zip: 8048
+    waste_type: cargotram, etram, organic, textile
 
 rest_command:
   get_plantgateway_status:
@@ -286,6 +346,12 @@ rest_command:
     verify_ssl: false
     username: !secret plant_gateway_username
     password: !secret plant_gateway_password
+  print_shopping_list:
+    url: https://192.168.178.57:8000
+    method: POST
+    verify_ssl: false
+    username: !secret thermalprinter_username
+    password: !secret thermalprinter_password
 
 binary_sensor: # All sensors with just two states (ON/OFF)
   - platform: ping
@@ -293,24 +359,70 @@ binary_sensor: # All sensors with just two states (ON/OFF)
     name: Samsung TV
     scan_interval: 30 # seconds
     count: 2
+  - platform: mqtt
+    name: Bathroom Light Switch Short
+    state_topic: "shellies/shellyswitch25-5DB78A/input/1"
+    payload_on: "1"
+    payload_off: "0"
+  - platform: mqtt
+    name: Bedroom Light Switch Short
+    state_topic: "shellies/shelly1pm-005D54/input/0"
+    payload_on: "1"
+    payload_off: "0"
+  - platform: mqtt
+    name: Entrance Light Switch
+    state_topic: "shellies/shelly1pm-E67762/input/0"
+    payload_on: "1"
+    payload_off: "0"
+  - platform: mqtt
+    name: Living Room Light Switch 1
+    state_topic: "shellies/shellyswitch25-6868E9/input/0"
+    payload_on: "1"
+    payload_off: "0"
+  - platform: mqtt
+    name: Living Room Light Switch 2
+    state_topic: "shellies/shellyswitch25-6868E9/input/1"
+    payload_on: "1"
+    payload_off: "0"
+  - platform: mqtt
+    name: Living Room Light Switch 3
+    state_topic: "shellies/shellyswitch25-686CEF/input/0"
+    payload_on: "1"
+    payload_off: "0"
+  - platform: mqtt
+    name: Living Room Light Switch 4
+    state_topic: "shellies/shellyswitch25-686CEF/input/1"
+    payload_on: "1"
+    payload_off: "0"
+  - platform: mqtt
+    name: Kitchen Switch
+    state_topic: "shellies/shellyswitch25-00467D/input/1"
+    payload_on: "1"
+    payload_off: "0"
   - platform: template
     sensors:
         washingmachine_state:
             friendly_name: "Washing Machine State"
+            delay_on:
+                minutes: 3
             delay_off: # Only switches states after new state existed for x minutes
-                minutes: 5
+                minutes: 3
             icon_template: mdi:washing-machine
-            value_template: "{{ states.switch.myStromWashingMachine.attributes.current_power_w | default(0) |float > 10}}"
+            value_template: "{{ states.switch.mystrom_washingmachine.attributes.current_power_w | default(0) |float > 10}}"
+        tumbler_state:
+            friendly_name: "Tumbler State"
+            delay_on:
+                minutes: 3
+            delay_off: # Only switches states after new state existed for x minutes
+                minutes: 3
+            icon_template: mdi:washing-machine
+            value_template: "{{ states.switch.mystrom_tumbler.attributes.current_power_w | default(0) |float > 10}}"
         dishwasher_state:
             friendly_name: "Dishwasher State"
             delay_off: # Only switches states after new state existed for x minutes
-                minutes: 5
-            icon_template: mdi:washing-machine
-            value_template: "{{ states.switch.mystromDishwasher.attributes.current_power_w | default(0) |float > 10}}"
-        entrance_door:
-            friendly_name: "Apartment Entrance Door"
-            device_class: door
-            value_template: "{{ is_state('input_boolean.homekit_entrance_door_relay', 'on') }}"
+                minutes: 3
+            icon_template: mdi:dishwasher
+            value_template: "{{ states.switch.mystrom_dishwasher.attributes.current_power_w | default(0) |float > 10}}"
         entrance_logi_motion:
             friendly_name: "Entrance Motion"
             device_class: motion
@@ -337,116 +449,202 @@ binary_sensor: # All sensors with just two states (ON/OFF)
             icon_template: mdi:bed-empty
             value_template: "{{ is_state('input_boolean.bed_occupied_input', 'on') }}"
 tts:
-  - platform: amazon_polly
-    aws_access_key_id: !secret aws_access_key_id
-    aws_secret_access_key: !secret aws_secret_access_key
-    region_name: eu-central-1
-    text_type: ssml
-    voice: Joanna
-#  - platform: google
-#    language: 'en-us'
-                
+#  - platform: amazon_polly
+#    aws_access_key_id: !secret aws_access_key_id
+#    aws_secret_access_key: !secret aws_secret_access_key
+#    region_name: eu-central-1
+#    engine: neural
+#    text_type: ssml
+#    voice: Joanna
+  - platform: google_cloud
+    key_file: ttsgooglecloudsecret.json
+    voice: en-US-Wavenet-C
+
 light:
   - platform: nanoleaf
     host: 192.168.178.49
     token: !secret nanoleaf_token
+  - platform: mqtt
+    name: "Bathroom Light"
+    state_topic: "shellies/shellyswitch25-5DB78A/relay/1"
+    command_topic: "shellies/shellyswitch25-5DB78A/relay/1/command"
+    payload_off: "off"
+    payload_on: "on"
+  - platform: mqtt
+    name: "Kitchen Overhead Light"
+    state_topic: "shellies/shellyswitch25-00467D/relay/1"
+    command_topic: "shellies/shellyswitch25-00467D/relay/1/command"
+    payload_off: "off"
+    payload_on: "on"
+  - platform: mqtt
+    name: "Pixar Shelly"
+    state_topic: "shellies/shellyswitch25-686CEF/relay/1"
+    command_topic: "shellies/shellyswitch25-686CEF/relay/1/command"
+    payload_off: "off"
+    payload_on: "on"
+  - platform: group
+    name: Living Room Light Group
+    entities:
+      - light.tv_side_orb
+      - light.tv_lightstrip
+      - light.hue_go
+      - light.living_room_spot_1
+      - light.living_room_spot_2
+      - light.living_room_spot_3
+      - light.loggia_lightstrip
+      - light.nanoleaf
+      - light.eket_cubes
+      - light.kitchen_table_light
+  - platform: group
+    name: Entrance Light Group
+    entities:
+      - light.hall_spot_1
+      - light.hall_spot_2
+  - platform: group
+    name: Bedroom Light Group
+    entities:
+      - light.bedroom_swirl
+      - light.bedside_orb
+  - platform: group
+    name: Loggia Light Group
+    entities:
+      - light.loggia_campfire
+      - light.loggia_pixar
+      - light.loggia_spot_1
+
+camera:
+  - platform: generic
+    name: Zurich Uetliberg
+    still_image_url: https://backend.roundshot.com/cams/78/
+  - platform: proxy
+    entity_id: camera.zurich_uetliberg
+    name: Zurich Uetliberg West
+    mode: crop
+    max_image_width: 1700
+    max_image_height: 1700
+    image_top: 348
+    image_left: 1200
+    image_refresh_rate: 120.0
+    cache_images: true
+  - platform: proxy
+    entity_id: camera.zurich_uetliberg
+    name: Zurich Uetliberg See
+    mode: crop
+    max_image_width: 4000
+    max_image_height: 1700
+    image_left: 4500
+    image_top: 348
+    image_refresh_rate: 120.0
+    cache_images: true
+  - platform: generic
+    name: Zurich Stadthaus
+    still_image_url: https://backend.roundshot.com/cams/86/
+  - platform: proxy
+    entity_id: camera.zurich_stadthaus
+    name: Zurich Stadthaus Grossmünster
+    mode: crop
+    max_image_width: 2048
+    max_image_height: 2048
+    image_left: 1900
+    image_top: 0
+    image_refresh_rate: 120.0
+    cache_images: true
+  - platform: proxy
+    entity_id: camera.zurich_stadthaus
+    name: Zurich Stadthaus Seepromenade
+    mode: crop
+    max_image_width: 2048
+    max_image_height: 2048
+    image_left: 4000
+    image_top: 0
+    image_refresh_rate: 120.0
+    cache_images: true
+  - platform: generic
+    name: Zurich West
+    still_image_url: https://backend.roundshot.com/cams/85/
+  - platform: proxy
+    entity_id: camera.zurich_west
+    name: Zurich West Landesmuseum
+    mode: crop
+    max_image_width: 2048
+    max_image_height: 2048
+    image_left: 1100
+    image_top: 0
+    image_refresh_rate: 120.0
+    cache_images: true
+  - platform: proxy
+    entity_id: camera.zurich_west
+    name: Zurich West Limmat
+    mode: crop
+    max_image_width: 2048
+    max_image_height: 2048
+    image_left: 6700
+    image_top: 0
+    image_refresh_rate: 120.0
+    cache_images: true
+  - platform: generic
+    name: Zurich NZZ
+    still_image_url: https://backend.roundshot.com/cams/66/
+  - platform: proxy
+    entity_id: camera.zurich_nzz
+    name: Zurich NZZ Sechseleutenplatz
+    mode: crop
+    max_image_width: 1800
+    max_image_height: 1800
+    image_left: 4100
+    image_top: 248
+    image_refresh_rate: 120.0
+    cache_images: true
+  - platform: proxy
+    entity_id: camera.zurich_nzz
+    name: Zurich NZZ Kino
+    mode: crop
+    max_image_width: 2048
+    max_image_height: 2048
+    image_left: 7200
+    image_top: 0
+    image_refresh_rate: 120.0
+    cache_images: true
 
 climate:
   - platform: generic_thermostat
     name: netatmoInside
     heater: switch.fake
-    initial_operation_mode: "off"
     target_sensor: sensor.netatmo_sixtymeters_indoor_temperature
     
 ifttt:
   key: !secret ifttt_key
 
 cloud:
-    google_actions:
-        filter:
-            include_entities:
-                - climate.netatmoinside
-                - sensor.netatmo_sixtymeters_outdoor_temperature
-                - lock.nello_149a8cc9
-                - input_boolean.tv_channel_bbc_world_news
-                - input_boolean.tv_channel_cnn_news
-                - input_boolean.tv_channel_cnn_money_switzerland
-                - input_boolean.tv_channel_srf1
-                - input_boolean.tv_channel_srf2
-                - input_boolean.tv_channel_tele_zueri
-                - input_boolean.tv_channel_3plus
-                - input_boolean.tv_channel_4plus
-                - input_boolean.tv_app_youtube
-                - input_boolean.tv_app_netflix
-                - switch.samsung_tv
-                - switch.charging_station
-                - cover.livingroom_blinds
-                - cover.loggia_blinds
-            exclude_entities:
-                - light.aurora
-                - light.bedroom
-                - light.entrance
-                - light.living_room
-                - light.loggia
-                - light.rwl021_4
-                - light.rwl021_8
-                - light.rwl021_9
-            include_domains:
-                - light
-                - scene
-
-homekit:
-  filter:
-    include_entities:
-        - sensor.netatmo_sixtymeters_indoor_co2
-        - sensor.netatmo_sixtymeters_outdoor_temperature
-        - sensor.netatmo_sixtymeters_outdoor_humidity
-        - sensor.netatmo_sixtymeters_indoor_temperature
-        - sensor.netatmo_sixtymeters_indoor_pressure
-        - sensor.netatmo_sixtymeters_indoor_noise
-        - sensor.netatmo_sixtymeters_indoor_humidity
-        - sensor.netatmo_sixtymeters_indoor_co2
-        - binary_sensor.intrusion_detection
-        - input_boolean.homekit_entrance_logi_motion_relay
-        - input_boolean.homekit_livingroom_logi_motion_relay
-        - input_boolean.homekit_entrance_door_relay
-        - input_boolean.alarm_clock_enabled
-        - cover.livingroom_blinds
-        - cover.loggia_blinds
-        - lock.nello_149a8cc9
-        - switch.samsung_tv
-    exclude_entities:
-        - light.aurora
-        - light.bedroom
-        - light.entrance
-        - light.living_room
-        - light.loggia
-        - light.rwl021_4
-        - light.rwl021_8
-        - light.rwl021_9
-    include_domains:
-        - light
-        - scene
 
 switch:
+  - platform: mqtt
+    name: "Kitchen Plug"
+    state_topic: "shellies/shellyswitch25-00467D/relay/0"
+    command_topic: "shellies/shellyswitch25-00467D/relay/0/command"
+    payload_off: "off"
+    payload_on: "on"
   - platform: mystrom
     host: 192.168.178.39
-    name: mystromDishwasher
+    name: mystrom_dishwasher
   - platform: mystrom
     host: 192.168.178.58
     name: Charging Station
   - platform: mystrom
     host: 192.168.178.55
-    name: myStromKitchen
+    name: eBike Charger
   - platform: mystrom
     host: 192.168.178.65
     name: myStromClickAndGrow3
-  - platform: mystrom
-    host: 192.168.178.68
-    name: myStromClickAndGrow9
+  #- platform: mystrom
+  #  host: 192.168.178.68
+  #  name: myStromClickUnused
   - platform: mystrom
     host: 192.168.178.60
-    name: myStromWashingMachine
+    name: mystrom_tumbler
+  - platform: mystrom
+    host: 192.168.178.52
+    name: mystrom_washingmachine
   - platform: mystrom
     host: 192.168.178.40
     name: myStromTvUtilities
@@ -454,11 +652,8 @@ switch:
     host: 192.168.178.37
     name: myStromiMac
   - platform: mystrom
-    host: 192.168.178.52
-    name: myStromLoggiaWaterPump
-  - platform: mystrom
     host: 192.168.178.78
-    name: myStromServerAndUtilities
+    name: myStromAquariumLight
   - platform: command_line
     switches:
       fake:
@@ -483,94 +678,37 @@ switch:
           {% else %}
             mdi:television-off
           {% endif %}
-          
+        
 cover:
-  - platform: template
-    covers:
-      livingroom_blinds:
-        friendly_name: "Living Room Blinds"
-        value_template: "{{ is_state('binary_sensor.living_room_blinds', 'on') }}"
-        open_cover:
-          service: script.open_livingroom_blinds
-        close_cover:
-          service: script.close_livingroom_blinds
-      loggia_blinds:
-        friendly_name: "Loggia Blinds"
-        value_template: "{{ is_state('binary_sensor.loggia_blinds', 'on') }}"
-        open_cover:
-          service: script.open_loggia_blinds
-        close_cover:
-          service: script.close_loggia_blinds
+  - platform: knx
+    name: "Loggia"
+    move_long_address: '27/1/230'
+    move_short_address: '27/1/232'
+    position_address: '27/1/231'
+    position_state_address: '27/1/233'
+    travelling_time_down: 24
+    travelling_time_up: 24
+  - platform: knx
+    name: "Livingroom"
+    move_long_address: '27/2/230'
+    move_short_address: '27/2/232'
+    position_address: '27/2/231'
+    position_state_address: '27/2/233'
+    travelling_time_down: 24
+    travelling_time_up: 24
         
 input_boolean:
   play_energy_zurich_everywhere:
     name: Energy Zürich (everyhwere)
     initial: off
-  livingroom_blinds_state_sensor:
-    name: Blinds State Sensor (Living Room)
-    initial: on # on = open
-  loggia_blinds_state_sensor:
-    name: Blinds State Sensor (Loggia)
-    initial: on # on = open
   homekit_entrance_logi_motion_relay: # Logi Camera Motion Sensor
     name: Logi Entrance Motion Sensor Relay
     initial: off
-  homekit_entrance_door_relay: # Eve Door Sensor
-    name: Eve Door Sensor Relay
-    initial: off # off = closed
   homekit_livingroom_logi_motion_relay: # Logi Camera Motion Sensor
     name: Logi Living Room Motion Sensor Relay
     initial: off
-  intrusion_detection_sensor_switch: # Trigger Intrusion Detection Sensor
-    name: Intrusion Detection Sensor Switch
-    initial: off
-  tv_channel_bbc_world_news:
-    name: BBC World News
-    initial: off
-    icon: mdi:earth
-  tv_channel_cnn_news:
-    name: CNN News
-    initial: off
-    icon: mdi:newspaper
-  tv_channel_cnn_money_switzerland:
-    name: CNN Money Switzerland
-    initial: off
-    icon: mdi:coin
-  tv_channel_srf1:
-    name: SRF 1
-    initial: off
-    icon: mdi:numeric-1-box
-  tv_channel_srf2:
-    name: SRF 2
-    initial: off
-    icon: mdi:numeric-2-box
-  tv_channel_tele_zueri:
-    name: Tele Züri
-    initial: off
-    icon: mdi:city-variant
-  tv_channel_3plus:
-    name: 3 Plus
-    initial: off
-    icon: mdi:numeric-3-box
-  tv_channel_4plus:
-    name: 4 Plus
-    initial: off
-    icon: mdi:numeric-4-box
-  tv_app_youtube:
-    name: YouTube App
-    initial: off
-    icon: mdi:youtube-tv
-  tv_app_netflix:
-    name: Netflix App
-    initial: off
-    icon: mdi:netflix
-  tv_stereo_on:
-    name: TV Stereo On
-    initial: off
-    icon: mdi:speaker
   alarm_clock_enabled:
     name: Alarm Clock
-    initial: on
     icon: mdi:alarm
   bed_occupied_input:
     name: Bed Occupied Input
@@ -587,20 +725,14 @@ input_datetime:
     has_date: false
     has_time: true
 
-calendar:
-  - platform: todoist
-    token: !secret todoist_api_token
-    custom_projects:
-        - name: 'Due Today'
-          due_date_days: 1
-        - name: 'Due This Week'
-          due_date_days: 7
-
-vacuum:
-  - platform: roomba
-    host: !secret roomba_ip
-    username: !secret roomba_username
-    password: !secret roomba_password
+#calendar:
+#  - platform: todoist
+#    token: !secret todoist_api_token
+#    custom_projects:
+#        - name: 'Due Today'
+#          due_date_days: 1
+#        - name: 'Due This Week'
+#          due_date_days: 7
     
 telegram_bot:
   - platform: broadcast
@@ -624,7 +756,6 @@ device_tracker:
     consider_home: 180
     new_device_defaults:
       track_new_devices: False
-      hide_if_away: False
 
 speedtestdotnet:
   scan_interval:
@@ -634,12 +765,34 @@ speedtestdotnet:
     - download
     - upload
 
-netatmo:
-  api_key: !secret netatmo_api_key
-  secret_key: !secret netatmo_key
-  username: !secret netatmo_user
-  password: !secret netatmo_password
+logi_circle:
+  client_id: !secret logi_client_id
+  client_secret: !secret logi_client_secret
+  api_key: !secret logi_api_key
+  redirect_uri: !secret logi_redirect_url
 
+weather:
+  - platform: darksky
+    mode: daily
+    api_key: !secret dark_sky_api_key
+
+netatmo:
+  client_id: !secret netatmo_client_id
+  client_secret: !secret netatmo_client_secret
+
+notify:
+  - name: notify_all
+    platform: group
+    services:
+      - service: mobile_app_theos_iphone_11
+
+#spotcast:
+#  username: !secret spotify_username
+#  password: !secret spotify_password
+
+media_player: !include config/media_player.yaml
+homekit: !include config/homekit.yaml
+plant: !include config/plant.yaml
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
