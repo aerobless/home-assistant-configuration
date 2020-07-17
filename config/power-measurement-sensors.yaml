@@ -1,0 +1,40 @@
+  - platform: template
+    sensors:
+        washingmachine_power:
+            friendly_name: "Washing Machine Power"
+            icon_template: mdi:washing-machine
+            unit_of_measurement: "W"
+            value_template: "{{ states.switch.mystrom_washingmachine.attributes.current_power_w | default(0) }}"
+        tumbler_power:
+            friendly_name: "Tumbler Power"
+            icon_template: mdi:dishwasher
+            unit_of_measurement: "W"
+            value_template: "{{ states.switch.mystrom_tumbler.attributes.current_power_w | default(0) }}"
+        dishwasher_power:
+            friendly_name: "Dishwasher Power"
+            icon_template: mdi:dishwasher
+            unit_of_measurement: "W"
+            value_template: "{{ states.switch.mystrom_dishwasher.attributes.current_power_w | default(0) }}"
+        total_power:
+            friendly_name: "Total Power Usage"
+            icon_template: mdi:power-plug
+            unit_of_measurement: "W"
+            value_template: "{{ ((states('sensor.living_room_shelly_switch_kitchen_table_power') | replace('unknown', '0') | round(2)) 
+            + (state_attr('switch.mystromclickandgrow3','current_power_w') | replace('None', '0') | round(2))
+            + (state_attr('switch.ebike_charger','current_power_w') | replace('None', '0') | round(2))
+            + (state_attr('switch.mystromaquariumlight','current_power_w') | replace('None', '0') | round(2)) 
+            + (state_attr('switch.mystromtvutilities','current_power_w') | replace('None', '0') | round(2))
+            + (state_attr('switch.mystromimac','current_power_w') | replace('None', '0') | round(2))
+            + (state_attr('switch.mystrom_washingmachine','current_power_w') | replace('None', '0') | round(2))
+            + (state_attr('switch.mystrom_tumbler','current_power_w') | replace('None', '0') | round(2))
+            + (state_attr('switch.mystrom_dishwasher','current_power_w') | replace('None', '0') | round(2))
+            + (state_attr('switch.charging_station','current_power_w') | replace('None', '0') | round(2))
+            + (states('sensor.bathroom_shelly_switch_power') | replace('unknown', '0') | round(2)) 
+            + (states('sensor.bedroom_shelly_switch_power') | replace('unknown', '0') | round(2)) 
+            + (states('sensor.entrance_shelly_switch_power') | replace('unknown', '0') | round(2)) 
+            + (states('sensor.kitchen_shelly_switch_overhead_light_power') | replace('unknown', '0') | round(2)) 
+            + (states('sensor.kitchen_shelly_switch_plug_power') | replace('unknown', '0') | round(2)) 
+            + (states('sensor.living_room_shelly_switch_kitchen_table_power') | replace('unknown', '0') | round(2))
+            + (states('sensor.living_room_shelly_switch_plug_power') | replace('unknown', '0') | round(2))
+            + (states('sensor.living_room_shelly_switch_tv_spot_power') | replace('unknown', '0') | round(2))
+            )|round(2)}}"

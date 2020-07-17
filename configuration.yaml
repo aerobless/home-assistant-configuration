@@ -26,145 +26,19 @@ recorder:
 
 knx:
   tunneling:
-    host: '192.168.178.71' #192.168.178.71
+    host: !secret knx_ip
     port: 3671
   fire_event: true
   fire_event_filter: ["27/1-2/*", "*/*/*"]
 
 sensor: # All sensors with multiple states
-  - platform: mqtt
-    name: "Bedroom Shelly Switch Temperature"
-    state_topic: "shellies/shelly1pm-005D54/temperature"
-    unit_of_measurement: '°C'
-  - platform: mqtt
-    name: "Bedroom Shelly Switch Energy"
-    state_topic: "shellies/shelly1pm-005D54/relay/0/energy"
-    unit_of_measurement: 'W/min'
-  - platform: mqtt
-    name: "Bedroom Shelly Switch Power"
-    state_topic: "shellies/shelly1pm-005D54/relay/0/power"
-    unit_of_measurement: 'W'
-  - platform: mqtt
-    name: "Bathroom Shelly Switch Temperature"
-    state_topic: "shellies/shellyswitch25-5DB78A/temperature"
-    unit_of_measurement: '°C'
-  - platform: mqtt
-    name: "Bathroom Shelly Switch Energy"
-    state_topic: "shellies/shellyswitch25-5DB78A/relay/1/energy"
-    unit_of_measurement: 'W/min'
-  - platform: mqtt
-    name: "Bathroom Shelly Switch Power"
-    state_topic: "shellies/shellyswitch25-5DB78A/relay/1/power"
-    unit_of_measurement: 'W'
-  - platform: mqtt
-    name: "Entrance Shelly Switch Temperature"
-    state_topic: "shellies/shelly1pm-E67762/temperature"
-    unit_of_measurement: '°C'
-  - platform: mqtt
-    name: "Entrance Shelly Switch Energy"
-    state_topic: "shellies/shelly1pm-E67762/relay/0/energy"
-    unit_of_measurement: 'W/min'
-  - platform: mqtt
-    name: "Entrance Shelly Switch Power"
-    state_topic: "shellies/shelly1pm-E67762/relay/0/power"
-    unit_of_measurement: 'W'
-  - platform: mqtt
-    name: "Living Room Shelly Switch 1 Temperature"
-    state_topic: "shellies/shellyswitch25-6868E9/temperature"
-    unit_of_measurement: '°C'
-  - platform: mqtt
-    name: "Living Room Shelly Switch TV Spot Energy"
-    state_topic: "shellies/shellyswitch25-6868E9/relay/0/energy"
-    unit_of_measurement: 'W/min'
-  - platform: mqtt
-    name: "Living Room Shelly Switch TV Spot Power"
-    state_topic: "shellies/shellyswitch25-6868E9/relay/0/power"
-    unit_of_measurement: 'W'
-  - platform: mqtt
-    name: "Living Room Shelly Switch Kitchen Table Energy"
-    state_topic: "shellies/shellyswitch25-6868E9/relay/1/energy"
-    unit_of_measurement: 'W/min'
-  - platform: mqtt
-    name: "Living Room Shelly Switch Kitchen Table Power"
-    state_topic: "shellies/shellyswitch25-6868E9/relay/1/power"
-    unit_of_measurement: 'W'
-  - platform: mqtt
-    name: "Living Room Shelly Switch 2 Temperature"
-    state_topic: "shellies/shellyswitch25-686CEF/temperature"
-    unit_of_measurement: '°C'
-  - platform: mqtt
-    name: "Living Room Shelly Switch Plug Energy"
-    state_topic: "shellies/shellyswitch25-686CEF/relay/1/energy"
-    unit_of_measurement: 'W/min'
-  - platform: mqtt
-    name: "Living Room Shelly Switch Plug Power"
-    state_topic: "shellies/shellyswitch25-686CEF/relay/1/power"
-    unit_of_measurement: 'W'
-  - platform: mqtt
-    name: "Kitchen Shelly Switch Temperature"
-    state_topic: "shellies/shellyswitch25-00467D/temperature"
-    unit_of_measurement: '°C'
-  - platform: mqtt
-    name: "Kitchen Shelly Switch Plug Energy"
-    state_topic: "shellies/shellyswitch25-00467D/relay/0/energy"
-    unit_of_measurement: 'W/min'
-  - platform: mqtt
-    name: "Kitchen Shelly Switch Plug Power"
-    state_topic: "shellies/shellyswitch25-00467D/relay/0/power"
-    unit_of_measurement: 'W'
-  - platform: mqtt
-    name: "Kitchen Shelly Switch Overhead Light Energy"
-    state_topic: "shellies/shellyswitch25-00467D/relay/1/energy"
-    unit_of_measurement: 'W/min'
-  - platform: mqtt
-    name: "Kitchen Shelly Switch Overhead Light Power"
-    state_topic: "shellies/shellyswitch25-00467D/relay/1/power"
-    unit_of_measurement: 'W'
-  - platform: template
-    sensors:
-        washingmachine_power:
-            friendly_name: "Washing Machine Power"
-            icon_template: mdi:washing-machine
-            unit_of_measurement: "W"
-            value_template: "{{ states.switch.mystrom_washingmachine.attributes.current_power_w | default(0) }}"
-        tumbler_power:
-            friendly_name: "Tumbler Power"
-            icon_template: mdi:dishwasher
-            unit_of_measurement: "W"
-            value_template: "{{ states.switch.mystrom_tumbler.attributes.current_power_w | default(0) }}"
-        dishwasher_power:
-            friendly_name: "Dishwasher Power"
-            icon_template: mdi:dishwasher
-            unit_of_measurement: "W"
-            value_template: "{{ states.switch.mystrom_dishwasher.attributes.current_power_w | default(0) }}"
-        total_power:
-            friendly_name: "Total Power Usage"
-            icon_template: mdi:power-plug
-            unit_of_measurement: "W"
-            value_template: "{{ ((states('sensor.living_room_shelly_switch_kitchen_table_power') | replace('unknown', '0') | round(2)) 
-            + (state_attr('switch.mystromclickandgrow3','current_power_w') | replace('None', '0') | round(2))
-            + (state_attr('switch.ebike_charger','current_power_w') | replace('None', '0') | round(2))
-            + (state_attr('switch.mystromaquariumlight','current_power_w') | replace('None', '0') | round(2)) 
-            + (state_attr('switch.mystromtvutilities','current_power_w') | replace('None', '0') | round(2))
-            + (state_attr('switch.mystromimac','current_power_w') | replace('None', '0') | round(2))
-            + (state_attr('switch.mystrom_washingmachine','current_power_w') | replace('None', '0') | round(2))
-            + (state_attr('switch.mystrom_tumbler','current_power_w') | replace('None', '0') | round(2))
-            + (state_attr('switch.mystrom_dishwasher','current_power_w') | replace('None', '0') | round(2))
-            + (state_attr('switch.charging_station','current_power_w') | replace('None', '0') | round(2))
-            + (states('sensor.bathroom_shelly_switch_power') | replace('unknown', '0') | round(2)) 
-            + (states('sensor.bedroom_shelly_switch_power') | replace('unknown', '0') | round(2)) 
-            + (states('sensor.entrance_shelly_switch_power') | replace('unknown', '0') | round(2)) 
-            + (states('sensor.kitchen_shelly_switch_overhead_light_power') | replace('unknown', '0') | round(2)) 
-            + (states('sensor.kitchen_shelly_switch_plug_power') | replace('unknown', '0') | round(2)) 
-            + (states('sensor.living_room_shelly_switch_kitchen_table_power') | replace('unknown', '0') | round(2))
-            + (states('sensor.living_room_shelly_switch_plug_power') | replace('unknown', '0') | round(2))
-            + (states('sensor.living_room_shelly_switch_tv_spot_power') | replace('unknown', '0') | round(2))
-            )|round(2)}}"
   - platform: openerz
     zip: 8048
     waste_type: cargotram, etram, organic, textile
   
-sensor plants: !include config/plant-mqtt-sensor.yaml
+sensor plant: !include config/mqtt/plant-sensors.yaml
+sensor shelly: !include config/mqtt/shelly-switch-sensors.yaml
+sensor power: !include config/power-measurement-sensors.yaml
 
 rest_command:
   get_plantgateway_status:
@@ -186,46 +60,6 @@ binary_sensor: # All sensors with just two states (ON/OFF)
     name: Samsung TV
     scan_interval: 30 # seconds
     count: 2
-  - platform: mqtt
-    name: Bathroom Light Switch Short
-    state_topic: "shellies/shellyswitch25-5DB78A/input/1"
-    payload_on: "1"
-    payload_off: "0"
-  - platform: mqtt
-    name: Bedroom Light Switch Short
-    state_topic: "shellies/shelly1pm-005D54/input/0"
-    payload_on: "1"
-    payload_off: "0"
-  - platform: mqtt
-    name: Entrance Light Switch
-    state_topic: "shellies/shelly1pm-E67762/input/0"
-    payload_on: "1"
-    payload_off: "0"
-  - platform: mqtt
-    name: Living Room Light Switch 1
-    state_topic: "shellies/shellyswitch25-6868E9/input/0"
-    payload_on: "1"
-    payload_off: "0"
-  - platform: mqtt
-    name: Living Room Light Switch 2
-    state_topic: "shellies/shellyswitch25-6868E9/input/1"
-    payload_on: "1"
-    payload_off: "0"
-  - platform: mqtt
-    name: Living Room Light Switch 3
-    state_topic: "shellies/shellyswitch25-686CEF/input/0"
-    payload_on: "1"
-    payload_off: "0"
-  - platform: mqtt
-    name: Living Room Light Switch 4
-    state_topic: "shellies/shellyswitch25-686CEF/input/1"
-    payload_on: "1"
-    payload_off: "0"
-  - platform: mqtt
-    name: Kitchen Switch
-    state_topic: "shellies/shellyswitch25-00467D/input/1"
-    payload_on: "1"
-    payload_off: "0"
   - platform: template
     sensors:
         washingmachine_state:
@@ -275,6 +109,9 @@ binary_sensor: # All sensors with just two states (ON/OFF)
             device_class: occupancy
             icon_template: mdi:bed-empty
             value_template: "{{ is_state('input_boolean.bed_occupied_input', 'on') }}"
+
+binary_sensor shelly-light-switches: !include config/mqtt/shelly-light-switches.yaml
+
 tts:
 #  - platform: amazon_polly
 #    aws_access_key_id: !secret aws_access_key_id
