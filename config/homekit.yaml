@@ -1,0 +1,26 @@
+#homekit: Configuration of Home Assistant to Homekit Bridge
+filter:
+  include_entities:
+      - sensor.netatmo_sixtymeters_indoor_co2
+      - sensor.netatmo_sixtymeters_indoor_temperature
+      - sensor.netatmo_sixtymeters_indoor_pressure
+      - sensor.netatmo_sixtymeters_indoor_noise
+      - sensor.netatmo_sixtymeters_indoor_humidity
+      - sensor.netatmo_sixtymeters_indoor_co2
+      - input_boolean.homekit_entrance_logi_motion_relay
+      - input_boolean.homekit_livingroom_logi_motion_relay
+      - lock.nello_149a8cc9
+      - cover.livingroom
+      - cover.loggia
+      - media_player.samsung_tv
+      - light.bedroom_light_group
+      - light.loggia_light_group
+      - light.entrance_light_group
+      - light.living_room_light_group
+      - sensor.loggia_temperature
+      - sensor.bedroom_temperature
+      - sensor.bathroom_temperature
+      - sensor.bathroom_humidity
+      - sensor.office_temperature
+  include_domains:
+      - scene

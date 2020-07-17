@@ -1,0 +1,85 @@
+# Configuration of plants from Xiaomi Flowercare sensors
+citrus_limon:
+  sensors:
+    moisture: sensor.citrus_limon_moisture
+    battery: sensor.citrus_limon_battery
+    temperature: sensor.citrus_limon_temperature
+    conductivity: sensor.citrus_limon_conductivity
+    brightness: sensor.citrus_limon_brightness
+  min_moisture: 15
+  max_moisture: 60
+  min_battery: 17
+  min_conductivity: 350
+  min_temperature: 15
+dypsis_lutescens:
+  sensors:
+    moisture: sensor.dypsis_lutescens_moisture
+    battery: sensor.dypsis_lutescens_battery
+    temperature: sensor.dypsis_lutescens_temperature
+    conductivity: sensor.dypsis_lutescens_conductivity
+    brightness: sensor.dypsis_lutescens_brightness
+  min_moisture: 15
+  max_moisture: 60
+  min_battery: 17
+  min_conductivity: 350
+  min_temperature: 15
+spathiphyllum_kochii:
+  sensors:
+    moisture: sensor.spathiphyllum_kochii_moisture
+    battery: sensor.spathiphyllum_kochii_battery
+    temperature: sensor.spathiphyllum_kochii_temperature
+    conductivity: sensor.spathiphyllum_kochii_conductivity
+    brightness: sensor.spathiphyllum_kochii_brightness
+  min_moisture: 15
+  max_moisture: 65
+  min_battery: 17
+  min_conductivity: 350
+  min_temperature: 15
+musa_acuminata:
+  sensors:
+    moisture: sensor.musa_acuminata_moisture
+    battery: sensor.musa_acuminata_battery
+    temperature: sensor.musa_acuminata_temperature
+    conductivity: sensor.musa_acuminata_conductivity
+    brightness: sensor.musa_acuminata_brightness
+  min_moisture: 15
+  max_moisture: 60
+  min_battery: 17
+  min_conductivity: 350
+  min_temperature: 15
+ficus_benjamina:
+  sensors:
+    moisture: sensor.ficus_benjamina_moisture
+    battery: sensor.ficus_benjamina_battery
+    temperature: sensor.ficus_benjamina_temperature
+    conductivity: sensor.ficus_benjamina_conductivity
+    brightness: sensor.ficus_benjamina_brightness
+  min_moisture: 20
+  max_moisture: 60
+  min_battery: 17
+  min_conductivity: 350
+  min_temperature: 15
+cocos_nucifera:
+  sensors:
+    moisture: sensor.cocos_nucifera_moisture
+    battery: sensor.cocos_nucifera_battery
+    temperature: sensor.cocos_nucifera_temperature
+    conductivity: sensor.cocos_nucifera_conductivity
+    brightness: sensor.cocos_nucifera_brightness
+  min_moisture: 15
+  max_moisture: 60
+  min_battery: 17
+  min_conductivity: 350
+  min_temperature: 15
+tradescantia_spathacea:
+  sensors:
+    moisture: sensor.tradescantia_spathacea_moisture
+    battery: sensor.tradescantia_spathacea_battery
+    temperature: sensor.tradescantia_spathacea_temperature
+    conductivity: sensor.tradescantia_spathacea_conductivity
+    brightness: sensor.tradescantia_spathacea_brightness
+  min_moisture: 15
+  max_moisture: 60
+  min_battery: 17
+  min_conductivity: 350
+  min_temperature: 15

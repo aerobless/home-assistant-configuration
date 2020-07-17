@@ -1,0 +1,47 @@
+- platform: universal
+  name: Samsung TV
+  commands:
+    turn_on:
+      service: remote.send_command
+      data:
+        entity_id: remote.harmony_hub
+        command:
+          - PowerOn
+        device: Samsung TV
+    turn_off:
+      service: remote.send_command
+      data:
+        entity_id: remote.harmony_hub
+        command:
+          - PowerOff
+        device: Samsung TV
+    volume_up:
+      service: remote.send_command
+      data:
+        entity_id: remote.harmony_hub
+        command:
+          - VolumeUp
+        device: Samsung TV
+    volume_down:
+      service: remote.send_command
+      data:
+        entity_id: remote.harmony_hub
+        command:
+          - VolumeDown
+        device: Samsung TV
+    volume_mute:
+      service: remote.send_command
+      data:
+        entity_id: remote.harmony_hub
+        command:
+          - Mute
+        device: Samsung TV
+    select_source:
+      service: input_select.select_option
+      data_template:
+        entity_id: input_select.tv_channels
+        option: '{{ source }}'
+  attributes:
+    state: media_player.samsung_qe65q7fam
+    source: input_select.tv_channels
+    source_list: input_select.tv_channels|options
