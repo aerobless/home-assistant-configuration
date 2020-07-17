@@ -1,0 +1,16 @@
+  - platform: knx
+    name: "Loggia"
+    move_long_address: '27/1/230'
+    move_short_address: '27/1/232'
+    position_address: '27/1/231'
+    position_state_address: '27/1/233'
+    travelling_time_down: 24
+    travelling_time_up: 24
+  - platform: knx
+    name: "Livingroom"
+    move_long_address: '27/2/230'
+    move_short_address: '27/2/232'
+    position_address: '27/2/231'
+    position_state_address: '27/2/233'
+    travelling_time_down: 24
+    travelling_time_up: 24

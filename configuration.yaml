@@ -17,8 +17,7 @@ http:
   ssl_key: /ssl/privkey.pem
   
 updater:
-  # Optional, allows Home Assistant developers to focus on popular components.
-  include_used_components: true
+  include_used_components: true # sends telemetry about component usage to HA devs
   
 recorder:
   db_url: !secret db_connection
@@ -56,7 +55,7 @@ rest_command:
 
 binary_sensor: # All sensors with just two states (ON/OFF)
   - platform: ping
-    host: 192.168.178.20 # Samsung TV
+    host: !secret samsung_tv_ip
     name: Samsung TV
     scan_interval: 30 # seconds
     count: 2
@@ -116,7 +115,7 @@ tts: !include config/tts-configuration.yaml
 
 light:
   - platform: nanoleaf
-    host: 192.168.178.49
+    host: !secret nanoleaf_ip
     token: !secret nanoleaf_token
 
 light shelly: !include config/mqtt/shelly-lights.yaml
@@ -156,24 +155,6 @@ switch:
 
 switch mystrom: !include config/mystrom-switches.yaml
 
-cover:
-  - platform: knx
-    name: "Loggia"
-    move_long_address: '27/1/230'
-    move_short_address: '27/1/232'
-    position_address: '27/1/231'
-    position_state_address: '27/1/233'
-    travelling_time_down: 24
-    travelling_time_up: 24
-  - platform: knx
-    name: "Livingroom"
-    move_long_address: '27/2/230'
-    move_short_address: '27/2/232'
-    position_address: '27/2/231'
-    position_state_address: '27/2/233'
-    travelling_time_down: 24
-    travelling_time_up: 24
-        
 input_boolean:
   play_energy_zurich_everywhere:
     name: Energy Zürich (everyhwere)
@@ -215,7 +196,7 @@ telegram_bot:
   - platform: broadcast
     api_key: !secret telegram_api_token
     allowed_chat_ids:
-      - 131084571
+      - !secret telegram_chat_id
     
 lock:
   - platform: nello
@@ -225,7 +206,7 @@ lock:
 remote:
   - platform: harmony
     name: Harmony Hub
-    host: 192.168.178.76
+    host: !secret harmony_hub_ip
 
 device_tracker:
   - platform: fritz
@@ -267,6 +248,7 @@ notify:
 #  username: !secret spotify_username
 #  password: !secret spotify_password
 
+cover: !include config/cover-configuration.yaml
 media_player: !include config/media_player.yaml
 homekit: !include config/homekit.yaml
 plant: !include config/plant.yaml
