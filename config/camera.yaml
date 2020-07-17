@@ -1,0 +1,92 @@
+  - platform: generic
+    name: Zurich Uetliberg
+    still_image_url: https://backend.roundshot.com/cams/78/
+  - platform: proxy
+    entity_id: camera.zurich_uetliberg
+    name: Zurich Uetliberg West
+    mode: crop
+    max_image_width: 1700
+    max_image_height: 1700
+    image_top: 348
+    image_left: 1200
+    image_refresh_rate: 120.0
+    cache_images: true
+  - platform: proxy
+    entity_id: camera.zurich_uetliberg
+    name: Zurich Uetliberg See
+    mode: crop
+    max_image_width: 4000
+    max_image_height: 1700
+    image_left: 4500
+    image_top: 348
+    image_refresh_rate: 120.0
+    cache_images: true
+  - platform: generic
+    name: Zurich Stadthaus
+    still_image_url: https://backend.roundshot.com/cams/86/
+  - platform: proxy
+    entity_id: camera.zurich_stadthaus
+    name: Zurich Stadthaus Grossmünster
+    mode: crop
+    max_image_width: 2048
+    max_image_height: 2048
+    image_left: 1900
+    image_top: 0
+    image_refresh_rate: 120.0
+    cache_images: true
+  - platform: proxy
+    entity_id: camera.zurich_stadthaus
+    name: Zurich Stadthaus Seepromenade
+    mode: crop
+    max_image_width: 2048
+    max_image_height: 2048
+    image_left: 4000
+    image_top: 0
+    image_refresh_rate: 120.0
+    cache_images: true
+  - platform: generic
+    name: Zurich West
+    still_image_url: https://backend.roundshot.com/cams/85/
+  - platform: proxy
+    entity_id: camera.zurich_west
+    name: Zurich West Landesmuseum
+    mode: crop
+    max_image_width: 2048
+    max_image_height: 2048
+    image_left: 1100
+    image_top: 0
+    image_refresh_rate: 120.0
+    cache_images: true
+  - platform: proxy
+    entity_id: camera.zurich_west
+    name: Zurich West Limmat
+    mode: crop
+    max_image_width: 2048
+    max_image_height: 2048
+    image_left: 6700
+    image_top: 0
+    image_refresh_rate: 120.0
+    cache_images: true
+  - platform: generic
+    name: Zurich NZZ
+    still_image_url: https://backend.roundshot.com/cams/66/
+  - platform: proxy
+    entity_id: camera.zurich_nzz
+    name: Zurich NZZ Sechseleutenplatz
+    mode: crop
+    max_image_width: 1800
+    max_image_height: 1800
+    image_left: 4100
+    image_top: 248
+    image_refresh_rate: 120.0
+    cache_images: true
+  - platform: proxy
+    entity_id: camera.zurich_nzz
+    name: Zurich NZZ Kino
+    mode: crop
+    max_image_width: 2048
+    max_image_height: 2048
+    image_left: 7200
+    image_top: 0
+    image_refresh_rate: 120.0
+    cache_images: true
