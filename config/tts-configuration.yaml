@@ -3,8 +3,9 @@
 #    aws_secret_access_key: !secret aws_secret_access_key
 #    region_name: eu-central-1
 #    engine: neural
-#    text_type: ssml
+#    text_type: text
 #    voice: Joanna
   - platform: google_cloud
     key_file: ttsgooglecloudsecret.json
     voice: en-US-Wavenet-C
+    base_url: !secret base_url
