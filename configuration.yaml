@@ -244,9 +244,14 @@ notify:
     services:
       - service: mobile_app_theos_iphone_11
 
-#spotcast:
-#  username: !secret spotify_username
-#  password: !secret spotify_password
+spotify:
+  client_id: !secret spotify_client_id
+  client_secret: !secret spotify_client_secret
+
+# HACS integration: https://github.com/fondberg/spotcast
+spotcast:
+  sp_dc: !secret spotcast_dc
+  sp_key: !secret spotcast_key
 
 cover: !include config/cover-configuration.yaml
 media_player: !include config/media_player.yaml

@@ -10,9 +10,9 @@
   - platform: mystrom
     host: 192.168.178.65
     name: myStromClickAndGrow3
-  #- platform: mystrom
-  #  host: 192.168.178.68
-  #  name: myStromClickUnused
+  - platform: mystrom
+    host: 192.168.178.68
+    name: myStromAirCon
   - platform: mystrom
     host: 192.168.178.60
     name: mystrom_tumbler

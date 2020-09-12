@@ -26,6 +26,7 @@
             + (state_attr('switch.mystromtvutilities','current_power_w') | replace('None', '0') | round(2))
             + (state_attr('switch.mystromimac','current_power_w') | replace('None', '0') | round(2))
             + (state_attr('switch.mystrom_washingmachine','current_power_w') | replace('None', '0') | round(2))
+            + (state_attr('switch.mystromaircon','current_power_w') | replace('None', '0') | round(2))
             + (state_attr('switch.mystrom_tumbler','current_power_w') | replace('None', '0') | round(2))
             + (state_attr('switch.mystrom_dishwasher','current_power_w') | replace('None', '0') | round(2))
             + (state_attr('switch.charging_station','current_power_w') | replace('None', '0') | round(2))

@@ -86,3 +86,15 @@
     name: "Kitchen Shelly Switch Overhead Light Power"
     state_topic: "shellies/shellyswitch25-00467D/relay/1/power"
     unit_of_measurement: 'W'
+  - platform: mqtt
+    name: "Loggia Shelly Switch Temperature"
+    state_topic: "shellies/shelly1pm-E5B612/temperature"
+    unit_of_measurement: '°C'
+  - platform: mqtt
+    name: "Loggia Shelly Switch Energy"
+    state_topic: "shellies/shelly1pm-E5B612/relay/0/energy"
+    unit_of_measurement: 'W/min'
+  - platform: mqtt
+    name: "Loggia Shelly Switch Power"
+    state_topic: "shellies/shelly1pm-E5B612/relay/0/power"
+    unit_of_measurement: 'W'

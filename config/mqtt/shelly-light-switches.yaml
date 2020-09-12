@@ -38,3 +38,8 @@
     state_topic: "shellies/shellyswitch25-00467D/input/1"
     payload_on: "1"
     payload_off: "0"
+  - platform: mqtt
+    name: Loggia Light Switch
+    state_topic: "shellies/shelly1pm-E5B612/input/0"
+    payload_on: "1"
+    payload_off: "0"

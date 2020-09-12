@@ -16,3 +16,9 @@
     command_topic: "shellies/shellyswitch25-686CEF/relay/1/command"
     payload_off: "off"
     payload_on: "on"
+  - platform: mqtt
+    name: "Loggia Overhead Light"
+    state_topic: "shellies/shelly1pm-E5B612/relay/0"
+    command_topic: "shellies/shelly1pm-E5B612/relay/0/command"
+    payload_off: "off"
+    payload_on: "on"
