@@ -23,13 +23,6 @@ recorder:
   db_url: !secret db_connection
   purge_keep_days: 30
 
-knx:
-  tunneling:
-    host: !secret knx_ip
-    port: 3671
-  fire_event: true
-  fire_event_filter: ["27/1-2/*", "*/*/*"]
-
 sensor: # All sensors with multiple states
   - platform: openerz
     zip: 8048
@@ -253,7 +246,7 @@ spotcast:
   sp_dc: !secret spotcast_dc
   sp_key: !secret spotcast_key
 
-cover: !include config/cover-configuration.yaml
+knx: !include config/knx.yaml
 media_player: !include config/media_player.yaml
 homekit: !include config/homekit.yaml
 plant: !include config/plant.yaml
