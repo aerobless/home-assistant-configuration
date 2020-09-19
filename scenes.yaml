@@ -2,152 +2,151 @@
   name: Warm Lights Everywhere
   entities:
     light.bedroom_swirl:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
       brightness: 254
       color_temp: 265
+      is_deconz_group: false
+      friendly_name: Bedroom Swirl
+      supported_features: 63
+      state: 'on'
+    light.bedside_orb:
+      min_mireds: 153
+      max_mireds: 500
       effect_list:
       - colorloop
-      friendly_name: Bedroom Swirl
-      is_deconz_group: false
-      max_mireds: 500
-      min_mireds: 153
-      state: 'on'
-      supported_features: 63
-    light.bedside_orb:
       brightness: 254
       color_temp: 363
-      effect_list:
-      - colorloop
-      friendly_name: Bedside Orb
       is_deconz_group: false
-      max_mireds: 500
-      min_mireds: 153
-      state: 'on'
+      friendly_name: Bedside Orb
       supported_features: 63
+      state: 'on'
     light.eket_cubes:
       brightness: 254
-      friendly_name: Eket Cubes
       is_deconz_group: false
-      state: 'on'
+      friendly_name: Eket Cubes
       supported_features: 41
+      state: 'on'
     light.hall_spot_1:
-      brightness: 254
-      color_temp: 379
-      effect: none
+      min_mireds: 153
+      max_mireds: 500
       effect_list:
       - colorloop
       - random
+      brightness: 254
+      color_temp: 379
+      effect: none
       friendly_name: Hall Spot 1
-      max_mireds: 500
-      min_mireds: 153
-      state: 'on'
       supported_features: 63
+      state: 'on'
     light.hall_spot_2:
-      brightness: 254
-      color_temp: 379
-      effect: none
+      min_mireds: 153
+      max_mireds: 500
       effect_list:
       - colorloop
       - random
+      brightness: 254
+      color_temp: 379
+      effect: none
       friendly_name: Hall Spot 2
-      max_mireds: 500
-      min_mireds: 153
-      state: 'on'
       supported_features: 63
+      state: 'on'
     light.hue_go:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
       brightness: 252
       color_temp: 423
-      effect_list:
-      - colorloop
-      friendly_name: Hue Go
       is_deconz_group: false
-      max_mireds: 500
-      min_mireds: 153
-      state: 'on'
+      friendly_name: Hue Go
       supported_features: 63
+      state: 'on'
     light.kitchen_overhead_light:
       friendly_name: Kitchen Overhead Light
-      state: 'on'
       supported_features: 0
+      state: 'on'
     light.kitchen_table_light:
-      brightness: 252
-      color_temp: 300
+      min_mireds: 153
+      max_mireds: 500
       effect_list:
       - colorloop
-      friendly_name: Kitchen Table Light
-      icon: mdi:ceiling-light
+      brightness: 252
+      color_temp: 300
       is_deconz_group: false
-      max_mireds: 500
-      min_mireds: 153
-      state: 'on'
+      friendly_name: Kitchen Table Light
       supported_features: 63
+      icon: mdi:ceiling-light
+      state: 'on'
     light.living_room_spot_1:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      - random
       brightness: 252
       color_temp: 342
       effect: none
+      friendly_name: Living Room Spot 1
+      supported_features: 63
+      state: 'on'
+    light.living_room_spot_2:
+      min_mireds: 153
+      max_mireds: 500
       effect_list:
       - colorloop
       - random
-      friendly_name: Living Room Spot 1
-      max_mireds: 500
-      min_mireds: 153
-      state: 'on'
-      supported_features: 63
-    light.living_room_spot_2:
       brightness: 252
       color_temp: 330
       effect: none
+      friendly_name: Living Room Spot 2
+      supported_features: 63
+      state: 'on'
+    light.living_room_spot_3:
+      min_mireds: 153
+      max_mireds: 500
       effect_list:
       - colorloop
       - random
-      friendly_name: Living Room Spot 2
-      max_mireds: 500
-      min_mireds: 153
-      state: 'on'
-      supported_features: 63
-    light.living_room_spot_3:
       brightness: 252
       color_temp: 315
       effect: none
+      friendly_name: Living Room Spot 3
+      supported_features: 63
+      state: 'on'
+    light.loggia_lightstrip:
+      min_mireds: 153
+      max_mireds: 500
       effect_list:
       - colorloop
-      - random
-      friendly_name: Living Room Spot 3
-      max_mireds: 500
-      min_mireds: 153
-      state: 'on'
-      supported_features: 63
-    light.loggia_lightstrip:
       brightness: 252
       color_temp: 265
-      effect_list:
-      - colorloop
-      friendly_name: Loggia Skyline
-      icon: mdi:led-strip
       is_deconz_group: false
-      max_mireds: 500
-      min_mireds: 153
-      state: 'on'
+      friendly_name: Loggia Skyline
       supported_features: 63
+      icon: mdi:led-strip
+      state: 'on'
     light.loggia_pixar:
       brightness: 254
       friendly_name: Loggia Filament
-      state: 'on'
       supported_features: 41
+      state: 'on'
     light.loggia_spot_1:
-      brightness: 254
-      color_temp: 437
+      min_mireds: 153
+      max_mireds: 500
       effect_list:
       - colorloop
-      friendly_name: Loggia Spot 1
+      brightness: 254
+      color_temp: 437
       is_deconz_group: false
-      max_mireds: 500
-      min_mireds: 153
-      state: 'on'
+      friendly_name: Loggia Spot 1
       supported_features: 63
+      state: 'on'
     light.nanoleaf:
-      brightness: 247
-      color_temp: 833
-      effect: Inner Peace
+      min_mireds: 154
+      max_mireds: 833
       effect_list:
       - 0rgasme
       - Color Burst
@@ -176,293 +175,439 @@
       - sixtyAI_computerSaysNo
       - sixtyAI_redDot
       - sixtyBlue1
+      brightness: 244
+      effect: 0rgasme
       friendly_name: Nanoleaf
-      hs_color:
-      - 20
-      - 100
       icon: mdi:triangle-outline
-      max_mireds: 833
-      min_mireds: 154
-      rgb_color:
-      - 255
-      - 84
-      - 0
-      state: 'on'
       supported_features: 55
-      xy_color:
-      - 0.66
-      - 0.334
+      state: 'on'
     light.tv_lightstrip:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
       brightness: 254
       color_temp: 357
+      is_deconz_group: false
+      friendly_name: TV Lightstrip
+      supported_features: 63
+      state: 'on'
+    light.tv_side_orb:
+      min_mireds: 153
+      max_mireds: 500
       effect_list:
       - colorloop
-      friendly_name: TV Lightstrip
-      is_deconz_group: false
-      max_mireds: 500
-      min_mireds: 153
-      state: 'on'
-      supported_features: 63
-    light.tv_side_orb:
       brightness: 252
       color_temp: 383
+      is_deconz_group: false
+      friendly_name: TV Side Orb
+      supported_features: 63
+      state: 'on'
+    light.hue_shade:
       effect_list:
       - colorloop
-      friendly_name: TV Side Orb
+      brightness: 254
+      hs_color:
+      - 29.722
+      - 84.706
+      rgb_color:
+      - 255
+      - 145
+      - 38
+      xy_color:
+      - 0.581
+      - 0.387
       is_deconz_group: false
-      max_mireds: 500
-      min_mireds: 153
+      friendly_name: Hue shade
+      supported_features: 61
       state: 'on'
-      supported_features: 63
+  icon: mdi:fireplace
 - id: '1581619784172'
   name: Party Colors
   entities:
     light.bedroom_swirl:
-      brightness: 254
+      min_mireds: 153
+      max_mireds: 500
       effect_list:
       - colorloop
-      friendly_name: Bedroom Swirl
+      brightness: 254
       hs_color:
-      - 241.523
-      - 77.255
-      is_deconz_group: false
-      max_mireds: 500
-      min_mireds: 153
+      - 241.571
+      - 74.902
       rgb_color:
+      - 69
       - 63
-      - 57
       - 255
-      state: 'on'
-      supported_features: 63
       xy_color:
-      - 0.157
-      - 0.07
+      - 0.161
+      - 0.075
+      is_deconz_group: false
+      friendly_name: Bedroom Swirl
+      supported_features: 63
+      state: 'on'
     light.bedside_orb:
-      brightness: 254
+      min_mireds: 153
+      max_mireds: 500
       effect_list:
       - colorloop
-      friendly_name: Bedside Orb
+      brightness: 254
       hs_color:
-      - 299.72
-      - 83.922
-      is_deconz_group: false
-      max_mireds: 500
-      min_mireds: 153
+      - 299.431
+      - 82.745
       rgb_color:
-      - 254
-      - 40
+      - 252
+      - 44
       - 255
-      state: 'on'
-      supported_features: 63
       xy_color:
-      - 0.382
+      - 0.38
       - 0.159
+      is_deconz_group: false
+      friendly_name: Bedside Orb
+      supported_features: 63
+      state: 'on'
     light.eket_cubes:
       brightness: 71
+      is_deconz_group: false
       friendly_name: Eket Cubes
-      is_deconz_group: false
-      state: 'on'
       supported_features: 41
+      state: 'on'
     light.hall_spot_1:
-      brightness: 254
-      effect: none
+      min_mireds: 153
+      max_mireds: 500
       effect_list:
       - colorloop
       - random
+      brightness: 254
+      hs_color:
+      - 256.706
+      - 100
+      rgb_color:
+      - 71
+      - 0
+      - 255
+      xy_color:
+      - 0.162
+      - 0.052
+      effect: none
       friendly_name: Hall Spot 1
-      hs_color:
-      - 255.059
-      - 100
-      max_mireds: 500
-      min_mireds: 153
-      rgb_color:
-      - 64
-      - 0
-      - 255
-      state: 'on'
       supported_features: 63
-      xy_color:
-      - 0.158
-      - 0.05
+      state: 'on'
     light.hall_spot_2:
-      brightness: 254
-      effect: none
+      min_mireds: 153
+      max_mireds: 500
       effect_list:
       - colorloop
       - random
-      friendly_name: Hall Spot 2
+      brightness: 254
       hs_color:
-      - 354.34
-      - 83.137
-      max_mireds: 500
-      min_mireds: 153
+      - 354.258
+      - 81.961
       rgb_color:
       - 255
-      - 43
-      - 62
-      state: 'on'
-      supported_features: 63
+      - 45
+      - 66
       xy_color:
-      - 0.658
-      - 0.294
+      - 0.653
+      - 0.293
+      effect: none
+      friendly_name: Hall Spot 2
+      supported_features: 63
+      state: 'on'
     light.hue_go:
-      brightness: 252
+      min_mireds: 153
+      max_mireds: 500
       effect_list:
       - colorloop
-      friendly_name: Hue Go
+      brightness: 252
       hs_color:
-      - 255.059
-      - 100
-      is_deconz_group: false
-      max_mireds: 500
-      min_mireds: 153
+      - 254.508
+      - 95.686
       rgb_color:
-      - 64
-      - 0
+      - 69
+      - 11
       - 255
-      state: 'on'
-      supported_features: 63
       xy_color:
-      - 0.158
-      - 0.05
+      - 0.161
+      - 0.053
+      is_deconz_group: false
+      friendly_name: Hue Go
+      supported_features: 63
+      state: 'on'
     light.kitchen_overhead_light:
       friendly_name: Kitchen Overhead Light
-      state: 'off'
       supported_features: 0
+      state: 'off'
     light.kitchen_table_light:
-      brightness: 252
+      min_mireds: 153
+      max_mireds: 500
       effect_list:
       - colorloop
+      brightness: 252
+      hs_color:
+      - 135.529
+      - 100
+      rgb_color:
+      - 0
+      - 255
+      - 65
+      xy_color:
+      - 0.17
+      - 0.7
+      is_deconz_group: false
       friendly_name: Kitchen Table Light
-      hs_color:
-      - 354.34
-      - 83.137
+      supported_features: 63
       icon: mdi:ceiling-light
-      is_deconz_group: false
-      max_mireds: 500
-      min_mireds: 153
-      rgb_color:
-      - 255
-      - 43
-      - 62
       state: 'on'
-      supported_features: 63
-      xy_color:
-      - 0.658
-      - 0.294
-    light.living_room_spot_1:
-      brightness: 252
-      effect: none
-      effect_list:
-      - colorloop
-      - random
-      friendly_name: Living Room Spot 1
-      hs_color:
-      - 129.148
-      - 87.451
-      max_mireds: 500
-      min_mireds: 153
-      rgb_color:
-      - 31
-      - 255
-      - 66
-      state: 'on'
-      supported_features: 63
-      xy_color:
-      - 0.177
-      - 0.694
-    light.living_room_spot_2:
-      brightness: 252
-      effect: none
-      effect_list:
-      - colorloop
-      - random
-      friendly_name: Living Room Spot 2
-      hs_color:
-      - 241.523
-      - 77.255
-      max_mireds: 500
-      min_mireds: 153
-      rgb_color:
-      - 63
-      - 57
-      - 255
-      state: 'on'
-      supported_features: 63
-      xy_color:
-      - 0.157
-      - 0.07
-    light.living_room_spot_3:
-      brightness: 252
-      effect: none
-      effect_list:
-      - colorloop
-      - random
-      friendly_name: Living Room Spot 3
-      hs_color:
-      - 300.28
-      - 83.922
-      max_mireds: 500
-      min_mireds: 153
-      rgb_color:
-      - 255
-      - 40
-      - 254
-      state: 'on'
-      supported_features: 63
-      xy_color:
-      - 0.385
-      - 0.16
     light.loggia_lightstrip:
-      brightness: 252
+      min_mireds: 153
+      max_mireds: 500
       effect_list:
       - colorloop
-      friendly_name: Loggia Skyline
+      brightness: 252
       hs_color:
-      - 241.523
-      - 77.255
-      icon: mdi:led-strip
-      is_deconz_group: false
-      max_mireds: 500
-      min_mireds: 153
+      - 241.571
+      - 74.902
       rgb_color:
+      - 69
       - 63
-      - 57
       - 255
-      state: 'on'
-      supported_features: 63
       xy_color:
-      - 0.157
-      - 0.07
+      - 0.161
+      - 0.075
+      is_deconz_group: false
+      friendly_name: Loggia Skyline
+      supported_features: 63
+      icon: mdi:led-strip
+      state: 'on'
     light.loggia_pixar:
       brightness: 254
       friendly_name: Loggia Filament
-      state: 'on'
       supported_features: 41
+      state: 'on'
     light.loggia_spot_1:
-      brightness: 254
+      min_mireds: 153
+      max_mireds: 500
       effect_list:
       - colorloop
-      friendly_name: Loggia Spot 1
+      brightness: 254
       hs_color:
-      - 179.698
-      - 78.039
-      is_deconz_group: false
-      max_mireds: 500
-      min_mireds: 153
+      - 179.1
+      - 78.431
       rgb_color:
-      - 56
+      - 55
       - 255
-      - 253
-      state: 'on'
-      supported_features: 63
+      - 252
       xy_color:
       - 0.161
-      - 0.345
+      - 0.346
+      is_deconz_group: false
+      friendly_name: Loggia Spot 1
+      supported_features: 63
+      state: 'on'
     light.nanoleaf:
-      brightness: 244
-      color_temp: 833
-      effect: Color Burst
+      min_mireds: 154
+      max_mireds: 833
+      effect_list:
+      - 0rgasme
+      - Color Burst
+      - Dracarys
+      - Electric Chill
+      - Emergency
+      - Fireworks
+      - Flames
+      - Forest
+      - Inner Peace
+      - Meteor Shower
+      - Nemo
+      - Netflix
+      - Northern Lights
+      - Ocean
+      - Paint Splatter
+      - Party
+      - Pulse Pop Beats
+      - Rhythmic Northern Lights
+      - Ripple
+      - Romantic
+      - SixtyMeters
+      - Snowfall
+      - Sound Bar
+      - Streaking Notes
+      - sixtyAI_computerSaysNo
+      - sixtyAI_redDot
+      - sixtyBlue1
+      brightness: 242
+      effect: 0rgasme
+      friendly_name: Nanoleaf
+      icon: mdi:triangle-outline
+      supported_features: 55
+      state: 'on'
+    light.tv_lightstrip:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      brightness: 254
+      hs_color:
+      - 254.43
+      - 92.941
+      rgb_color:
+      - 74
+      - 18
+      - 255
+      xy_color:
+      - 0.165
+      - 0.056
+      is_deconz_group: false
+      friendly_name: TV Lightstrip
+      supported_features: 63
+      state: 'on'
+    light.tv_side_orb:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      brightness: 252
+      hs_color:
+      - 318.028
+      - 83.529
+      rgb_color:
+      - 255
+      - 42
+      - 191
+      xy_color:
+      - 0.473
+      - 0.204
+      is_deconz_group: false
+      friendly_name: TV Side Orb
+      supported_features: 63
+      state: 'on'
+    light.hue_shade:
+      effect_list:
+      - colorloop
+      brightness: 254
+      hs_color:
+      - 0
+      - 100
+      rgb_color:
+      - 255
+      - 0
+      - 0
+      xy_color:
+      - 0.701
+      - 0.299
+      is_deconz_group: false
+      friendly_name: Hue shade
+      supported_features: 61
+      state: 'on'
+    light.living_room_spot_1:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      - random
+      brightness: 52
+      hs_color:
+      - 0.837
+      - 84.314
+      rgb_color:
+      - 255
+      - 42
+      - 39
+      xy_color:
+      - 0.676
+      - 0.302
+      effect: none
+      friendly_name: Living Room Spot 1
+      supported_features: 63
+      state: 'on'
+    light.living_room_spot_2:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      - random
+      brightness: 252
+      hs_color:
+      - 254.508
+      - 95.686
+      rgb_color:
+      - 69
+      - 11
+      - 255
+      xy_color:
+      - 0.161
+      - 0.053
+      effect: none
+      friendly_name: Living Room Spot 2
+      supported_features: 63
+      state: 'on'
+    light.living_room_spot_3:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      - random
+      brightness: 252
+      hs_color:
+      - 219.897
+      - 76.078
+      rgb_color:
+      - 61
+      - 126
+      - 255
+      xy_color:
+      - 0.158
+      - 0.14
+      effect: none
+      friendly_name: Living Room Spot 3
+      supported_features: 63
+      state: 'on'
+  icon: mdi:music
+- id: '1600453163440'
+  name: Cinema
+  entities:
+    light.bedroom_light_group:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      entity_id:
+      - light.bedroom_swirl
+      - light.bedside_orb
+      friendly_name: Bedroom Light Group
+      supported_features: 63
+      state: 'off'
+    light.loggia_light_group:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      entity_id:
+      - light.loggia_campfire
+      - light.loggia_pixar
+      - light.loggia_spot_1
+      friendly_name: Loggia Light Group
+      supported_features: 63
+      state: 'off'
+    light.entrance_light_group:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      - random
+      entity_id:
+      - light.hall_spot_1
+      - light.hall_spot_2
+      friendly_name: Entrance Light Group
+      supported_features: 63
+      state: 'off'
+    light.kitchen_overhead_light:
+      friendly_name: Kitchen Overhead Light
+      supported_features: 0
+      state: 'off'
+    light.nanoleaf:
+      min_mireds: 154
+      max_mireds: 833
       effect_list:
       - 0rgasme
       - Color Burst
@@ -492,58 +637,129 @@
       - sixtyAI_redDot
       - sixtyBlue1
       friendly_name: Nanoleaf
-      hs_color:
-      - 20
-      - 100
       icon: mdi:triangle-outline
-      max_mireds: 833
-      min_mireds: 154
-      rgb_color:
-      - 255
-      - 84
-      - 0
-      state: 'on'
       supported_features: 55
+      state: 'off'
+    light.living_room_spot_1:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      - random
+      brightness: 41
+      color_temp: 342
+      effect: none
+      friendly_name: Living Room Spot 1
+      supported_features: 63
+      state: 'on'
+    light.living_room_spot_2:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      - random
+      brightness: 94
+      color_temp: 330
+      effect: none
+      friendly_name: Living Room Spot 2
+      supported_features: 63
+      state: 'on'
+    light.living_room_spot_3:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      - random
+      brightness: 68
+      color_temp: 315
+      effect: none
+      friendly_name: Living Room Spot 3
+      supported_features: 63
+      state: 'on'
+    light.kitchen_table_light:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      is_deconz_group: false
+      friendly_name: Kitchen Table Light
+      supported_features: 63
+      icon: mdi:ceiling-light
+      state: 'off'
+    light.hue_shade:
+      effect_list:
+      - colorloop
+      brightness: 148
+      hs_color:
+      - 29.581
+      - 84.314
+      rgb_color:
+      - 255
+      - 145
+      - 39
       xy_color:
-      - 0.66
-      - 0.334
+      - 0.58
+      - 0.387
+      is_deconz_group: false
+      friendly_name: Hue shade
+      supported_features: 61
+      state: 'on'
     light.tv_lightstrip:
-      brightness: 254
+      min_mireds: 153
+      max_mireds: 500
       effect_list:
       - colorloop
+      brightness: 110
+      color_temp: 413
+      is_deconz_group: false
       friendly_name: TV Lightstrip
-      hs_color:
-      - 254.508
-      - 95.686
-      is_deconz_group: false
-      max_mireds: 500
-      min_mireds: 153
-      rgb_color:
-      - 69
-      - 11
-      - 255
-      state: 'on'
       supported_features: 63
-      xy_color:
-      - 0.161
-      - 0.053
+      state: 'on'
     light.tv_side_orb:
-      brightness: 252
+      min_mireds: 153
+      max_mireds: 500
       effect_list:
       - colorloop
-      friendly_name: TV Side Orb
+      brightness: 252
       hs_color:
-      - 283.274
-      - 88.627
-      is_deconz_group: false
-      max_mireds: 500
-      min_mireds: 153
+      - 299.431
+      - 82.745
       rgb_color:
-      - 191
-      - 29
+      - 252
+      - 44
       - 255
-      state: 'on'
-      supported_features: 63
       xy_color:
-      - 0.3
-      - 0.12
+      - 0.38
+      - 0.159
+      is_deconz_group: false
+      friendly_name: TV Side Orb
+      supported_features: 63
+      state: 'on'
+    light.hue_go:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      brightness: 181
+      color_temp: 469
+      is_deconz_group: false
+      friendly_name: Hue Go
+      supported_features: 63
+      state: 'on'
+    light.eket_cubes:
+      brightness: 30
+      is_deconz_group: false
+      friendly_name: Eket Cubes
+      supported_features: 41
+      state: 'on'
+    light.loggia_lightstrip:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      is_deconz_group: false
+      friendly_name: Loggia Skyline
+      supported_features: 63
+      icon: mdi:led-strip
+      state: 'off'
+  icon: mdi:popcorn

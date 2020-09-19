@@ -38,3 +38,8 @@ print_shopping_list:
       device: Kibernetik Pure Climate
     entity_id: remote.harmony_hub
     service: remote.send_command
+reset_scene:
+  alias: Reset Scene
+  sequence: []
+  mode: single
+  icon: mdi:brush
