@@ -91,7 +91,7 @@ binary_sensor: # All sensors with just two states (ON/OFF)
             delay_off:
               minutes: 3
             device_class: occupancy
-            value_template: "{{ is_state('device_tracker.theosiphone', 'home') }}"
+            value_template: "{{ is_state('person.theo_winter', 'home') }}"
         intrusion_detection:
             friendly_name: "Intrusion Detection"
             device_class: motion

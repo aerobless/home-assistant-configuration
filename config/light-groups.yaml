@@ -4,6 +4,7 @@
       - light.tv_side_orb
       - light.tv_lightstrip
       - light.hue_go
+      - light.hue_shade
       - light.living_room_spot_1
       - light.living_room_spot_2
       - light.living_room_spot_3
