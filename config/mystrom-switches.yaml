@@ -25,6 +25,6 @@
   - platform: mystrom
     host: 192.168.178.37
     name: myStromiMac
-  - platform: mystrom
-    host: 192.168.178.78
-    name: myStromAquariumLight
+#  - platform: mystrom
+#    host: 192.168.178.78
+#    name: myStromAquariumLight

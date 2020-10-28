@@ -43,3 +43,8 @@ reset_scene:
   sequence: []
   mode: single
   icon: mdi:brush
+reset_audio:
+  alias: Reset Audio
+  sequence: []
+  mode: single
+  icon: mdi:speaker-wireless

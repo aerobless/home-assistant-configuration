@@ -763,3 +763,103 @@
       icon: mdi:led-strip
       state: 'off'
   icon: mdi:popcorn
+- id: '1602939639296'
+  name: Good Morning
+  entities:
+    light.bedroom_swirl:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      brightness: 253
+      hs_color:
+      - 40.777
+      - 40.392
+      rgb_color:
+      - 255
+      - 222
+      - 152
+      xy_color:
+      - 0.419
+      - 0.398
+      is_deconz_group: false
+      friendly_name: Bedroom Swirl
+      supported_features: 63
+      state: 'on'
+    light.bedside_orb:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      brightness: 129
+      color_temp: 296
+      is_deconz_group: false
+      friendly_name: Bedside Orb
+      supported_features: 63
+      state: 'on'
+    light.loggia_lightstrip:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      brightness: 140
+      color_temp: 265
+      is_deconz_group: false
+      friendly_name: Loggia Skyline
+      supported_features: 63
+      icon: mdi:led-strip
+      state: 'on'
+    light.eket_cubes:
+      brightness: 168
+      is_deconz_group: false
+      friendly_name: Eket Cubes
+      supported_features: 41
+      state: 'on'
+    light.kitchen_table_light:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      brightness: 252
+      color_temp: 300
+      is_deconz_group: false
+      friendly_name: Kitchen Table Light
+      supported_features: 63
+      icon: mdi:ceiling-light
+      state: 'on'
+    light.entrance_light_group:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - random
+      - colorloop
+      brightness: 46
+      color_temp: 379
+      effect: none
+      entity_id:
+      - light.hall_spot_1
+      - light.hall_spot_2
+      friendly_name: Entrance Light Group
+      supported_features: 63
+      state: 'on'
+    light.loggia_overhead_light:
+      friendly_name: Loggia Overhead Light
+      supported_features: 0
+      state: 'off'
+    light.loggia_spot_1:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      brightness: 254
+      color_temp: 441
+      is_deconz_group: false
+      friendly_name: Loggia Spot 1
+      supported_features: 63
+      state: 'on'
+    light.loggia_pixar:
+      brightness: 254
+      friendly_name: Loggia Filament
+      supported_features: 41
+      state: 'on'
+  icon: mdi:coffee

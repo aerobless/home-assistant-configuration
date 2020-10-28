@@ -27,6 +27,14 @@ sensor: # All sensors with multiple states
   - platform: openerz
     zip: 8048
     waste_type: cargotram, etram, organic, textile
+  - platform: rest
+    name: Migros Fitnesspark Puls 5
+    resource: https://blfa-api.migros.ch/fp/api/center/6/currentuser
+    verify_ssl: false
+    value_template: '{{ value_json.currentVisitors }}'
+    json_attributes:
+      - currentVisitors
+      - maxVisitors
   
 sensor plant: !include config/mqtt/plant-sensors.yaml
 sensor shelly: !include config/mqtt/shelly-switch-sensors.yaml
