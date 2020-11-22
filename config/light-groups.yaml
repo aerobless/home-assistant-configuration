@@ -5,9 +5,9 @@
       - light.tv_lightstrip
       - light.hue_go
       - light.hue_shade
-      - light.living_room_spot_1
-      - light.living_room_spot_2
-      - light.living_room_spot_3
+      - light.living_room_spot_1_window
+      - light.living_room_spot_2_middle
+      - light.living_room_spot_3_right
       - light.loggia_lightstrip
       - light.nanoleaf
       - light.eket_cubes
@@ -15,8 +15,8 @@
   - platform: group
     name: Entrance Light Group
     entities:
-      - light.hall_spot_1
-      - light.hall_spot_2
+      - light.entrance_spot_1_inner
+      - light.entrance_spot_2_outer
   - platform: group
     name: Bedroom Light Group
     entities:
@@ -26,5 +26,5 @@
     name: Loggia Light Group
     entities:
       - light.loggia_campfire
-      - light.loggia_pixar
+      - light.pixar_filament
       - light.loggia_spot_1

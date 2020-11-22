@@ -15,12 +15,12 @@
     payload_off: "0"
   - platform: mqtt
     name: Living Room Light Switch 1
-    state_topic: "shellies/shellyswitch25-6868E9/input/0"
+    state_topic: "shellies/shellyswitch25-68C63AF92D54/input/0"
     payload_on: "1"
     payload_off: "0"
   - platform: mqtt
     name: Living Room Light Switch 2
-    state_topic: "shellies/shellyswitch25-6868E9/input/1"
+    state_topic: "shellies/shellyswitch25-68C63AF92D54/input/1"
     payload_on: "1"
     payload_off: "0"
   - platform: mqtt

@@ -29,7 +29,7 @@
       friendly_name: Eket Cubes
       supported_features: 41
       state: 'on'
-    light.hall_spot_1:
+    light.entrance_spot_1_inner:
       min_mireds: 153
       max_mireds: 500
       effect_list:
@@ -41,7 +41,7 @@
       friendly_name: Hall Spot 1
       supported_features: 63
       state: 'on'
-    light.hall_spot_2:
+    light.entrance_spot_2_outer:
       min_mireds: 153
       max_mireds: 500
       effect_list:
@@ -80,7 +80,7 @@
       supported_features: 63
       icon: mdi:ceiling-light
       state: 'on'
-    light.living_room_spot_1:
+    light.living_room_spot_1_window:
       min_mireds: 153
       max_mireds: 500
       effect_list:
@@ -92,7 +92,7 @@
       friendly_name: Living Room Spot 1
       supported_features: 63
       state: 'on'
-    light.living_room_spot_2:
+    light.living_room_spot_2_middle:
       min_mireds: 153
       max_mireds: 500
       effect_list:
@@ -104,7 +104,7 @@
       friendly_name: Living Room Spot 2
       supported_features: 63
       state: 'on'
-    light.living_room_spot_3:
+    light.living_room_spot_3_right:
       min_mireds: 153
       max_mireds: 500
       effect_list:
@@ -127,11 +127,6 @@
       friendly_name: Loggia Skyline
       supported_features: 63
       icon: mdi:led-strip
-      state: 'on'
-    light.loggia_pixar:
-      brightness: 254
-      friendly_name: Loggia Filament
-      supported_features: 41
       state: 'on'
     light.loggia_spot_1:
       min_mireds: 153
@@ -175,7 +170,7 @@
       - sixtyAI_computerSaysNo
       - sixtyAI_redDot
       - sixtyBlue1
-      brightness: 244
+      brightness: 242
       effect: 0rgasme
       friendly_name: Nanoleaf
       icon: mdi:triangle-outline
@@ -187,7 +182,16 @@
       effect_list:
       - colorloop
       brightness: 254
-      color_temp: 357
+      hs_color:
+      - 43.738
+      - 41.961
+      rgb_color:
+      - 255
+      - 225
+      - 147
+      xy_color:
+      - 0.42
+      - 0.406
       is_deconz_group: false
       friendly_name: TV Lightstrip
       supported_features: 63
@@ -208,18 +212,24 @@
       - colorloop
       brightness: 254
       hs_color:
-      - 29.722
-      - 84.706
+      - 31.858
+      - 88.627
       rgb_color:
       - 255
-      - 145
-      - 38
+      - 148
+      - 29
       xy_color:
-      - 0.581
-      - 0.387
+      - 0.58
+      - 0.393
       is_deconz_group: false
       friendly_name: Hue shade
       supported_features: 61
+      state: 'on'
+    light.pixar_filament:
+      brightness: 254
+      is_deconz_group: false
+      friendly_name: Pixar Filament
+      supported_features: 41
       state: 'on'
   icon: mdi:fireplace
 - id: '1581619784172'
@@ -271,7 +281,7 @@
       friendly_name: Eket Cubes
       supported_features: 41
       state: 'on'
-    light.hall_spot_1:
+    light.entrance_spot_1_inner:
       min_mireds: 153
       max_mireds: 500
       effect_list:
@@ -292,7 +302,7 @@
       friendly_name: Hall Spot 1
       supported_features: 63
       state: 'on'
-    light.hall_spot_2:
+    light.entrance_spot_2_outer:
       min_mireds: 153
       max_mireds: 500
       effect_list:
@@ -499,7 +509,7 @@
       friendly_name: Hue shade
       supported_features: 61
       state: 'on'
-    light.living_room_spot_1:
+    light.living_room_spot_1_window:
       min_mireds: 153
       max_mireds: 500
       effect_list:
@@ -520,7 +530,7 @@
       friendly_name: Living Room Spot 1
       supported_features: 63
       state: 'on'
-    light.living_room_spot_2:
+    light.living_room_spot_2_middle:
       min_mireds: 153
       max_mireds: 500
       effect_list:
@@ -541,7 +551,7 @@
       friendly_name: Living Room Spot 2
       supported_features: 63
       state: 'on'
-    light.living_room_spot_3:
+    light.living_room_spot_3_right:
       min_mireds: 153
       max_mireds: 500
       effect_list:
@@ -596,8 +606,8 @@
       - colorloop
       - random
       entity_id:
-      - light.hall_spot_1
-      - light.hall_spot_2
+      - light.entrance_spot_1_inner
+      - light.entrance_spot_2_outer
       friendly_name: Entrance Light Group
       supported_features: 63
       state: 'off'
@@ -640,7 +650,7 @@
       icon: mdi:triangle-outline
       supported_features: 55
       state: 'off'
-    light.living_room_spot_1:
+    light.living_room_spot_1_window:
       min_mireds: 153
       max_mireds: 500
       effect_list:
@@ -652,7 +662,7 @@
       friendly_name: Living Room Spot 1
       supported_features: 63
       state: 'on'
-    light.living_room_spot_2:
+    light.living_room_spot_2_middle:
       min_mireds: 153
       max_mireds: 500
       effect_list:
@@ -664,7 +674,7 @@
       friendly_name: Living Room Spot 2
       supported_features: 63
       state: 'on'
-    light.living_room_spot_3:
+    light.living_room_spot_3_right:
       min_mireds: 153
       max_mireds: 500
       effect_list:
@@ -831,15 +841,16 @@
       min_mireds: 153
       max_mireds: 500
       effect_list:
-      - random
       - colorloop
+      - random
       brightness: 46
       color_temp: 379
       effect: none
       entity_id:
-      - light.hall_spot_1
-      - light.hall_spot_2
+      - light.entrance_spot_1_inner
+      - light.entrance_spot_2_outer
       friendly_name: Entrance Light Group
+      icon: mdi:lightbulb-group
       supported_features: 63
       state: 'on'
     light.loggia_overhead_light:
@@ -857,9 +868,149 @@
       friendly_name: Loggia Spot 1
       supported_features: 63
       state: 'on'
-    light.loggia_pixar:
-      brightness: 254
-      friendly_name: Loggia Filament
+    light.pixar_filament:
+      brightness: 246
+      is_deconz_group: false
+      friendly_name: Pixar Filament
       supported_features: 41
       state: 'on'
   icon: mdi:coffee
+- id: '1604917159407'
+  name: Lights Off
+  entities:
+    light.entrance_light_group:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      - random
+      entity_id:
+      - light.entrance_spot_1_inner
+      - light.entrance_spot_2_outer
+      friendly_name: Entrance Light Group
+      icon: mdi:lightbulb-group
+      supported_features: 63
+      state: 'off'
+    light.living_room_light_group:
+      min_mireds: 153
+      max_mireds: 833
+      effect_list:
+      - Color Burst
+      - Paint Splatter
+      - Pulse Pop Beats
+      - Meteor Shower
+      - sixtyAI_redDot
+      - Forest
+      - Northern Lights
+      - Netflix
+      - random
+      - sixtyAI_computerSaysNo
+      - Party
+      - Emergency
+      - Ocean
+      - sixtyBlue1
+      - Electric Chill
+      - colorloop
+      - Ripple
+      - Streaking Notes
+      - Inner Peace
+      - Nemo
+      - Rhythmic Northern Lights
+      - 0rgasme
+      - Dracarys
+      - Romantic
+      - Fireworks
+      - Flames
+      - Snowfall
+      - SixtyMeters
+      - Sound Bar
+      entity_id:
+      - light.tv_side_orb
+      - light.tv_lightstrip
+      - light.hue_go
+      - light.hue_shade
+      - light.living_room_spot_1_window
+      - light.living_room_spot_2_middle
+      - light.living_room_spot_3_right
+      - light.loggia_lightstrip
+      - light.nanoleaf
+      - light.eket_cubes
+      - light.kitchen_table_light
+      friendly_name: Living Room Light Group
+      icon: mdi:lightbulb-group
+      supported_features: 63
+      state: 'off'
+    light.bedroom_light_group:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      entity_id:
+      - light.bedroom_swirl
+      - light.bedside_orb
+      friendly_name: Bedroom Light Group
+      icon: mdi:lightbulb-group
+      supported_features: 63
+      state: 'off'
+    light.loggia_light_group:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      entity_id:
+      - light.loggia_campfire
+      - light.loggia_pixar
+      - light.loggia_spot_1
+      friendly_name: Loggia Light Group
+      icon: mdi:lightbulb-group
+      supported_features: 63
+      state: 'off'
+    light.bathroom_light:
+      friendly_name: Bathroom Light
+      supported_features: 0
+      state: 'off'
+  icon: mdi:lightbulb-off-outline
+- id: '1606049351012'
+  name: Bedroom Warm Default
+  entities:
+    light.bedroom_swirl:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      brightness: 253
+      hs_color:
+      - 40.777
+      - 40.392
+      rgb_color:
+      - 255
+      - 222
+      - 152
+      xy_color:
+      - 0.419
+      - 0.398
+      is_deconz_group: false
+      friendly_name: Bedroom Swirl
+      supported_features: 63
+      state: 'on'
+    light.bedside_orb:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      brightness: 253
+      hs_color:
+      - 35.581
+      - 33.725
+      rgb_color:
+      - 255
+      - 219
+      - 169
+      xy_color:
+      - 0.407
+      - 0.377
+      is_deconz_group: false
+      friendly_name: Bedside Orb
+      supported_features: 63
+      state: 'on'
+  icon: mdi:bed

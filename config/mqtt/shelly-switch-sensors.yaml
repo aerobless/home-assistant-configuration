@@ -36,23 +36,23 @@
     unit_of_measurement: 'W'
   - platform: mqtt
     name: "Living Room Shelly Switch 1 Temperature"
-    state_topic: "shellies/shellyswitch25-6868E9/temperature"
+    state_topic: "shellies/shellyswitch25-68C63AF92D54/temperature"
     unit_of_measurement: '°C'
   - platform: mqtt
     name: "Living Room Shelly Switch TV Spot Energy"
-    state_topic: "shellies/shellyswitch25-6868E9/relay/0/energy"
+    state_topic: "shellies/shellyswitch25-68C63AF92D54/relay/0/energy"
     unit_of_measurement: 'W/min'
   - platform: mqtt
     name: "Living Room Shelly Switch TV Spot Power"
-    state_topic: "shellies/shellyswitch25-6868E9/relay/0/power"
+    state_topic: "shellies/shellyswitch25-68C63AF92D54/relay/0/power"
     unit_of_measurement: 'W'
   - platform: mqtt
     name: "Living Room Shelly Switch Kitchen Table Energy"
-    state_topic: "shellies/shellyswitch25-6868E9/relay/1/energy"
+    state_topic: "shellies/shellyswitch25-68C63AF92D54/relay/1/energy"
     unit_of_measurement: 'W/min'
   - platform: mqtt
     name: "Living Room Shelly Switch Kitchen Table Power"
-    state_topic: "shellies/shellyswitch25-6868E9/relay/1/power"
+    state_topic: "shellies/shellyswitch25-68C63AF92D54/relay/1/power"
     unit_of_measurement: 'W'
   - platform: mqtt
     name: "Living Room Shelly Switch 2 Temperature"
