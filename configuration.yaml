@@ -217,14 +217,6 @@ device_tracker:
     new_device_defaults:
       track_new_devices: False
 
-speedtestdotnet:
-  scan_interval:
-    minutes: 120
-  monitored_conditions:
-    - ping
-    - download
-    - upload
-
 logi_circle:
   client_id: !secret logi_client_id
   client_secret: !secret logi_client_secret
