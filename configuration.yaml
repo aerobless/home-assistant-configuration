@@ -255,38 +255,12 @@ spotcast:
   sp_dc: !secret spotcast_dc
   sp_key: !secret spotcast_key
 
-influxdb:
-  host: a0d7b954-influxdb
-  port: 8086
-  database: homeassistant
-  username: !secret influx_username
-  password: !secret influx_password
-  max_retries: 3
-  default_measurement: state
-  include:
-    entity_globs:
-      - sensor.money_*
-      - sensor.*_account
-      - sensor.*_balance
-      - sensor.*_credit_card
-    entities:
-      - sensor.migros_fitnesspark_puls_5
-      - sensor.networth
-      - sensor.bedroom_temperature
-      - sensor.bathroom_temperature
-      - sensor.fridge_temperature
-      - sensor.loggia_temperature
-      - sensor.office_temperature
-      - sensor.netatmo_sixtymeters_indoor_temperature
-      - binary_sensor.tumbler_state
-      - binary_sensor.washingmachine_state
-      - binary_sensor.dishwasher_state
-
 knx: !include config/knx.yaml
 media_player: !include config/media_player.yaml
 homekit: !include config/homekit.yaml
 plant: !include config/plant.yaml
 camera: !include config/camera.yaml
+influxdb: !include config/influx-db.yaml
 
 group: !include groups.yaml
 automation: !include automations.yaml

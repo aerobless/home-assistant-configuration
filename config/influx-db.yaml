@@ -1,0 +1,25 @@
+host: a0d7b954-influxdb
+port: 8086
+database: homeassistant
+username: !secret influx_username
+password: !secret influx_password
+max_retries: 3
+default_measurement: state
+include:
+  entity_globs:
+    - sensor.money_*
+    - sensor.*_account
+    - sensor.*_balance
+    - sensor.*_credit_card
+  entities:
+    - sensor.migros_fitnesspark_puls_5
+    - sensor.networth
+    - sensor.bedroom_temperature
+    - sensor.bathroom_temperature
+    - sensor.fridge_temperature
+    - sensor.loggia_temperature
+    - sensor.office_temperature
+    - sensor.netatmo_sixtymeters_indoor_temperature
+    - binary_sensor.tumbler_state
+    - binary_sensor.washingmachine_state
+    - binary_sensor.dishwasher_state
