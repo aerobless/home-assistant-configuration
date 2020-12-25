@@ -11,6 +11,7 @@ include:
     - sensor.*_account
     - sensor.*_balance
     - sensor.*_credit_card
+    - sensor.eod_energy_*
   entities:
     - sensor.migros_fitnesspark_puls_5
     - sensor.networth
@@ -20,7 +21,7 @@ include:
     - sensor.loggia_temperature
     - sensor.office_temperature
     - sensor.netatmo_sixtymeters_indoor_temperature
+    - sensor.kitchen_bin
     - binary_sensor.tumbler_state
     - binary_sensor.washingmachine_state
     - binary_sensor.dishwasher_state
-    - sensor.kitchen_bin

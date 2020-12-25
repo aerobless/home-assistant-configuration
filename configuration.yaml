@@ -217,6 +217,14 @@ device_tracker:
     new_device_defaults:
       track_new_devices: False
 
+utility_meter:
+  daily_energy:
+    source: sensor.apartment_energy_consumption
+    cycle: daily
+    tariffs:
+      - peak
+      - offpeak
+
 logi_circle:
   client_id: !secret logi_client_id
   client_secret: !secret logi_client_secret

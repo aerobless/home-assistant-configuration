@@ -16,7 +16,7 @@
             unit_of_measurement: "W"
             value_template: "{{ states.switch.mystrom_dishwasher.attributes.current_power_w | default(0) }}"
         total_power:
-            friendly_name: "Total Power Usage"
+            friendly_name: "Total Power Usage W"
             icon_template: mdi:power-plug
             unit_of_measurement: "W"
             value_template: "{{ ((states('sensor.living_room_shelly_switch_kitchen_table_power') | replace('unknown', '0') | round(2)) 
@@ -39,3 +39,11 @@
             + (states('sensor.living_room_shelly_switch_plug_power') | replace('unknown', '0') | round(2))
             + (states('sensor.living_room_shelly_switch_tv_spot_power') | replace('unknown', '0') | round(2))
             )|round(2)}}"
+        daily_energy_total:
+            friendly_name: Daily Energy Total
+            unit_of_measurement: kWh
+            value_template: "{{ states('sensor.daily_energy_offpeak')|float + states('sensor.daily_energy_peak')|float }}"
+  - platform: integration
+    source: sensor.total_power
+    name: Apartment Energy Consumption
+    unit_prefix: k
