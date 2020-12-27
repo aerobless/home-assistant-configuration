@@ -12,7 +12,7 @@
     name: myStromClickAndGrow3
   - platform: mystrom
     host: 192.168.178.68
-    name: myStromAirCon
+    name: myStromServers
   - platform: mystrom
     host: 192.168.178.60
     name: mystrom_tumbler
