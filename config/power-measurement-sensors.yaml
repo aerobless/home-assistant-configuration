@@ -43,6 +43,12 @@
             friendly_name: Daily Energy Total
             unit_of_measurement: kWh
             value_template: "{{ states('sensor.daily_energy_offpeak')|float + states('sensor.daily_energy_peak')|float }}"
+        # Tarif: ewz.natur -- Peak 26.18 Rp./kWh -- Offpeak 15.51 Rp./kWh (state 25.12.2020)
+        # https://www.ewz.ch/de/private/strom/tarife/tarifuebersicht.html
+        daily_energy_cost_total:
+            friendly_name: Daily Energy Cost Total
+            unit_of_measurement: CHF
+            value_template: "{{ ((states('sensor.daily_energy_offpeak')|float)*0.2618 + (states('sensor.daily_energy_peak')|float)*0.1551)| round(2) }}"
   - platform: integration
     source: sensor.total_power
     name: Apartment Energy Consumption
