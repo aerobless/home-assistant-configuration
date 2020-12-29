@@ -22,7 +22,7 @@
             value_template: "{{ ((states('sensor.living_room_shelly_switch_kitchen_table_power') | replace('unknown', '0') | round(2)) 
             + (state_attr('switch.mystromclickandgrow3','current_power_w') | replace('None', '0') | round(2))
             + (state_attr('switch.ebike_charger','current_power_w') | replace('None', '0') | round(2))
-            + (state_attr('switch.mystromaquariumlight','current_power_w') | replace('None', '0') | round(2)) 
+            + (state_attr('switch.mystromkitchenfridgeoven','current_power_w') | replace('None', '0') | round(2)) 
             + (state_attr('switch.mystromtvutilities','current_power_w') | replace('None', '0') | round(2))
             + (state_attr('switch.mystromimac','current_power_w') | replace('None', '0') | round(2))
             + (state_attr('switch.mystrom_washingmachine','current_power_w') | replace('None', '0') | round(2))
