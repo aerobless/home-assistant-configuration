@@ -250,6 +250,17 @@ spotify:
   client_id: !secret spotify_client_id
   client_secret: !secret spotify_client_secret
 
+octoprint:
+  host: !secret octoprint_ip
+  api_key: !secret octoprint_api_key
+  name: Creality Ender 3 v2
+  bed: true
+
+withings:
+  client_id: !secret withings_client_id
+  client_secret: !secret withing_client_secret
+  use_webhook: true
+
 # HACS integration: https://github.com/fondberg/spotcast
 spotcast:
   sp_dc: !secret spotcast_dc
