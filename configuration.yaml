@@ -36,6 +36,10 @@ sensor: # All sensors with multiple states
     json_attributes:
       - currentVisitors
       - maxVisitors
+  - platform: fitbit
+    monitored_resources:
+      - "body/weight"
+      - "body/fat"
   
 sensor plant: !include config/mqtt/plant-sensors.yaml
 sensor shelly: !include config/mqtt/shelly-switch-sensors.yaml
@@ -205,11 +209,6 @@ lock:
     username: !secret nello_username
     password: !secret nello_password
 
-remote:
-  - platform: harmony
-    name: Harmony Hub
-    host: !secret harmony_hub_ip
-
 device_tracker:
   - platform: fritz
     interval_seconds: 30
@@ -255,11 +254,6 @@ octoprint:
   api_key: !secret octoprint_api_key
   name: Creality Ender 3 v2
   bed: true
-
-withings:
-  client_id: !secret withings_client_id
-  client_secret: !secret withing_client_secret
-  use_webhook: true
 
 # HACS integration: https://github.com/fondberg/spotcast
 spotcast:

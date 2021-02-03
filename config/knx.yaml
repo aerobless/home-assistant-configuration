@@ -1,8 +1,7 @@
   tunneling:
     host: !secret knx_ip
     port: 3671
-  fire_event: true
-  fire_event_filter: ["27/1-2/*", "*/*/*"]
+  event_filter: ["27/1-2/*", "*/*/*"]
   cover:
     - name: "Loggia"
       move_long_address: '27/1/230'
