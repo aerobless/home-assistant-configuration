@@ -48,3 +48,11 @@ reset_audio:
   sequence: []
   mode: single
   icon: mdi:speaker-wireless
+lights_off:
+  alias: Lights off
+  sequence:
+  - service: light.turn_off
+    data: {}
+    entity_id: all
+  mode: single
+  icon: mdi:lightbulb-off-outline

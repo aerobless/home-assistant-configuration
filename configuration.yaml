@@ -158,6 +158,28 @@ switch:
           {% else %}
             mdi:television-off
           {% endif %}
+      vacuum_control:
+        friendly_name: Vacuum Control
+        value_template: "{{ is_state('vacuum.ghost', 'cleaning') }}"
+        turn_on:
+          service: vacuum.start
+          entity_id: vacuum.ghost
+        turn_off:
+          service: vacuum.return_to_base
+          entity_id: vacuum.ghost
+      music_control:
+        friendly_name: Music Control
+        value_template: "{{ is_state('media_player.everywhere', 'playing') }}"
+        icon_template: mdi:music
+        turn_on:
+          service: spotcast.start
+          data:
+            entity_id: media_player.everywhere
+            uri: 'spotify:playlist:440DwvrtJWWM3v0AgRSRNx'
+            shuffle: true
+        turn_off:
+          service: media_player.turn_off
+          entity_id: media_player.everywhere
 
 switch mystrom: !include config/mystrom-switches.yaml
 

@@ -32,6 +32,7 @@
             + (states('sensor.bathroom_shelly_switch_power') | replace('unknown', '0') | round(2)) 
             + (states('sensor.bedroom_shelly_switch_power') | replace('unknown', '0') | round(2)) 
             + (states('sensor.entrance_shelly_switch_power') | replace('unknown', '0') | round(2)) 
+            + (states('sensor.loggia_shelly_switch_power') | replace('unknown', '0') | round(2)) 
             + (states('sensor.kitchen_shelly_switch_overhead_light_power') | replace('unknown', '0') | round(2)) 
             + (states('sensor.kitchen_shelly_switch_plug_power') | replace('unknown', '0') | round(2)) 
             + (states('sensor.living_room_shelly_switch_kitchen_table_power') | replace('unknown', '0') | round(2))

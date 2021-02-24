@@ -1122,3 +1122,148 @@
       supported_features: 63
       state: 'off'
   icon: mdi:office-building-outline
+- id: '1613924537154'
+  name: Livingroom
+  entities:
+    light.living_room_spot_1_window:
+      min_mireds: 140
+      max_mireds: 650
+      effect_list:
+      - colorloop
+      brightness: 254
+      color_temp: 341
+      is_deconz_group: false
+      friendly_name: Livingroom Spot 1 Window
+      supported_features: 63
+      state: 'on'
+    light.living_room_spot_2_middle:
+      min_mireds: 140
+      max_mireds: 650
+      effect_list:
+      - colorloop
+      brightness: 254
+      color_temp: 341
+      is_deconz_group: false
+      friendly_name: Livingroom Spot 2 Middle
+      supported_features: 63
+      state: 'on'
+    light.living_room_spot_3_right:
+      min_mireds: 140
+      max_mireds: 650
+      effect_list:
+      - colorloop
+      brightness: 254
+      color_temp: 341
+      is_deconz_group: false
+      friendly_name: Livingroom Spot 3 Right
+      supported_features: 63
+      state: 'on'
+    light.kitchen_table_light:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      brightness: 254
+      color_temp: 275
+      is_deconz_group: false
+      friendly_name: Kitchen Table Light
+      supported_features: 63
+      icon: mdi:ceiling-light
+      state: 'on'
+    light.tv_lightstrip:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      brightness: 204
+      color_temp: 416
+      is_deconz_group: false
+      friendly_name: TV Lightstrip
+      supported_features: 63
+      state: 'on'
+    light.tv_side_orb:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      brightness: 254
+      color_temp: 339
+      is_deconz_group: false
+      friendly_name: TV Side Orb
+      supported_features: 63
+      state: 'on'
+    light.hue_go:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      brightness: 254
+      color_temp: 413
+      is_deconz_group: false
+      friendly_name: Hue Go
+      supported_features: 63
+      state: 'on'
+    light.hue_shade:
+      effect_list:
+      - colorloop
+      brightness: 254
+      hs_color:
+      - 31.765
+      - 73.333
+      rgb_color:
+      - 255
+      - 167
+      - 68
+      xy_color:
+      - 0.538
+      - 0.4
+      is_deconz_group: false
+      friendly_name: Hue shade
+      supported_features: 61
+      state: 'on'
+    light.nanoleaf:
+      min_mireds: 154
+      max_mireds: 833
+      effect_list:
+      - 0rgasme
+      - Color Burst
+      - Dracarys
+      - Electric Chill
+      - Emergency
+      - Fireworks
+      - Flames
+      - Forest
+      - Inner Peace
+      - Meteor Shower
+      - Nemo
+      - Netflix
+      - Northern Lights
+      - Ocean
+      - Paint Splatter
+      - Party
+      - Pulse Pop Beats
+      - Rhythmic Northern Lights
+      - Ripple
+      - Romantic
+      - SixtyMeters
+      - Snowfall
+      - Sound Bar
+      - Streaking Notes
+      - sixtyAI_computerSaysNo
+      - sixtyAI_redDot
+      - sixtyBlue1
+      brightness: 224
+      effect: Color Burst
+      friendly_name: Nanoleaf
+      icon: mdi:triangle-outline
+      supported_features: 55
+      state: 'on'
+  icon: mdi:sofa-outline
+- id: '1613924569721'
+  name: Loggia
+  entities:
+    light.loggia_overhead_light:
+      friendly_name: Loggia Overhead Light
+      supported_features: 0
+      state: 'off'
+  icon: mdi:torch
