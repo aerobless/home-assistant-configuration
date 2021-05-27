@@ -1267,3 +1267,172 @@
       supported_features: 0
       state: 'off'
   icon: mdi:torch
+- id: '1615577449885'
+  name: Cyberpunk
+  entities:
+    light.nanoleaf:
+      min_mireds: 154
+      max_mireds: 833
+      effect_list:
+      - 0rgasme
+      - Color Burst
+      - Dracarys
+      - Electric Chill
+      - Emergency
+      - Fireworks
+      - Flames
+      - Forest
+      - Inner Peace
+      - Meteor Shower
+      - Nemo
+      - Netflix
+      - Northern Lights
+      - Ocean
+      - Paint Splatter
+      - Party
+      - Pulse Pop Beats
+      - Rhythmic Northern Lights
+      - Ripple
+      - Romantic
+      - SixtyMeters
+      - Snowfall
+      - Sound Bar
+      - Streaking Notes
+      - sixtyAI_computerSaysNo
+      - sixtyAI_redDot
+      - sixtyBlue1
+      brightness: 137
+      color_temp: 341
+      hs_color:
+      - 270
+      - 100
+      rgb_color:
+      - 127
+      - 0
+      - 255
+      xy_color:
+      - 0.217
+      - 0.077
+      friendly_name: Nanoleaf
+      icon: mdi:triangle-outline
+      supported_features: 55
+      state: 'on'
+    light.eket_cubes:
+      brightness: 30
+      is_deconz_group: false
+      friendly_name: Eket Cubes
+      supported_features: 41
+      state: 'on'
+    light.tv_lightstrip:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      brightness: 240
+      hs_color:
+      - 301.667
+      - 42.353
+      rgb_color:
+      - 255
+      - 146
+      - 251
+      xy_color:
+      - 0.367
+      - 0.221
+      is_deconz_group: false
+      friendly_name: TV Lightstrip
+      supported_features: 63
+      state: 'on'
+    light.tv_side_orb:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      brightness: 252
+      hs_color:
+      - 298.8
+      - 78.431
+      rgb_color:
+      - 251
+      - 55
+      - 255
+      xy_color:
+      - 0.377
+      - 0.162
+      is_deconz_group: false
+      friendly_name: TV Side Orb
+      supported_features: 63
+      state: 'on'
+    light.hue_go:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      brightness: 181
+      color_temp: 469
+      is_deconz_group: false
+      friendly_name: Hue Go
+      supported_features: 63
+      state: 'on'
+    light.loggia_overhead_light:
+      friendly_name: Loggia Overhead Light
+      supported_features: 0
+      state: 'off'
+    light.kitchen_overhead_light:
+      friendly_name: Kitchen Overhead Light
+      supported_features: 0
+      state: 'off'
+    light.loggia_lightstrip:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      brightness: 212
+      hs_color:
+      - 299.431
+      - 82.745
+      rgb_color:
+      - 252
+      - 44
+      - 255
+      xy_color:
+      - 0.38
+      - 0.159
+      is_deconz_group: false
+      friendly_name: Loggia Skyline
+      supported_features: 63
+      icon: mdi:led-strip
+      state: 'on'
+    light.loggia_fairy_lights:
+      friendly_name: Loggia Fairy Lights
+      icon: mdi:string-lights
+      supported_features: 0
+      state: 'off'
+    light.loggia_plant_spot:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      brightness: 254
+      hs_color:
+      - 218.66
+      - 76.078
+      rgb_color:
+      - 61
+      - 130
+      - 255
+      xy_color:
+      - 0.158
+      - 0.146
+      is_deconz_group: false
+      friendly_name: Loggia Plant Spot
+      icon: mdi:wall-sconce-round-variant
+      supported_features: 63
+      state: 'on'
+    light.loggia_campfire_orb:
+      is_deconz_group: false
+      friendly_name: Campfire Orb
+      icon: mdi:circle-outline
+      supported_features: 41
+      state: 'off'
+  icon: mdi:memory

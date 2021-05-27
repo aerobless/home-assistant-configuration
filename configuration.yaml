@@ -36,10 +36,38 @@ sensor: # All sensors with multiple states
     json_attributes:
       - currentVisitors
       - maxVisitors
+  - platform: rest
+    name: Flussbad Au-Höngg
+    resource: https://baditicker.herokuapp.com
+    device_class: temperature
+    verify_ssl: false
+    value_template: "{{ value_json.pools[0].temperature }}"
+    unit_of_measurement: "C°"
+    json_attributes_path: $.pools[0]
+    json_attributes:
+      - name
+      - updatedAt
+      - open
+  - platform: rest
+    name: Seebad Utoquai
+    resource: https://baditicker.herokuapp.com
+    device_class: temperature
+    verify_ssl: false
+    value_template: "{{ value_json.pools[14].temperature }}"
+    unit_of_measurement: "C°"
+    json_attributes_path: $.pools[14]
+    json_attributes:
+      - name
+      - updatedAt
+      - open
   - platform: fitbit
     monitored_resources:
       - "body/weight"
       - "body/fat"
+  - platform: lastfm
+    api_key: !secret last_fm_api_key
+    users:
+      - aerobless
   
 sensor plant: !include config/mqtt/plant-sensors.yaml
 sensor shelly: !include config/mqtt/shelly-switch-sensors.yaml
@@ -123,6 +151,9 @@ light:
   - platform: nanoleaf
     host: !secret nanoleaf_ip
     token: !secret nanoleaf_token
+  - platform: switch
+    name: Loggia Fairy Lights
+    entity_id: switch.loggia_fairy_lights
 
 light shelly: !include config/mqtt/shelly-lights.yaml
 light groups: !include config/light-groups.yaml

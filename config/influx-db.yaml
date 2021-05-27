@@ -26,3 +26,21 @@ include:
     - binary_sensor.tumbler_state
     - binary_sensor.washingmachine_state
     - binary_sensor.dishwasher_state
+    - sensor.flussbad_au_hongg
+    - sensor.seebad_utoquai
+    - binary_sensor.bed_state
+    - binary_sensor.dishwasher_state
+    - binary_sensor.tumbler_state
+    - binary_sensor.washingmachine_state
+    - input_datetime.weekend_alarm
+    - input_datetime.work_week_alarm
+    - vacuum.ghost
+    - weather.dark_sky
+    - sensor.loggia_humidity
+    - sensor.bathroom_humidity
+    - sensor.office_humidity
+    - sensor.fridge_humidity
+    - sensor.netatmo_sixtymeters_indoor_humidity
+    - sensor.netatmo_sixtymeters_indoor_co2
+    - sensor.netatmo_sixtymeters_indoor_noise
+    - sensor.netatmo_sixtymeters_indoor_pressure
