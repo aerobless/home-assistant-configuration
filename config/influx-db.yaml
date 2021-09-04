@@ -44,3 +44,7 @@ include:
     - sensor.netatmo_sixtymeters_indoor_co2
     - sensor.netatmo_sixtymeters_indoor_noise
     - sensor.netatmo_sixtymeters_indoor_pressure
+    - person.theo_winter
+    - binary_sensor.apartment_occupancy
+    - sensor.aircon_mode
+    - switch.aircon_power_on_off

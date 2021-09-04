@@ -68,6 +68,15 @@ sensor: # All sensors with multiple states
     api_key: !secret last_fm_api_key
     users:
       - aerobless
+  - platform: imap_email_content
+    server: imap.gmail.com
+    name: banking_email
+    port: 993
+    username: !secret gmail_user
+    password: !secret gmail_password
+    folder: UBS
+    senders:
+      - noreply-alerting@ubs.com
   
 sensor plant: !include config/mqtt/plant-sensors.yaml
 sensor shelly: !include config/mqtt/shelly-switch-sensors.yaml
@@ -312,6 +321,7 @@ octoprint:
 spotcast:
   sp_dc: !secret spotcast_dc
   sp_key: !secret spotcast_key
+
 
 knx: !include config/knx.yaml
 media_player: !include config/media_player.yaml
