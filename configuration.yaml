@@ -77,6 +77,7 @@ sensor: # All sensors with multiple states
     folder: UBS
     senders:
       - noreply-alerting@ubs.com
+      - !secret gmail_user
   
 sensor plant: !include config/mqtt/plant-sensors.yaml
 sensor shelly: !include config/mqtt/shelly-switch-sensors.yaml

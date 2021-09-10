@@ -98,3 +98,11 @@
     name: "Loggia Shelly Switch Power"
     state_topic: "shellies/shelly1pm-E5B612/relay/0/power"
     unit_of_measurement: 'W'
+  - platform: mqtt
+    name: "Loggia Shelly HT Temperature"
+    state_topic: "shellies/shellyht-AC25F5/sensor/temperature"
+    unit_of_measurement: 'C°'
+  - platform: mqtt
+    name: "Loggia Shelly HT Humidity"
+    state_topic: "shellies/shellyht-AC25F5/sensor/humidity"
+    unit_of_measurement: '%'

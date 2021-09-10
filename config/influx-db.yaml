@@ -18,6 +18,8 @@ include:
     - sensor.networth
     - sensor.bedroom_temperature
     - sensor.bathroom_temperature
+    - sensor.loggia_shelly_ht_temperature
+    - sensor.loggia_shelly_ht_humidity
     - sensor.fridge_temperature
     - sensor.loggia_temperature
     - sensor.office_temperature
