@@ -11,18 +11,6 @@
     state_topic: "shellies/shelly1pm-005D54/relay/0/power"
     unit_of_measurement: 'W'
   - platform: mqtt
-    name: "Bathroom Shelly Switch Temperature"
-    state_topic: "shellies/shellyswitch25-5DB78A/temperature"
-    unit_of_measurement: '°C'
-  - platform: mqtt
-    name: "Bathroom Shelly Switch Energy"
-    state_topic: "shellies/shellyswitch25-5DB78A/relay/1/energy"
-    unit_of_measurement: 'W/min'
-  - platform: mqtt
-    name: "Bathroom Shelly Switch Power"
-    state_topic: "shellies/shellyswitch25-5DB78A/relay/1/power"
-    unit_of_measurement: 'W'
-  - platform: mqtt
     name: "Entrance Shelly Switch Temperature"
     state_topic: "shellies/shelly1pm-E67762/temperature"
     unit_of_measurement: '°C'

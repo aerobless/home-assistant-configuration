@@ -1,7 +1,7 @@
   - platform: mqtt
     name: "Bathroom Light"
-    state_topic: "shellies/shellyswitch25-5DB78A/relay/1"
-    command_topic: "shellies/shellyswitch25-5DB78A/relay/1/command"
+    state_topic: "shellies/shelly1-F4CFA2ED65C3/relay/0"
+    command_topic: "shellies/shelly1-F4CFA2ED65C3/relay/0/command"
     payload_off: "off"
     payload_on: "on"
   - platform: mqtt

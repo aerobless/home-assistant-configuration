@@ -29,7 +29,6 @@
             + (state_attr('switch.mystromservers','current_power_w') | replace('None', '0') | round(2))
             + (state_attr('switch.mystrom_tumbler','current_power_w') | replace('None', '0') | round(2))
             + (state_attr('switch.mystrom_dishwasher','current_power_w') | replace('None', '0') | round(2))
-            + (states('sensor.bathroom_shelly_switch_power') | replace('unknown', '0') | round(2)) 
             + (states('sensor.bedroom_shelly_switch_power') | replace('unknown', '0') | round(2)) 
             + (states('sensor.entrance_shelly_switch_power') | replace('unknown', '0') | round(2)) 
             + (states('sensor.loggia_shelly_switch_power') | replace('unknown', '0') | round(2)) 
