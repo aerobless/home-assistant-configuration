@@ -176,8 +176,8 @@ cloud:
 switch:
   - platform: mqtt
     name: "Kitchen Plug"
-    state_topic: "shellies/shellyswitch25-00467D/relay/0"
-    command_topic: "shellies/shellyswitch25-00467D/relay/0/command"
+    state_topic: "shellies/shellyswitch25-98CDAC1ECBD4/relay/0"
+    command_topic: "shellies/shellyswitch25-98CDAC1ECBD4/relay/0/command"
     payload_off: "off"
     payload_on: "on"
   - platform: template
@@ -266,11 +266,6 @@ telegram_bot:
     api_key: !secret telegram_api_token
     allowed_chat_ids:
       - !secret telegram_chat_id
-    
-lock:
-  - platform: nello
-    username: !secret nello_username
-    password: !secret nello_password
 
 device_tracker:
   - platform: fritz

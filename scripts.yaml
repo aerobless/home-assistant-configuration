@@ -56,3 +56,18 @@ lights_off:
     entity_id: all
   mode: single
   icon: mdi:lightbulb-off-outline
+add_100kcals:
+  alias: Add 100kcal
+  sequence: []
+  mode: single
+  icon: mdi:food-croissant
+add_500kcal:
+  alias: Add 500kcal
+  sequence: []
+  mode: single
+  icon: mdi:food
+add_50kcal:
+  alias: Add 50kcal
+  sequence: []
+  mode: single
+  icon: mdi:food-apple

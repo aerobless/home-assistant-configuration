@@ -56,23 +56,23 @@
     unit_of_measurement: 'W'
   - platform: mqtt
     name: "Kitchen Shelly Switch Temperature"
-    state_topic: "shellies/shellyswitch25-00467D/temperature"
+    state_topic: "shellies/shellyswitch25-98CDAC1ECBD4/temperature"
     unit_of_measurement: '°C'
   - platform: mqtt
     name: "Kitchen Shelly Switch Plug Energy"
-    state_topic: "shellies/shellyswitch25-00467D/relay/0/energy"
+    state_topic: "shellies/shellyswitch25-98CDAC1ECBD4/relay/0/energy"
     unit_of_measurement: 'W/min'
   - platform: mqtt
     name: "Kitchen Shelly Switch Plug Power"
-    state_topic: "shellies/shellyswitch25-00467D/relay/0/power"
+    state_topic: "shellies/shellyswitch25-98CDAC1ECBD4/relay/0/power"
     unit_of_measurement: 'W'
   - platform: mqtt
     name: "Kitchen Shelly Switch Overhead Light Energy"
-    state_topic: "shellies/shellyswitch25-00467D/relay/1/energy"
+    state_topic: "shellies/shellyswitch25-98CDAC1ECBD4/relay/1/energy"
     unit_of_measurement: 'W/min'
   - platform: mqtt
     name: "Kitchen Shelly Switch Overhead Light Power"
-    state_topic: "shellies/shellyswitch25-00467D/relay/1/power"
+    state_topic: "shellies/shellyswitch25-98CDAC1ECBD4/relay/1/power"
     unit_of_measurement: 'W'
   - platform: mqtt
     name: "Loggia Shelly Switch Temperature"

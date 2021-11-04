@@ -6,8 +6,8 @@
     payload_on: "on"
   - platform: mqtt
     name: "Kitchen Overhead Light"
-    state_topic: "shellies/shellyswitch25-00467D/relay/1"
-    command_topic: "shellies/shellyswitch25-00467D/relay/1/command"
+    state_topic: "shellies/shellyswitch25-98CDAC1ECBD4/relay/1"
+    command_topic: "shellies/shellyswitch25-98CDAC1ECBD4/relay/1/command"
     payload_off: "off"
     payload_on: "on"
   - platform: mqtt

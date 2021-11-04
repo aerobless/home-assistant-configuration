@@ -1263,9 +1263,45 @@
   name: Loggia
   entities:
     light.loggia_overhead_light:
+      supported_color_modes:
+      - onoff
       friendly_name: Loggia Overhead Light
       supported_features: 0
       state: 'off'
+    light.loggia_fairy_lights:
+      supported_color_modes:
+      - onoff
+      color_mode: onoff
+      friendly_name: Loggia Fairy Lights
+      icon: mdi:string-lights
+      supported_features: 0
+      state: 'on'
+    light.loggia_plant_spot:
+      min_mireds: 153
+      max_mireds: 500
+      effect_list:
+      - colorloop
+      supported_color_modes:
+      - color_temp
+      - hs
+      - xy
+      color_mode: xy
+      brightness: 254
+      hs_color:
+      - 41.429
+      - 82.353
+      rgb_color:
+      - 255
+      - 190
+      - 45
+      xy_color:
+      - 0.5197
+      - 0.4373
+      is_deconz_group: false
+      friendly_name: Loggia Plant Spot
+      icon: mdi:wall-sconce-round-variant
+      supported_features: 44
+      state: 'on'
   icon: mdi:torch
 - id: '1615577449885'
   name: Cyberpunk
