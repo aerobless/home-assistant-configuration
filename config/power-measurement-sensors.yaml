@@ -19,24 +19,9 @@
             friendly_name: "Total Power Usage W"
             icon_template: mdi:power-plug
             unit_of_measurement: "W"
-            value_template: "{{ ((states('sensor.living_room_shelly_switch_kitchen_table_power') | replace('unknown', '0') | round(2)) 
-            + (state_attr('switch.mystromclickandgrow3','current_power_w') | replace('None', '0') | round(2))
-            + (state_attr('switch.ebike_charger','current_power_w') | replace('None', '0') | round(2))
-            + (state_attr('switch.mystromkitchenfridgeoven','current_power_w') | replace('None', '0') | round(2)) 
-            + (state_attr('switch.mystromtvutilities','current_power_w') | replace('None', '0') | round(2))
-            + (state_attr('switch.mystromimac','current_power_w') | replace('None', '0') | round(2))
-            + (state_attr('switch.mystrom_washingmachine','current_power_w') | replace('None', '0') | round(2))
-            + (state_attr('switch.mystromservers','current_power_w') | replace('None', '0') | round(2))
-            + (state_attr('switch.mystrom_tumbler','current_power_w') | replace('None', '0') | round(2))
-            + (state_attr('switch.mystrom_dishwasher','current_power_w') | replace('None', '0') | round(2))
-            + (states('sensor.bedroom_shelly_switch_power') | replace('unknown', '0') | round(2)) 
-            + (states('sensor.entrance_shelly_switch_power') | replace('unknown', '0') | round(2)) 
-            + (states('sensor.loggia_shelly_switch_power') | replace('unknown', '0') | round(2)) 
-            + (states('sensor.kitchen_shelly_switch_overhead_light_power') | replace('unknown', '0') | round(2)) 
-            + (states('sensor.kitchen_shelly_switch_plug_power') | replace('unknown', '0') | round(2)) 
-            + (states('sensor.living_room_shelly_switch_kitchen_table_power') | replace('unknown', '0') | round(2))
-            + (states('sensor.living_room_shelly_switch_plug_power') | replace('unknown', '0') | round(2))
-            + (states('sensor.living_room_shelly_switch_tv_spot_power') | replace('unknown', '0') | round(2))
+            value_template: "{{ ((states('sensor.shelly3em_channel_a_power') | replace('unknown', '0') | round(2)) 
+            + (states('sensor.shelly3em_channel_b_power') | replace('unknown', '0') | round(2)) 
+            + (states('sensor.shelly3em_channel_c_power') | replace('unknown', '0') | round(2)) 
             )|round(2)}}"
         daily_energy_total:
             friendly_name: Daily Energy Total
