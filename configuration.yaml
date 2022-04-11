@@ -1,23 +1,20 @@
 homeassistant:
   customize: !include customize.yaml
 
+# Configures various services: updater, cloud, webhooks etc.
+# https://www.home-assistant.io/integrations/default_config/
 default_config:
-
-discovery:
-
-scene: !include scenes.yaml
 
 frontend:
   themes: !include_dir_merge_named themes
 
 ios:
 
+browser_mod:
+
 http:
   ssl_certificate: /ssl/fullchain.pem
   ssl_key: /ssl/privkey.pem
-  
-updater:
-  include_used_components: true # sends telemetry about component usage to HA devs
   
 recorder:
   db_url: !secret db_connection
@@ -60,6 +57,21 @@ sensor: # All sensors with multiple states
       - name
       - updatedAt
       - open
+  - platform: rest
+    name: Tumbler Power
+    resource: http://192.168.178.144/report
+    device_class: power
+    value_template: "{{ value_json.power }}"
+  - platform: rest
+    name: Washing Machine Power
+    resource: http://192.168.178.52/report
+    device_class: power
+    value_template: "{{ value_json.power }}"
+  - platform: rest
+    name: Dishwasher Power
+    resource: http://192.168.178.392/report
+    device_class: power
+    value_template: "{{ value_json.power }}"
   - platform: fitbit
     monitored_resources:
       - "body/weight"
@@ -112,7 +124,7 @@ binary_sensor: # All sensors with just two states (ON/OFF)
             delay_off: # Only switches states after new state existed for x minutes
                 minutes: 3
             icon_template: mdi:washing-machine
-            value_template: "{{ states.switch.mystrom_washingmachine.attributes.current_power_w | default(0) |float > 10}}"
+            value_template: "{{ sensor.washing_machine_power | default(0) |float > 10}}"
         tumbler_state:
             friendly_name: "Tumbler State"
             delay_on:
@@ -120,13 +132,13 @@ binary_sensor: # All sensors with just two states (ON/OFF)
             delay_off: # Only switches states after new state existed for x minutes
                 minutes: 3
             icon_template: mdi:washing-machine
-            value_template: "{{ states.switch.mystrom_tumbler.attributes.current_power_w | default(0) |float > 10}}"
+            value_template: "{{ sensor.tumbler_power | default(0) |float > 10}}"
         dishwasher_state:
             friendly_name: "Dishwasher State"
             delay_off: # Only switches states after new state existed for x minutes
                 minutes: 3
             icon_template: mdi:dishwasher
-            value_template: "{{ states.switch.mystrom_dishwasher.attributes.current_power_w | default(0) |float > 10}}"
+            value_template: "{{ sensor.dishwasher_power | default(0) |float > 10}}"
         entrance_logi_motion:
             friendly_name: "Entrance Motion"
             device_class: motion
@@ -199,7 +211,7 @@ switch:
           {% else %}
             mdi:television-off
           {% endif %}
-      vacuum_control:
+      vacuum_control: #Used for frontend vacuum button (on/off/settings)
         friendly_name: Vacuum Control
         value_template: "{{ is_state('vacuum.ghost', 'cleaning') }}"
         turn_on:
@@ -267,13 +279,6 @@ telegram_bot:
     allowed_chat_ids:
       - !secret telegram_chat_id
 
-device_tracker:
-  - platform: fritz
-    interval_seconds: 30
-    consider_home: 180
-    new_device_defaults:
-      track_new_devices: False
-
 utility_meter:
   daily_energy:
     source: sensor.apartment_energy_consumption
@@ -307,17 +312,16 @@ spotify:
   client_id: !secret spotify_client_id
   client_secret: !secret spotify_client_secret
 
-octoprint:
-  host: !secret octoprint_ip
-  api_key: !secret octoprint_api_key
-  name: Creality Ender 3 v2
-  bed: true
+#octoprint:
+#  host: !secret octoprint_ip
+#  api_key: !secret octoprint_api_key
+#  name: Creality Ender 3 v2
+#  bed: true
 
 # HACS integration: https://github.com/fondberg/spotcast
 spotcast:
   sp_dc: !secret spotcast_dc
   sp_key: !secret spotcast_key
-
 
 knx: !include config/knx.yaml
 media_player: !include config/media_player.yaml
@@ -329,3 +333,4 @@ influxdb: !include config/influx-db.yaml
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
+scene: !include scenes.yaml

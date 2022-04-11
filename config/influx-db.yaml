@@ -8,6 +8,7 @@ default_measurement: state
 include:
   entity_globs:
     - sensor.money_*
+    - sensor.influx_*
     - sensor.*_account
     - sensor.*_balance
     - sensor.*_credit_card

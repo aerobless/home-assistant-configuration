@@ -1,20 +1,20 @@
   - platform: template
     sensors:
-        washingmachine_power:
-            friendly_name: "Washing Machine Power"
-            icon_template: mdi:washing-machine
-            unit_of_measurement: "W"
-            value_template: "{{ states.switch.mystrom_washingmachine.attributes.current_power_w | default(0) }}"
-        tumbler_power:
-            friendly_name: "Tumbler Power"
-            icon_template: mdi:dishwasher
-            unit_of_measurement: "W"
-            value_template: "{{ states.switch.mystrom_tumbler.attributes.current_power_w | default(0) }}"
-        dishwasher_power:
-            friendly_name: "Dishwasher Power"
-            icon_template: mdi:dishwasher
-            unit_of_measurement: "W"
-            value_template: "{{ states.switch.mystrom_dishwasher.attributes.current_power_w | default(0) }}"
+        #washingmachine_power:
+        #    friendly_name: "Washing Machine Power"
+        #    icon_template: mdi:washing-machine
+        #    unit_of_measurement: "W"
+        #    value_template: "{{ states.switch.mystrom_washingmachine.attributes.current_power_w | default(0) }}"
+        #tumbler_power:
+        #    friendly_name: "Tumbler Power"
+        #    icon_template: mdi:dishwasher
+        #    unit_of_measurement: "W"
+        #    value_template: "{{ states.switch.mystrom_tumbler.attributes.current_power_w | default(0) }}"
+        #dishwasher_power:
+        #    friendly_name: "Dishwasher Power"
+        #    icon_template: mdi:dishwasher
+        #    unit_of_measurement: "W"
+        #    value_template: "{{ states.switch.mystrom_dishwasher.attributes.current_power_w | default(0) }}"
         total_power:
             friendly_name: "Total Power Usage W"
             icon_template: mdi:power-plug

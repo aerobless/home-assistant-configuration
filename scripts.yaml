@@ -50,11 +50,8 @@ reset_audio:
   icon: mdi:speaker-wireless
 lights_off:
   alias: Lights off
-  sequence:
-  - service: light.turn_off
-    data: {}
-    entity_id: all
-  mode: single
+  sequence: []
+  mode: restart
   icon: mdi:lightbulb-off-outline
 add_100kcals:
   alias: Add 100kcal
@@ -71,3 +68,8 @@ add_50kcal:
   sequence: []
   mode: single
   icon: mdi:food-apple
+sync_finances:
+  alias: Sync Finances
+  sequence: []
+  mode: single
+  icon: mdi:reload

@@ -10,11 +10,11 @@
   - platform: mystrom
     host: 192.168.178.65
     name: myStromClickAndGrow3
+  #- platform: mystrom
+  #  host: 192.168.178.68
+  #  name: myStromServers
   - platform: mystrom
-    host: 192.168.178.68
-    name: myStromServers
-  - platform: mystrom
-    host: 192.168.178.60
+    host: 192.168.178.144
     name: mystrom_tumbler
   - platform: mystrom
     host: 192.168.178.52
