@@ -1,20 +1,5 @@
   - platform: template
     sensors:
-        #washingmachine_power:
-        #    friendly_name: "Washing Machine Power"
-        #    icon_template: mdi:washing-machine
-        #    unit_of_measurement: "W"
-        #    value_template: "{{ states.switch.mystrom_washingmachine.attributes.current_power_w | default(0) }}"
-        #tumbler_power:
-        #    friendly_name: "Tumbler Power"
-        #    icon_template: mdi:dishwasher
-        #    unit_of_measurement: "W"
-        #    value_template: "{{ states.switch.mystrom_tumbler.attributes.current_power_w | default(0) }}"
-        #dishwasher_power:
-        #    friendly_name: "Dishwasher Power"
-        #    icon_template: mdi:dishwasher
-        #    unit_of_measurement: "W"
-        #    value_template: "{{ states.switch.mystrom_dishwasher.attributes.current_power_w | default(0) }}"
         total_power:
             friendly_name: "Total Power Usage W"
             icon_template: mdi:power-plug
@@ -27,12 +12,12 @@
             friendly_name: Daily Energy Total
             unit_of_measurement: kWh
             value_template: "{{ states('sensor.daily_energy_offpeak')|float + states('sensor.daily_energy_peak')|float }}"
-        # Tarif: ewz.natur -- Peak 26.18 Rp./kWh -- Offpeak 15.51 Rp./kWh (state 25.12.2020)
+        # Tarif: ewz.econatur -- Peak 26.44 Rp./kWh -- Offpeak 15.24 Rp./kWh (state 14.04.2022)
         # https://www.ewz.ch/de/private/strom/tarife/tarifuebersicht.html
         daily_energy_cost_total:
             friendly_name: Daily Energy Cost Total
             unit_of_measurement: CHF
-            value_template: "{{ ((states('sensor.daily_energy_offpeak')|float)*0.2618 + (states('sensor.daily_energy_peak')|float)*0.1551)| round(2) }}"
+            value_template: "{{ ((states('sensor.daily_energy_offpeak')|float)*0.2644 + (states('sensor.daily_energy_peak')|float)*0.1524)| round(2) }}"
   - platform: integration
     source: sensor.total_power
     name: Apartment Energy Consumption
