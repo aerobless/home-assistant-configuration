@@ -1,23 +1,19 @@
-  - platform: mqtt
-    name: "Bathroom Light"
+  - name: "Bathroom Light"
     state_topic: "shellies/shelly1-F4CFA2ED65C3/relay/0"
     command_topic: "shellies/shelly1-F4CFA2ED65C3/relay/0/command"
     payload_off: "off"
     payload_on: "on"
-  - platform: mqtt
-    name: "Kitchen Overhead Light"
+  - name: "Kitchen Overhead Light"
     state_topic: "shellies/shellyswitch25-98CDAC1ECBD4/relay/1"
     command_topic: "shellies/shellyswitch25-98CDAC1ECBD4/relay/1/command"
     payload_off: "off"
     payload_on: "on"
-  - platform: mqtt
-    name: "Pixar Shelly"
+  - name: "Pixar Shelly"
     state_topic: "shellies/shellyswitch25-686CEF/relay/1"
     command_topic: "shellies/shellyswitch25-686CEF/relay/1/command"
     payload_off: "off"
     payload_on: "on"
-  - platform: mqtt
-    name: "Loggia Overhead Light"
+  - name: "Loggia Overhead Light"
     state_topic: "shellies/shelly1pm-E5B612/relay/0"
     command_topic: "shellies/shelly1pm-E5B612/relay/0/command"
     payload_off: "off"

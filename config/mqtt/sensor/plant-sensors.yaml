@@ -1,175 +1,140 @@
-  - platform: mqtt
-    name: citrus_limon_moisture
+  - name: citrus_limon_moisture
     state_topic: homeassistant/sensors/plants/citrus_limon/
     value_template: '{{ value_json.moisture | int }}'
     unit_of_measurement: '%'
-  - platform: mqtt
-    name: citrus_limon_battery
+  - name: citrus_limon_battery
     state_topic: homeassistant/sensors/plants/citrus_limon/
     value_template: '{{ value_json.battery | int }}'
     unit_of_measurement: '%'
-  - platform: mqtt
-    name: citrus_limon_temperature
+  - name: citrus_limon_temperature
     state_topic: homeassistant/sensors/plants/citrus_limon/
     value_template: '{{ value_json.temperature | float }}'
     unit_of_measurement: '°C'
-  - platform: mqtt
-    name: citrus_limon_conductivity
+  - name: citrus_limon_conductivity
     state_topic: homeassistant/sensors/plants/citrus_limon/
     value_template: '{{ value_json.conductivity | int }}'
     unit_of_measurement: 'µS/cm'
-  - platform: mqtt
-    name: citrus_limon_brightness
+  - name: citrus_limon_brightness
     state_topic: homeassistant/sensors/plants/citrus_limon/
     value_template: '{{ value_json.brightness | int }}'
     unit_of_measurement: 'Lux'
-  - platform: mqtt
-    name: dypsis_lutescens_moisture
+  - name: dypsis_lutescens_moisture
     state_topic: homeassistant/sensors/plants/dypsis_lutescens/
     value_template: '{{ value_json.moisture | int }}'
     unit_of_measurement: '%'
-  - platform: mqtt
-    name: dypsis_lutescens_battery
+  - name: dypsis_lutescens_battery
     state_topic: homeassistant/sensors/plants/dypsis_lutescens/
     value_template: '{{ value_json.battery | int }}'
     unit_of_measurement: '%'
-  - platform: mqtt
-    name: dypsis_lutescens_temperature
+  - name: dypsis_lutescens_temperature
     state_topic: homeassistant/sensors/plants/dypsis_lutescens/
     value_template: '{{ value_json.temperature | float }}'
     unit_of_measurement: '°C'
-  - platform: mqtt
-    name: dypsis_lutescens_conductivity
+  - name: dypsis_lutescens_conductivity
     state_topic: homeassistant/sensors/plants/dypsis_lutescens/
     value_template: '{{ value_json.conductivity | int }}'
     unit_of_measurement: 'µS/cm'
-  - platform: mqtt
-    name: dypsis_lutescens_brightness
+  - name: dypsis_lutescens_brightness
     state_topic: homeassistant/sensors/plants/dypsis_lutescens/
     value_template: '{{ value_json.brightness | int }}'
     unit_of_measurement: 'Lux'
-  - platform: mqtt
-    name: spathiphyllum_kochii_moisture
+  - name: spathiphyllum_kochii_moisture
     state_topic: homeassistant/sensors/plants/spathiphyllum_kochii/
     value_template: '{{ value_json.moisture | int }}'
     unit_of_measurement: '%'
-  - platform: mqtt
-    name: spathiphyllum_kochii_battery
+  - name: spathiphyllum_kochii_battery
     state_topic: homeassistant/sensors/plants/spathiphyllum_kochii/
     value_template: '{{ value_json.battery | int }}'
     unit_of_measurement: '%'
-  - platform: mqtt
-    name: spathiphyllum_kochii_temperature
+  - name: spathiphyllum_kochii_temperature
     state_topic: homeassistant/sensors/plants/spathiphyllum_kochii/
     value_template: '{{ value_json.temperature | float }}'
     unit_of_measurement: '°C'
-  - platform: mqtt
-    name: spathiphyllum_kochii_conductivity
+  - name: spathiphyllum_kochii_conductivity
     state_topic: homeassistant/sensors/plants/spathiphyllum_kochii/
     value_template: '{{ value_json.conductivity | int }}'
     unit_of_measurement: 'µS/cm'
-  - platform: mqtt
-    name: spathiphyllum_kochii_brightness
+  - name: spathiphyllum_kochii_brightness
     state_topic: homeassistant/sensors/plants/spathiphyllum_kochii/
     value_template: '{{ value_json.brightness | int }}'
     unit_of_measurement: 'Lux'
-  - platform: mqtt
-    name: musa_acuminata_moisture
+  - name: musa_acuminata_moisture
     state_topic: homeassistant/sensors/plants/musa_acuminata/
     value_template: '{{ value_json.moisture | int }}'
     unit_of_measurement: '%'
-  - platform: mqtt
-    name: musa_acuminata_battery
+  - name: musa_acuminata_battery
     state_topic: homeassistant/sensors/plants/musa_acuminata/
     value_template: '{{ value_json.battery | int }}'
     unit_of_measurement: '%'
-  - platform: mqtt
-    name: musa_acuminata_temperature
+  - name: musa_acuminata_temperature
     state_topic: homeassistant/sensors/plants/musa_acuminata/
     value_template: '{{ value_json.temperature | float }}'
     unit_of_measurement: '°C'
-  - platform: mqtt
-    name: musa_acuminata_conductivity
+  - name: musa_acuminata_conductivity
     state_topic: homeassistant/sensors/plants/musa_acuminata/
     value_template: '{{ value_json.conductivity | int }}'
     unit_of_measurement: 'µS/cm'
-  - platform: mqtt
-    name: musa_acuminata_brightness
+  - name: musa_acuminata_brightness
     state_topic: homeassistant/sensors/plants/musa_acuminata/
     value_template: '{{ value_json.brightness | int }}'
     unit_of_measurement: 'Lux'
-  - platform: mqtt
-    name: ficus_benjamina_moisture
+  - name: ficus_benjamina_moisture
     state_topic: homeassistant/sensors/plants/ficus_benjamina/
     value_template: '{{ value_json.moisture | int }}'
     unit_of_measurement: '%'
-  - platform: mqtt
-    name: ficus_benjamina_battery
+  - name: ficus_benjamina_battery
     state_topic: homeassistant/sensors/plants/ficus_benjamina/
     value_template: '{{ value_json.battery | int }}'
     unit_of_measurement: '%'
-  - platform: mqtt
-    name: ficus_benjamina_temperature
+  - name: ficus_benjamina_temperature
     state_topic: homeassistant/sensors/plants/ficus_benjamina/
     value_template: '{{ value_json.temperature | float }}'
     unit_of_measurement: '°C'
-  - platform: mqtt
-    name: ficus_benjamina_conductivity
+  - name: ficus_benjamina_conductivity
     state_topic: homeassistant/sensors/plants/ficus_benjamina/
     value_template: '{{ value_json.conductivity | int }}'
     unit_of_measurement: 'µS/cm'
-  - platform: mqtt
-    name: ficus_benjamina_brightness
+  - name: ficus_benjamina_brightness
     state_topic: homeassistant/sensors/plants/ficus_benjamina/
     value_template: '{{ value_json.brightness | int }}'
     unit_of_measurement: 'Lux'
-  - platform: mqtt
-    name: cocos_nucifera_moisture
+  - name: cocos_nucifera_moisture
     state_topic: homeassistant/sensors/plants/cocos_nucifera/
     value_template: '{{ value_json.moisture | int }}'
     unit_of_measurement: '%'
-  - platform: mqtt
-    name: cocos_nucifera_battery
+  - name: cocos_nucifera_battery
     state_topic: homeassistant/sensors/plants/cocos_nucifera/
     value_template: '{{ value_json.battery | int }}'
     unit_of_measurement: '%'
-  - platform: mqtt
-    name: cocos_nucifera_temperature
+  - name: cocos_nucifera_temperature
     state_topic: homeassistant/sensors/plants/cocos_nucifera/
     value_template: '{{ value_json.temperature | float }}'
     unit_of_measurement: '°C'
-  - platform: mqtt
-    name: cocos_nucifera_conductivity
+  - name: cocos_nucifera_conductivity
     state_topic: homeassistant/sensors/plants/cocos_nucifera/
     value_template: '{{ value_json.conductivity | int }}'
     unit_of_measurement: 'µS/cm'
-  - platform: mqtt
-    name: cocos_nucifera_brightness
+  - name: cocos_nucifera_brightness
     state_topic: homeassistant/sensors/plants/cocos_nucifera/
     value_template: '{{ value_json.brightness | int }}'
     unit_of_measurement: 'Lux'
-  - platform: mqtt
-    name: tradescantia_spathacea_moisture
+  - name: tradescantia_spathacea_moisture
     state_topic: homeassistant/sensors/plants/tradescantia_spathacea/
     value_template: '{{ value_json.moisture | int }}'
     unit_of_measurement: '%'
-  - platform: mqtt
-    name: tradescantia_spathacea_battery
+  - name: tradescantia_spathacea_battery
     state_topic: homeassistant/sensors/plants/tradescantia_spathacea/
     value_template: '{{ value_json.battery | int }}'
     unit_of_measurement: '%'
-  - platform: mqtt
-    name: tradescantia_spathacea_temperature
+  - name: tradescantia_spathacea_temperature
     state_topic: homeassistant/sensors/plants/tradescantia_spathacea/
     value_template: '{{ value_json.temperature | float }}'
     unit_of_measurement: '°C'
-  - platform: mqtt
-    name: tradescantia_spathacea_conductivity
+  - name: tradescantia_spathacea_conductivity
     state_topic: homeassistant/sensors/plants/tradescantia_spathacea/
     value_template: '{{ value_json.conductivity | int }}'
     unit_of_measurement: 'µS/cm'
-  - platform: mqtt
-    name: tradescantia_spathacea_brightness
+  - name: tradescantia_spathacea_brightness
     state_topic: homeassistant/sensors/plants/tradescantia_spathacea/
     value_template: '{{ value_json.brightness | int }}'
     unit_of_measurement: 'Lux'

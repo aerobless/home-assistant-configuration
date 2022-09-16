@@ -53,3 +53,4 @@ include:
     - switch.aircon_power_on_off
     - sensor.swissquote_performance
     - sensor.swissquote_profit_percentage
+    - sensor.experience_points

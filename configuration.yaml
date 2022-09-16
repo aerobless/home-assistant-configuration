@@ -72,6 +72,16 @@ sensor: # All sensors with multiple states
     resource: http://192.168.178.392/report
     device_class: power
     value_template: "{{ value_json.power }}"
+  - platform: rest
+    name: Office Power
+    resource: http://192.168.178.37/report
+    device_class: power
+    value_template: "{{ value_json.power }}"
+  - platform: rest
+    name: TV Utilities Power
+    resource: http://192.168.178.40/report
+    device_class: power
+    value_template: "{{ value_json.power }}"
   - platform: fitbit
     monitored_resources:
       - "body/weight"
@@ -90,10 +100,19 @@ sensor: # All sensors with multiple states
     senders:
       - noreply-alerting@ubs.com
       - !secret gmail_user
-  
-sensor plant: !include config/mqtt/plant-sensors.yaml
-sensor shelly: !include config/mqtt/shelly-switch-sensors.yaml
+
 sensor power: !include config/power-measurement-sensors.yaml
+
+mqtt:
+  sensor: !include_dir_merge_list  config/mqtt/sensor
+  light: !include config/mqtt/shelly-lights.yaml
+  binary_sensor: !include config/mqtt/shelly-light-switches.yaml
+  switch:
+    - name: "Kitchen Plug"
+      state_topic: "shellies/shellyswitch25-98CDAC1ECBD4/relay/0"
+      command_topic: "shellies/shellyswitch25-98CDAC1ECBD4/relay/0/command"
+      payload_off: "off"
+      payload_on: "on"
 
 rest_command:
   get_plantgateway_status:
@@ -124,7 +143,7 @@ binary_sensor: # All sensors with just two states (ON/OFF)
             delay_off: # Only switches states after new state existed for x minutes
                 minutes: 3
             icon_template: mdi:washing-machine
-            value_template: "{{ sensor.washing_machine_power | default(0) |float > 10}}"
+            value_template: "{{ states('sensor.washing_machine_power') | default(0) |float > 10}}"
         tumbler_state:
             friendly_name: "Tumbler State"
             delay_on:
@@ -132,13 +151,13 @@ binary_sensor: # All sensors with just two states (ON/OFF)
             delay_off: # Only switches states after new state existed for x minutes
                 minutes: 3
             icon_template: mdi:washing-machine
-            value_template: "{{ sensor.tumbler_power | default(0) |float > 10}}"
+            value_template: "{{ states('sensor.tumbler_power') | default(0) |float > 10}}"
         dishwasher_state:
             friendly_name: "Dishwasher State"
             delay_off: # Only switches states after new state existed for x minutes
                 minutes: 3
             icon_template: mdi:dishwasher
-            value_template: "{{ sensor.dishwasher_power | default(0) |float > 10}}"
+            value_template: "{{ states('sensor.dishwasher_power') | default(0) |float > 10}}"
         entrance_logi_motion:
             friendly_name: "Entrance Motion"
             device_class: motion
@@ -165,8 +184,6 @@ binary_sensor: # All sensors with just two states (ON/OFF)
             icon_template: mdi:bed-empty
             value_template: "{{ is_state('input_boolean.bed_occupied_input', 'on') }}"
 
-binary_sensor shelly-light-switches: !include config/mqtt/shelly-light-switches.yaml
-
 tts: !include config/tts-configuration.yaml
 
 light:
@@ -177,7 +194,6 @@ light:
     name: Loggia Fairy Lights
     entity_id: switch.loggia_fairy_lights
 
-light shelly: !include config/mqtt/shelly-lights.yaml
 light groups: !include config/light-groups.yaml
     
 ifttt:
@@ -186,12 +202,6 @@ ifttt:
 cloud:
 
 switch:
-  - platform: mqtt
-    name: "Kitchen Plug"
-    state_topic: "shellies/shellyswitch25-98CDAC1ECBD4/relay/0"
-    command_topic: "shellies/shellyswitch25-98CDAC1ECBD4/relay/0/command"
-    payload_off: "off"
-    payload_on: "on"
   - platform: template
     switches:
       samsung_tv:
@@ -213,13 +223,13 @@ switch:
           {% endif %}
       vacuum_control: #Used for frontend vacuum button (on/off/settings)
         friendly_name: Vacuum Control
-        value_template: "{{ is_state('vacuum.ghost', 'cleaning') }}"
+        value_template: "{{ is_state('vacuum.roborock_s7', 'cleaning') }}"
         turn_on:
           service: vacuum.start
-          entity_id: vacuum.ghost
+          entity_id: vacuum.roborock_s7
         turn_off:
           service: vacuum.return_to_base
-          entity_id: vacuum.ghost
+          entity_id: vacuum.roborock_s7
       music_control:
         friendly_name: Music Control
         value_template: "{{ is_state('media_player.everywhere', 'playing') }}"
@@ -307,10 +317,6 @@ notify:
     platform: group
     services:
       - service: mobile_app_theos_iphone_11
-
-spotify:
-  client_id: !secret spotify_client_id
-  client_secret: !secret spotify_client_secret
 
 #octoprint:
 #  host: !secret octoprint_ip

@@ -1,0 +1,95 @@
+- name: "Bedroom Shelly Switch Temperature"
+  state_topic: "shellies/shelly1pm-005D54/temperature"
+  unit_of_measurement: '°C'
+
+- name: "Bedroom Shelly Switch Energy"
+  state_topic: "shellies/shelly1pm-005D54/relay/0/energy"
+  unit_of_measurement: 'W/min'
+
+- name: "Bedroom Shelly Switch Power"
+  state_topic: "shellies/shelly1pm-005D54/relay/0/power"
+  unit_of_measurement: 'W'
+
+- name: "Entrance Shelly Switch Temperature"
+  state_topic: "shellies/shelly1pm-E67762/temperature"
+  unit_of_measurement: '°C'
+
+- name: "Entrance Shelly Switch Energy"
+  state_topic: "shellies/shelly1pm-E67762/relay/0/energy"
+  unit_of_measurement: 'W/min'
+
+- name: "Entrance Shelly Switch Power"
+  state_topic: "shellies/shelly1pm-E67762/relay/0/power"
+  unit_of_measurement: 'W'
+
+- name: "Living Room Shelly Switch 1 Temperature"
+  state_topic: "shellies/shellyswitch25-68C63AF92D54/temperature"
+  unit_of_measurement: '°C'
+
+- name: "Living Room Shelly Switch TV Spot Energy"
+  state_topic: "shellies/shellyswitch25-68C63AF92D54/relay/0/energy"
+  unit_of_measurement: 'W/min'
+
+- name: "Living Room Shelly Switch TV Spot Power"
+  state_topic: "shellies/shellyswitch25-68C63AF92D54/relay/0/power"
+  unit_of_measurement: 'W'
+
+- name: "Living Room Shelly Switch Kitchen Table Energy"
+  state_topic: "shellies/shellyswitch25-68C63AF92D54/relay/1/energy"
+  unit_of_measurement: 'W/min'
+
+- name: "Living Room Shelly Switch Kitchen Table Power"
+  state_topic: "shellies/shellyswitch25-68C63AF92D54/relay/1/power"
+  unit_of_measurement: 'W'
+
+- name: "Living Room Shelly Switch 2 Temperature"
+  state_topic: "shellies/shellyswitch25-686CEF/temperature"
+  unit_of_measurement: '°C'
+
+- name: "Living Room Shelly Switch Plug Energy"
+  state_topic: "shellies/shellyswitch25-686CEF/relay/1/energy"
+  unit_of_measurement: 'W/min'
+
+- name: "Living Room Shelly Switch Plug Power"
+  state_topic: "shellies/shellyswitch25-686CEF/relay/1/power"
+  unit_of_measurement: 'W'
+
+- name: "Kitchen Shelly Switch Temperature"
+  state_topic: "shellies/shellyswitch25-98CDAC1ECBD4/temperature"
+  unit_of_measurement: '°C'
+
+- name: "Kitchen Shelly Switch Plug Energy"
+  state_topic: "shellies/shellyswitch25-98CDAC1ECBD4/relay/0/energy"
+  unit_of_measurement: 'W/min'
+
+- name: "Kitchen Shelly Switch Plug Power"
+  state_topic: "shellies/shellyswitch25-98CDAC1ECBD4/relay/0/power"
+  unit_of_measurement: 'W'
+
+- name: "Kitchen Shelly Switch Overhead Light Energy"
+  state_topic: "shellies/shellyswitch25-98CDAC1ECBD4/relay/1/energy"
+  unit_of_measurement: 'W/min'
+
+- name: "Kitchen Shelly Switch Overhead Light Power"
+  state_topic: "shellies/shellyswitch25-98CDAC1ECBD4/relay/1/power"
+  unit_of_measurement: 'W'
+
+- name: "Loggia Shelly Switch Temperature"
+  state_topic: "shellies/shelly1pm-E5B612/temperature"
+  unit_of_measurement: '°C'
+
+- name: "Loggia Shelly Switch Energy"
+  state_topic: "shellies/shelly1pm-E5B612/relay/0/energy"
+  unit_of_measurement: 'W/min'
+
+- name: "Loggia Shelly Switch Power"
+  state_topic: "shellies/shelly1pm-E5B612/relay/0/power"
+  unit_of_measurement: 'W'
+
+- name: "Loggia Shelly HT Temperature"
+  state_topic: "shellies/shellyht-AC25F5/sensor/temperature"
+  unit_of_measurement: 'C°'
+
+- name: "Loggia Shelly HT Humidity"
+  state_topic: "shellies/shellyht-AC25F5/sensor/humidity"
+  unit_of_measurement: '%'
