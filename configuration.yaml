@@ -273,15 +273,6 @@ input_datetime:
     name: Weekend Alarm
     has_date: false
     has_time: true
-
-#calendar:
-#  - platform: todoist
-#    token: !secret todoist_api_token
-#    custom_projects:
-#        - name: 'Due Today'
-#          due_date_days: 1
-#        - name: 'Due This Week'
-#          due_date_days: 7
     
 telegram_bot:
   - platform: broadcast
