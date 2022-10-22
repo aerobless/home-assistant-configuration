@@ -18,3 +18,25 @@
   - service: input_boolean.turn_off
     data:
       entity_id: input_boolean.play_energy_zurich_everywhere
+- id: '1665595395896'
+  alias: Turn lights off when it's bright outside
+  description: ''
+  trigger:
+  - platform: sun
+    event: sunrise
+    offset: 00:50
+  condition:
+  - condition: state
+    entity_id: weather.dark_sky
+    state: clear-night
+  action:
+  - service: light.turn_off
+    data: {}
+    target:
+      area_id:
+      - 7fbcb16a73504d41a2e21a66bc6b425a
+      - dda5eecbe02041cc9604f7f238d33cdb
+      - 5ded8f5066b84088845f6ca7b02c4f3b
+      - 20abfdaf54874e2ca6c26c5264f60816
+      - dfd5dc1121b74e9c999682e794bc6cbe
+  mode: single

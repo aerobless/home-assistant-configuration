@@ -1,54 +1,57 @@
-  - platform: generic
-    name: Zurich Uetliberg
-    still_image_url: https://backend.roundshot.com/cams/78/
   - platform: proxy
-    entity_id: camera.zurich_uetliberg
+    entity_id: camera.zurich_uetliberg_full
     name: Zurich Uetliberg West
     mode: crop
     max_image_width: 1700
     max_image_height: 1700
+    max_stream_width: 1700
+    max_stream_height: 1700
     image_top: 348
     image_left: 1200
     image_refresh_rate: 120.0
     cache_images: true
+    force_resize: true
   - platform: proxy
-    entity_id: camera.zurich_uetliberg
+    entity_id: camera.zurich_uetliberg_full
     name: Zurich Uetliberg See
     mode: crop
     max_image_width: 4000
     max_image_height: 1700
+    max_stream_width: 4000
+    max_stream_height: 1700
     image_left: 4500
     image_top: 348
     image_refresh_rate: 120.0
     cache_images: true
-  - platform: generic
-    name: Zurich Stadthaus
-    still_image_url: https://backend.roundshot.com/cams/86/
+    force_resize: true
   - platform: proxy
-    entity_id: camera.zurich_stadthaus
+    entity_id: camera.zurich_stadthaus_full
     name: Zurich Stadthaus Grossmünster
     mode: crop
     max_image_width: 2048
     max_image_height: 2048
+    max_stream_width: 2048
+    max_stream_height: 2048
     image_left: 1900
     image_top: 0
     image_refresh_rate: 120.0
     cache_images: true
+    force_resize: true
   - platform: proxy
-    entity_id: camera.zurich_stadthaus
+    entity_id: camera.zurich_stadthaus_full
     name: Zurich Stadthaus Seepromenade
     mode: crop
     max_image_width: 2048
     max_image_height: 2048
+    max_stream_width: 2048
+    max_stream_height: 2048
     image_left: 4000
     image_top: 0
     image_refresh_rate: 120.0
     cache_images: true
-  - platform: generic
-    name: Zurich West
-    still_image_url: https://backend.roundshot.com/cams/85/
+    force_resize: true
   - platform: proxy
-    entity_id: camera.zurich_west
+    entity_id: camera.zurich_west_full
     name: Zurich West Landesmuseum
     mode: crop
     max_image_width: 2048
@@ -57,36 +60,69 @@
     image_top: 0
     image_refresh_rate: 120.0
     cache_images: true
+    force_resize: true
   - platform: proxy
-    entity_id: camera.zurich_west
+    entity_id: camera.zurich_west_full
     name: Zurich West Limmat
     mode: crop
     max_image_width: 2048
     max_image_height: 2048
+    max_stream_width: 2048
+    max_stream_height: 2048
     image_left: 6700
     image_top: 0
     image_refresh_rate: 120.0
     cache_images: true
-  - platform: generic
-    name: Zurich NZZ
-    still_image_url: https://backend.roundshot.com/cams/66/
+    force_resize: true
   - platform: proxy
-    entity_id: camera.zurich_nzz
+    entity_id: camera.zurich_nzz_full
     name: Zurich NZZ Sechseleutenplatz
     mode: crop
     max_image_width: 1800
     max_image_height: 1800
+    max_stream_width: 1800
+    max_stream_height: 1800
     image_left: 4100
     image_top: 248
     image_refresh_rate: 120.0
     cache_images: true
+    force_resize: true
   - platform: proxy
-    entity_id: camera.zurich_nzz
+    entity_id: camera.zurich_nzz_full
     name: Zurich NZZ Kino
     mode: crop
     max_image_width: 2048
     max_image_height: 2048
+    max_stream_width: 2048
+    max_stream_height: 2048
     image_left: 7200
     image_top: 0
     image_refresh_rate: 120.0
     cache_images: true
+    force_resize: true
+  - platform: proxy
+    entity_id: camera.zurich_storchen_full
+    name: Zurich Ratshausbrücke
+    mode: crop
+    max_image_width: 2048
+    max_image_height: 2048
+    max_stream_width: 2048
+    max_stream_height: 2048
+    image_left: 1600
+    image_top: 0
+    image_refresh_rate: 120.0
+    cache_images: true
+    force_resize: true
+  - platform: proxy
+    entity_id: camera.zurich_storchen_full
+    name: Zurich Grossmünster Fern
+    mode: crop
+    max_image_width: 2048
+    max_image_height: 2048
+    max_stream_width: 2048
+    max_stream_height: 2048
+    image_left: 3648
+    image_top: 0
+    image_refresh_rate: 120.0
+    cache_images: true
+    force_resize: true

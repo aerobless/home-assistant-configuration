@@ -38,7 +38,6 @@ include:
     - input_datetime.weekend_alarm
     - input_datetime.work_week_alarm
     - vacuum.ghost
-    - weather.dark_sky
     - sensor.loggia_humidity
     - sensor.bathroom_humidity
     - sensor.office_humidity
@@ -54,3 +53,9 @@ include:
     - sensor.swissquote_performance
     - sensor.swissquote_profit_percentage
     - sensor.experience_points
+    - sensor.openweathermap_humidity
+    - sensor.openweathermap_feels_like_temperature
+    - sensor.openweathermap_temperature
+    - sensor.openweathermap_snow
+    - sensor.openweathermap_rain
+    - sensor.openweathermap_wind_speed
