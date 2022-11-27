@@ -309,11 +309,17 @@ notify:
     services:
       - service: mobile_app_theos_iphone_11
 
-#octoprint:
-#  host: !secret octoprint_ip
-#  api_key: !secret octoprint_api_key
-#  name: Creality Ender 3 v2
-#  bed: true
+template:
+  - sensor:
+      - name: "Sun Daylight"
+        unit_of_measurement: "h"
+        state: >
+          {% set nr = as_timestamp(state_attr('sun.sun','next_rising')) %}
+          {% set ns = as_timestamp(state_attr('sun.sun','next_setting')) %}
+          {% if nr > ns %}
+            {% set nr = nr - 60*60*24 %}
+          {% endif %}
+          {{ (ns - nr) / (60*60) }}
 
 # HACS integration: https://github.com/fondberg/spotcast
 spotcast:

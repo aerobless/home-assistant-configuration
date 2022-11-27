@@ -40,3 +40,72 @@
       - 20abfdaf54874e2ca6c26c5264f60816
       - dfd5dc1121b74e9c999682e794bc6cbe
   mode: single
+- id: '1667820246103'
+  alias: Toothbrush Announcement
+  description: Announces when teeth are brushed
+  trigger:
+  - platform: state
+    entity_id:
+    - sensor.smart_series_9000_782c_toothbrush_state
+    to: running
+    for:
+      hours: 0
+      minutes: 2
+      seconds: 0
+  condition: []
+  action:
+  - service: tts.cloud_say
+    data:
+      entity_id: media_player.bathroom
+      message: Teeth brushing done!
+  mode: single
+- id: '1668343727944'
+  alias: Dehumidify at night (03:00 - 05:25)
+  description: ''
+  trigger:
+  - platform: time
+    at: 03:00:00
+  - platform: time
+    at: 05:25:00
+  condition: []
+  action:
+  - if:
+    - condition: time
+      before: 05:00:00
+      after: '22:00:00'
+      weekday:
+      - sun
+      - mon
+      - tue
+      - wed
+      - thu
+      - fri
+      - sat
+    then:
+    - service: switch.turn_on
+      data: {}
+      target:
+        entity_id: switch.mystromservers
+    else:
+    - service: switch.turn_off
+      data: {}
+      target:
+        entity_id: switch.mystromservers
+  mode: single
+- id: '1668943375956'
+  alias: Turn on bar lights after sunset
+  description: Turns on the bar lights 30min after sunset and when I'm home.
+  trigger:
+  - platform: sun
+    event: sunset
+    offset: 00:30
+  condition:
+  - condition: state
+    entity_id: person.theo_winter
+    state: home
+  action:
+  - service: light.turn_on
+    data: {}
+    target:
+      entity_id: light.bar_lights
+  mode: single

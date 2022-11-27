@@ -59,3 +59,4 @@ include:
     - sensor.openweathermap_snow
     - sensor.openweathermap_rain
     - sensor.openweathermap_wind_speed
+    - sensor.sun_daylight
