@@ -89,7 +89,11 @@
 - name: "Loggia Shelly HT Temperature"
   state_topic: "shellies/shellyht-AC25F5/sensor/temperature"
   unit_of_measurement: 'C°'
+  device_class: temperature
+  state_class: measurement
 
 - name: "Loggia Shelly HT Humidity"
   state_topic: "shellies/shellyht-AC25F5/sensor/humidity"
   unit_of_measurement: '%'
+  device_class: humidity
+  state_class: measurement
