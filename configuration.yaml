@@ -107,12 +107,7 @@ mqtt:
   sensor: !include_dir_merge_list  config/mqtt/sensor
   light: !include config/mqtt/shelly-lights.yaml
   binary_sensor: !include config/mqtt/shelly-light-switches.yaml
-  switch:
-    - name: "Kitchen Plug"
-      state_topic: "shellies/shellyswitch25-98CDAC1ECBD4/relay/0"
-      command_topic: "shellies/shellyswitch25-98CDAC1ECBD4/relay/0/command"
-      payload_off: "off"
-      payload_on: "on"
+  switch: !include config/mqtt/shelly-switches.yaml
 
 rest_command:
   get_plantgateway_status:
