@@ -109,20 +109,6 @@ mqtt:
   binary_sensor: !include config/mqtt/shelly-light-switches.yaml
   switch: !include config/mqtt/shelly-switches.yaml
 
-rest_command:
-  get_plantgateway_status:
-    url: https://192.168.178.63:8000
-    method: GET
-    verify_ssl: false
-    username: !secret plant_gateway_username
-    password: !secret plant_gateway_password
-  print_shopping_list:
-    url: https://192.168.178.57:8000
-    method: POST
-    verify_ssl: false
-    username: !secret thermalprinter_username
-    password: !secret thermalprinter_password
-
 binary_sensor: # All sensors with just two states (ON/OFF)
   - platform: ping
     host: !secret samsung_tv_ip
@@ -324,7 +310,6 @@ spotcast:
 knx: !include config/knx.yaml
 media_player: !include config/media_player.yaml
 homekit: !include config/homekit.yaml
-plant: !include config/plant.yaml
 camera: !include config/camera.yaml
 influxdb: !include config/influx-db.yaml
 
