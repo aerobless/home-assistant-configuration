@@ -149,8 +149,6 @@ binary_sensor: # All sensors with just two states (ON/OFF)
             icon_template: mdi:bed-empty
             value_template: "{{ is_state('input_boolean.bed_occupied_input', 'on') }}"
 
-tts: !include config/tts-configuration.yaml
-
 light:
   - platform: nanoleaf
     host: !secret nanoleaf_ip
