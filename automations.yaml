@@ -110,8 +110,8 @@
       entity_id: light.bar_lights
   mode: single
 - id: '1669748575150'
-  alias: Xiaomi G10 Vacuum Charger - OFF after 30min
-  description: Turns the vacuum charging station off after 30min to prevent the battery
+  alias: Xiaomi G10 Vacuum Charger - OFF after 1h
+  description: Turns the vacuum charging station off after 1h to prevent the battery
     from going bad from continuous charging.
   trigger:
   - platform: state
@@ -120,8 +120,8 @@
     from: 'off'
     to: 'on'
     for:
-      hours: 0
-      minutes: 30
+      hours: 1
+      minutes: 0
       seconds: 0
   condition: []
   action:

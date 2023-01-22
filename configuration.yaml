@@ -90,24 +90,8 @@ sensor: # All sensors with multiple states
     api_key: !secret last_fm_api_key
     users:
       - aerobless
-  - platform: imap_email_content
-    server: imap.gmail.com
-    name: banking_email
-    port: 993
-    username: !secret gmail_user
-    password: !secret gmail_password
-    folder: UBS
-    senders:
-      - noreply-alerting@ubs.com
-      - !secret gmail_user
 
 sensor power: !include config/power-measurement-sensors.yaml
-
-mqtt:
-  sensor: !include_dir_merge_list  config/mqtt/sensor
-  light: !include config/mqtt/shelly-lights.yaml
-  binary_sensor: !include config/mqtt/shelly-light-switches.yaml
-  switch: !include config/mqtt/shelly-switches.yaml
 
 binary_sensor: # All sensors with just two states (ON/OFF)
   - platform: ping
