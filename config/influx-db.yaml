@@ -14,6 +14,7 @@ include:
     - sensor.*_credit_card
     - sensor.eod_energy_*
     - sensor.health_*
+    - sensor.yahoofinance_*
   entities:
     - sensor.migros_fitnesspark_puls_5
     - sensor.networth

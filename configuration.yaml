@@ -59,7 +59,7 @@ sensor: # All sensors with multiple states
       - open
   - platform: rest
     name: Tumbler Power
-    resource: http://192.168.178.144/report
+    resource: http://192.168.178.160/report
     device_class: power
     value_template: "{{ value_json.power }}"
   - platform: rest
@@ -69,7 +69,7 @@ sensor: # All sensors with multiple states
     value_template: "{{ value_json.power }}"
   - platform: rest
     name: Dishwasher Power
-    resource: http://192.168.178.392/report
+    resource: http://192.168.178.39/report
     device_class: power
     value_template: "{{ value_json.power }}"
   - platform: rest
@@ -165,6 +165,10 @@ ifttt:
 cloud:
 
 switch:
+  - platform: wake_on_lan
+    mac: !secret omen_pc_mac_address
+    name: Omen Gaming PC
+    host: !secret omen_pc_ip_address
   - platform: template
     switches:
       samsung_tv:
@@ -265,6 +269,14 @@ weather:
 netatmo:
   client_id: !secret netatmo_client_id
   client_secret: !secret netatmo_client_secret
+
+yahoofinance:
+  symbols:
+    - VOO
+    - VXUS
+    - AVUV
+    - RKLB
+    - CHFUSD=X
 
 notify:
   - name: notify_all

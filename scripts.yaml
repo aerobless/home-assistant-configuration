@@ -73,3 +73,21 @@ sync_finances:
   sequence: []
   mode: single
   icon: mdi:reload
+turn_on_omen_gaming_pc:
+  alias: Turn on Omen Gaming PC
+  sequence:
+  - service: input_boolean.turn_off
+    data: {}
+    target:
+      entity_id: input_boolean.energy_save_mode
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 10
+      milliseconds: 0
+  - service: switch.turn_on
+    data: {}
+    target:
+      entity_id: switch.wake_on_lan
+  mode: single
+  icon: mdi:desktop-classic
