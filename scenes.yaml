@@ -634,55 +634,70 @@
   name: Cinema
   entities:
     light.bedroom_light_group:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
       min_mireds: 153
       max_mireds: 500
       effect_list:
       - colorloop
+      supported_color_modes:
+      - color_temp
+      - hs
+      - xy
       entity_id:
       - light.bedroom_swirl
       - light.bedside_orb
+      icon: mdi:lightbulb-group
       friendly_name: Bedroom Light Group
-      supported_features: 63
+      supported_features: 44
       state: 'off'
     light.loggia_light_group:
-      min_mireds: 153
-      max_mireds: 500
-      effect_list:
-      - colorloop
-      entity_id:
-      - light.loggia_campfire
-      - light.loggia_pixar
-      - light.loggia_spot_1
+      supported_color_modes:
+      - onoff
+      icon: mdi:lightbulb-group
       friendly_name: Loggia Light Group
-      supported_features: 63
-      state: 'off'
+      supported_features: 0
+      state: unavailable
     light.entrance_light_group:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
       min_mireds: 153
       max_mireds: 500
       effect_list:
       - colorloop
-      - random
+      supported_color_modes:
+      - color_temp
+      - hs
+      - xy
       entity_id:
       - light.entrance_spot_1_inner
       - light.entrance_spot_2_outer
+      icon: mdi:lightbulb-group
       friendly_name: Entrance Light Group
-      supported_features: 63
+      supported_features: 44
       state: 'off'
     light.kitchen_overhead_light:
+      supported_color_modes:
+      - onoff
       friendly_name: Kitchen Overhead Light
       supported_features: 0
       state: 'off'
     light.nanoleaf:
+      min_color_temp_kelvin: 1200
+      max_color_temp_kelvin: 6493
       min_mireds: 154
       max_mireds: 833
       effect_list:
       - 0rgasme
       - Color Burst
+      - Cyberpunk
       - Dracarys
       - Electric Chill
       - Emergency
+      - Energize
       - Fireworks
       - Flames
+      - Flow
       - Forest
       - Inner Peace
       - Meteor Shower
@@ -703,133 +718,263 @@
       - sixtyAI_computerSaysNo
       - sixtyAI_redDot
       - sixtyBlue1
-      friendly_name: Nanoleaf
+      supported_color_modes:
+      - color_temp
+      - hs
       icon: mdi:triangle-outline
-      supported_features: 55
+      friendly_name: Nanoleaf
+      supported_features: 36
       state: 'off'
     light.living_room_spot_1_window:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
       min_mireds: 153
       max_mireds: 500
       effect_list:
       - colorloop
-      - random
+      supported_color_modes:
+      - color_temp
+      - hs
+      - xy
+      is_deconz_group: false
+      friendly_name: Livingroom Spot 1 Window
+      supported_features: 44
+      color_mode: color_temp
       brightness: 41
+      color_temp_kelvin: 2923
       color_temp: 342
-      effect: none
-      friendly_name: Living Room Spot 1
-      supported_features: 63
+      hs_color:
+      - 27.957
+      - 59.028
+      rgb_color:
+      - 255
+      - 174
+      - 104
+      xy_color:
+      - 0.504
+      - 0.384
       state: 'on'
     light.living_room_spot_2_middle:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
       min_mireds: 153
       max_mireds: 500
       effect_list:
       - colorloop
-      - random
+      supported_color_modes:
+      - color_temp
+      - hs
+      - xy
+      is_deconz_group: false
+      friendly_name: Livingroom Spot 2 Middle
+      supported_features: 44
+      color_mode: color_temp
       brightness: 94
+      color_temp_kelvin: 3030
       color_temp: 330
-      effect: none
-      friendly_name: Living Room Spot 2
-      supported_features: 63
+      hs_color:
+      - 27.777
+      - 56.086
+      rgb_color:
+      - 255
+      - 178
+      - 111
+      xy_color:
+      - 0.494
+      - 0.383
       state: 'on'
     light.living_room_spot_3_right:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
       min_mireds: 153
       max_mireds: 500
       effect_list:
       - colorloop
-      - random
+      supported_color_modes:
+      - color_temp
+      - hs
+      - xy
+      is_deconz_group: false
+      friendly_name: Livingroom Spot 3 Right
+      supported_features: 44
+      color_mode: color_temp
       brightness: 68
+      color_temp_kelvin: 3174
       color_temp: 315
-      effect: none
-      friendly_name: Living Room Spot 3
-      supported_features: 63
+      hs_color:
+      - 27.561
+      - 52.364
+      rgb_color:
+      - 255
+      - 182
+      - 121
+      xy_color:
+      - 0.481
+      - 0.38
       state: 'on'
     light.kitchen_table_light:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
       min_mireds: 153
       max_mireds: 500
       effect_list:
       - colorloop
+      supported_color_modes:
+      - color_temp
+      - hs
+      - xy
       is_deconz_group: false
       friendly_name: Kitchen Table Light
-      supported_features: 63
+      supported_features: 44
       icon: mdi:ceiling-light
       state: 'off'
     light.hue_shade:
       effect_list:
       - colorloop
+      supported_color_modes:
+      - hs
+      - xy
+      is_deconz_group: false
+      friendly_name: Hue shade
+      supported_features: 44
+      color_mode: xy
       brightness: 148
       hs_color:
-      - 29.581
-      - 84.314
+      - 29.439
+      - 83.922
       rgb_color:
       - 255
-      - 145
-      - 39
+      - 146
+      - 41
       xy_color:
       - 0.58
       - 0.387
-      is_deconz_group: false
-      friendly_name: Hue shade
-      supported_features: 61
       state: 'on'
     light.tv_lightstrip:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
       min_mireds: 153
       max_mireds: 500
       effect_list:
       - colorloop
-      brightness: 110
-      color_temp: 413
+      supported_color_modes:
+      - color_temp
+      - hs
+      - xy
       is_deconz_group: false
       friendly_name: TV Lightstrip
-      supported_features: 63
+      supported_features: 44
+      color_mode: color_temp
+      brightness: 110
+      color_temp_kelvin: 2421
+      color_temp: 413
+      hs_color:
+      - 29.091
+      - 75.461
+      rgb_color:
+      - 255
+      - 155
+      - 62
+      xy_color:
+      - 0.556
+      - 0.389
       state: 'on'
     light.tv_side_orb:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
       min_mireds: 153
       max_mireds: 500
       effect_list:
       - colorloop
+      supported_color_modes:
+      - color_temp
+      - hs
+      - xy
+      is_deconz_group: false
+      friendly_name: TV Side Orb
+      supported_features: 44
+      color_mode: xy
       brightness: 252
       hs_color:
-      - 299.431
-      - 82.745
+      - 299.139
+      - 81.961
       rgb_color:
       - 252
-      - 44
+      - 46
       - 255
       xy_color:
       - 0.38
       - 0.159
-      is_deconz_group: false
-      friendly_name: TV Side Orb
-      supported_features: 63
       state: 'on'
     light.hue_go:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
       min_mireds: 153
       max_mireds: 500
       effect_list:
       - colorloop
-      brightness: 181
-      color_temp: 469
+      supported_color_modes:
+      - color_temp
+      - hs
+      - xy
       is_deconz_group: false
       friendly_name: Hue Go
-      supported_features: 63
+      supported_features: 44
+      color_mode: color_temp
+      brightness: 181
+      color_temp_kelvin: 2132
+      color_temp: 469
+      hs_color:
+      - 30.05
+      - 87.812
+      rgb_color:
+      - 255
+      - 143
+      - 31
+      xy_color:
+      - 0.586
+      - 0.387
       state: 'on'
     light.eket_cubes:
-      brightness: 30
+      supported_color_modes:
+      - brightness
       is_deconz_group: false
       friendly_name: Eket Cubes
-      supported_features: 41
+      supported_features: 40
+      color_mode: brightness
+      brightness: 30
       state: 'on'
     light.loggia_lightstrip:
+      min_color_temp_kelvin: 2000
+      max_color_temp_kelvin: 6535
       min_mireds: 153
       max_mireds: 500
       effect_list:
       - colorloop
+      supported_color_modes:
+      - color_temp
+      - hs
+      - xy
       is_deconz_group: false
       friendly_name: Loggia Skyline
-      supported_features: 63
+      supported_features: 44
       icon: mdi:led-strip
       state: 'off'
+    input_select.light_scene:
+      options:
+      - party
+      - warm
+      - cinema
+      - custom
+      - 'off'
+      editable: true
+      icon: mdi:beach
+      friendly_name: Light Scene
+      state: cinema
   icon: mdi:popcorn
+  metadata:
+    input_select.light_scene:
+      entity_only: true
 - id: '1602939639296'
   name: Good Morning
   entities:

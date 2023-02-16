@@ -130,3 +130,52 @@
     target:
       entity_id: switch.mystromclickandgrow3
   mode: single
+- id: '1675447909443'
+  alias: Kitchen Overhead Light On/Off
+  description: Turn the kitchen overhead light on if motion is detected and turn off
+    if no motion is detected for 3min.
+  trigger:
+  - type: motion
+    platform: device
+    device_id: 151deaa6ce41438b9466003357b265e2
+    entity_id: binary_sensor.kitchen_devices_presence
+    domain: binary_sensor
+  - type: no_motion
+    platform: device
+    device_id: 151deaa6ce41438b9466003357b265e2
+    entity_id: binary_sensor.kitchen_devices_presence
+    domain: binary_sensor
+    for:
+      hours: 0
+      minutes: 3
+      seconds: 0
+  condition: []
+  action:
+  - if:
+    - condition: sun
+      before: sunrise
+      after: sunset
+      before_offset: 00:20:00
+      after_offset: -00:20:00
+    - condition: state
+      entity_id: binary_sensor.kitchen_devices_presence
+      state: 'on'
+    then:
+    - service: light.turn_on
+      data: {}
+      target:
+        entity_id: light.kitchen_overhead_light
+  - if:
+    - condition: state
+      entity_id: binary_sensor.kitchen_devices_presence
+      state: 'off'
+      for:
+        hours: 0
+        minutes: 3
+        seconds: 0
+    then:
+    - service: light.turn_off
+      data: {}
+      target:
+        entity_id: light.kitchen_overhead_light
+  mode: single
