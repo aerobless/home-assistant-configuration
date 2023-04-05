@@ -261,11 +261,6 @@ logi_circle:
   api_key: !secret logi_api_key
   redirect_uri: !secret logi_redirect_url
 
-weather:
-  - platform: darksky
-    mode: daily
-    api_key: !secret dark_sky_api_key
-
 netatmo:
   client_id: !secret netatmo_client_id
   client_secret: !secret netatmo_client_secret
