@@ -12,7 +12,7 @@
     name: myStromClickAndGrow3
   - platform: mystrom
     host: 192.168.178.68
-    name: myStromLoggiaWater
+    name: myStromLivingRoomCamera
   - platform: mystrom
     host: 192.168.178.144
     name: mystrom_tumbler

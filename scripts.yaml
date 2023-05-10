@@ -16,18 +16,6 @@ livingroom_tv_app_youtube:
 update_plant_status:
   sequence:
   - service: rest_command.get_plantgateway_status
-print_shopping_list:
-  sequence:
-  - service: rest_command.print_shopping_list
-'1583526628250':
-  alias: Philips Stereo Volume Up
-  sequence:
-  - data:
-      command:
-      - VolumeUp
-      device: Philips AMP
-    entity_id: remote.harmony_hub
-    service: remote.send_command
 '1588940608485':
   alias: Toggle Climate
   sequence:

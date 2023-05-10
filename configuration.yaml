@@ -280,6 +280,46 @@ notify:
       - service: mobile_app_theos_iphone_11
 
 template:
+  - trigger:
+    - platform: time_pattern
+      seconds: "/1"
+    sensor:
+    - name: "Lifetime"
+      unit_of_measurement: "%"
+      state: >
+        {% set birthdate = state_attr("sensor.theo_details", "birthdate") | as_datetime %}
+        {% set deathdate = birthdate + timedelta(state_attr("sensor.theo_details", "life_expectancy")*365) %}
+        {% set totalLifeInDays = (deathdate - birthdate).days %}
+        {% set lifetime = deathdate - now() %}
+        {% set lifetimeInDays = lifetime.days %}
+        {% set lifetimeInSeconds = lifetimeInDays*24*60*60+lifetime.seconds %}
+        {% set percentageOfLifeUsed = ((totalLifeInDays - lifetimeInDays) / totalLifeInDays * 100) | round(1) %}
+        {{percentageOfLifeUsed}}
+      attributes:
+        deathdate: >
+          {% set birthdate = state_attr("sensor.theo_details", "birthdate") | as_datetime %}
+          {% set deathdate = birthdate + timedelta(state_attr("sensor.theo_details", "life_expectancy")*365) %}
+          {{deathdate}}
+        totalLifeInDays: >
+          {% set birthdate = state_attr("sensor.theo_details", "birthdate") | as_datetime %}
+          {% set deathdate = birthdate + timedelta(state_attr("sensor.theo_details", "life_expectancy")*365) %}
+          {% set totalLifeInDays = (deathdate - birthdate).days %}
+          {{totalLifeInDays}}
+        remainingLifeInDays: >
+          {% set birthdate = state_attr("sensor.theo_details", "birthdate") | as_datetime %}
+          {% set deathdate = birthdate + timedelta(state_attr("sensor.theo_details", "life_expectancy")*365) %}
+          {% set totalLifeInDays = (deathdate - birthdate).days %}
+          {% set lifetime = deathdate - now() %}
+          {% set lifetimeInDays = lifetime.days %}
+          {{lifetimeInDays}}
+        remainingLifeInSeconds: >
+          {% set birthdate = state_attr("sensor.theo_details", "birthdate") | as_datetime %}
+          {% set deathdate = birthdate + timedelta(state_attr("sensor.theo_details", "life_expectancy")*365) %}
+          {% set totalLifeInDays = (deathdate - birthdate).days %}
+          {% set lifetime = deathdate - now() %}
+          {% set lifetimeInDays = lifetime.days %}
+          {% set lifetimeInSeconds = lifetimeInDays*24*60*60+lifetime.seconds %}
+          {{lifetimeInSeconds}}
   - sensor:
       - name: "Sun Daylight"
         unit_of_measurement: "h"
@@ -290,6 +330,11 @@ template:
             {% set nr = nr - 60*60*24 %}
           {% endif %}
           {{ (ns - nr) / (60*60) }}
+      - name: "theo_details"
+        state: alive
+        attributes:
+          birthdate: !secret theo_birthday
+          life_expectancy: "{{85 | int}}" # Based on average swiss life expectancy, to be updated if research changes
 
 # HACS integration: https://github.com/fondberg/spotcast
 spotcast:

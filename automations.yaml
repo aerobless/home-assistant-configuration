@@ -130,52 +130,19 @@
     target:
       entity_id: switch.mystromclickandgrow3
   mode: single
-- id: '1675447909443'
-  alias: Kitchen Overhead Light On/Off
-  description: Turn the kitchen overhead light on if motion is detected and turn off
-    if no motion is detected for 3min.
+- id: '1683007339636'
+  alias: Vacuum Charger Button
+  description: Charge Vacuum when button is pressed
   trigger:
-  - type: motion
+  - device_id: 8f318926b54166549248bfd6d40d724f
+    domain: deconz
     platform: device
-    device_id: 151deaa6ce41438b9466003357b265e2
-    entity_id: binary_sensor.kitchen_devices_presence
-    domain: binary_sensor
-  - type: no_motion
-    platform: device
-    device_id: 151deaa6ce41438b9466003357b265e2
-    entity_id: binary_sensor.kitchen_devices_presence
-    domain: binary_sensor
-    for:
-      hours: 0
-      minutes: 3
-      seconds: 0
+    type: remote_button_short_press
+    subtype: turn_on
   condition: []
   action:
-  - if:
-    - condition: sun
-      before: sunrise
-      after: sunset
-      before_offset: 00:20:00
-      after_offset: -00:20:00
-    - condition: state
-      entity_id: binary_sensor.kitchen_devices_presence
-      state: 'on'
-    then:
-    - service: light.turn_on
-      data: {}
-      target:
-        entity_id: light.kitchen_overhead_light
-  - if:
-    - condition: state
-      entity_id: binary_sensor.kitchen_devices_presence
-      state: 'off'
-      for:
-        hours: 0
-        minutes: 3
-        seconds: 0
-    then:
-    - service: light.turn_off
-      data: {}
-      target:
-        entity_id: light.kitchen_overhead_light
+  - service: switch.toggle
+    data: {}
+    target:
+      entity_id: switch.mystromclickandgrow3
   mode: single
