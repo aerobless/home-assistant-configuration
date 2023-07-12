@@ -207,8 +207,6 @@ switch:
           service: media_player.turn_off
           entity_id: media_player.everywhere
 
-switch mystrom: !include config/mystrom-switches.yaml
-
 input_boolean:
   play_energy_zurich_everywhere:
     name: Energy Zürich (everyhwere)
