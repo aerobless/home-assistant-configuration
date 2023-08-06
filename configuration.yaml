@@ -146,9 +146,6 @@ binary_sensor: # All sensors with just two states (ON/OFF)
             value_template: "{{ is_state('input_boolean.bed_occupied_input', 'on') }}"
 
 light:
-  - platform: nanoleaf
-    host: !secret nanoleaf_ip
-    token: !secret nanoleaf_token
   - platform: switch
     name: Loggia Fairy Lights
     entity_id: switch.loggia_fairy_lights
