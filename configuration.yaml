@@ -252,10 +252,6 @@ logi_circle:
   api_key: !secret logi_api_key
   redirect_uri: !secret logi_redirect_url
 
-netatmo:
-  client_id: !secret netatmo_client_id
-  client_secret: !secret netatmo_client_secret
-
 yahoofinance:
   symbols:
     - VOO
