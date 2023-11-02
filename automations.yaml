@@ -108,6 +108,16 @@
     data: {}
     target:
       entity_id: light.bar_lights
+  - delay:
+      hours: 2
+      minutes: 0
+      seconds: 0
+      milliseconds: 0
+  - service: light.turn_off
+    data: {}
+    target:
+      entity_id:
+      - light.bar_lights
   mode: single
 - id: '1669748575150'
   alias: Xiaomi G10 Vacuum Charger - OFF after 1:30h

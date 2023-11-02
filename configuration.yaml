@@ -26,13 +26,9 @@ sensor: # All sensors with multiple states
     waste_type: cargotram, etram, organic, textile
   - platform: rest
     name: Migros Fitnesspark Puls 5
-    resource: https://blfa-api.migros.ch/fp/api/center/6/currentuser
+    resource: https://www.fitnesspark.ch/wp/wp-admin/admin-ajax.php?action=single_park_update_visitors&location_id=29&location_name=FP_Puls5
     verify_ssl: false
-    value_template: '{{ value_json.currentVisitors }}'
     unit_of_measurement: "people"
-    json_attributes:
-      - currentVisitors
-      - maxVisitors
   - platform: rest
     name: Flussbad Au-Höngg
     resource: https://baditicker.herokuapp.com
@@ -82,10 +78,6 @@ sensor: # All sensors with multiple states
     resource: http://192.168.178.40/report
     device_class: power
     value_template: "{{ value_json.power }}"
-  - platform: fitbit
-    monitored_resources:
-      - "body/weight"
-      - "body/fat"
 
 sensor power: !include config/power-measurement-sensors.yaml
 
