@@ -92,33 +92,6 @@
       target:
         entity_id: switch.mystromservers
   mode: single
-- id: '1668943375956'
-  alias: Turn on bar lights after sunset
-  description: Turns on the bar lights 30min after sunset and when I'm home.
-  trigger:
-  - platform: sun
-    event: sunset
-    offset: 00:30
-  condition:
-  - condition: state
-    entity_id: person.theo_winter
-    state: home
-  action:
-  - service: light.turn_on
-    data: {}
-    target:
-      entity_id: light.bar_lights
-  - delay:
-      hours: 2
-      minutes: 0
-      seconds: 0
-      milliseconds: 0
-  - service: light.turn_off
-    data: {}
-    target:
-      entity_id:
-      - light.bar_lights
-  mode: single
 - id: '1669748575150'
   alias: Xiaomi G10 Vacuum Charger - OFF after 1:30h
   description: Turns the vacuum charging station off after 1h to prevent the battery

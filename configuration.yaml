@@ -82,11 +82,6 @@ sensor: # All sensors with multiple states
 sensor power: !include config/power-measurement-sensors.yaml
 
 binary_sensor: # All sensors with just two states (ON/OFF)
-  - platform: ping
-    host: !secret samsung_tv_ip
-    name: Samsung TV
-    scan_interval: 30 # seconds
-    count: 2
   - platform: template
     sensors:
         washingmachine_state:
